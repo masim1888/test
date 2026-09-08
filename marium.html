@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marium Ahmed - Premium Collection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f7f0eb 0%, #f0e8e0 50%, #f5ede5 100%);
+            color: #2d2a24;
+            min-height: 100vh;
+        }
+
+        .top-bar {
+            background: #1a1714;
+            color: #d4c5a0;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e8e1d8;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: #1a1714;
+            cursor: pointer;
+        }
+        .logo span {
+            font-weight: 700;
+            color: #c9a86c;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        nav a {
+            text-decoration: none;
+            color: #2d2a24;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            cursor: pointer;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+        }
+        nav a:hover {
+            color: #c9a86c;
+            border-bottom-color: #c9a86c;
+        }
+        nav a.active {
+            color: #c9a86c;
+            border-bottom-color: #c9a86c;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 22px;
+            padding: 5px 10px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .cart-icon:hover {
+            background: #f5f0eb;
+        }
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #c9a86c;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(26, 23, 20, 0.55), rgba(26, 23, 20, 0.55)), 
+                        url('https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=1400');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 300;
+            letter-spacing: 6px;
+            margin-bottom: 15px;
+        }
+        .hero h1 span {
+            color: #e8d5b8;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 18px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            color: #d4c5a0;
+        }
+        .btn {
+            padding: 14px 40px;
+            background: #c9a86c;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 2px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .btn:hover {
+            background: #b8944a;
+            transform: scale(1.03);
+        }
+
+        .section-title {
+            text-align: center;
+            padding: 60px 20px 30px;
+            font-size: 32px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: #1a1714;
+        }
+        .section-title span {
+            color: #c9a86c;
+            font-weight: 700;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 40px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid rgba(201, 168, 108, 0.08);
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+            border-color: rgba(201, 168, 108, 0.2);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            background: #f5f0eb;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+        .product-info h3 {
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 8px;
+            color: #1a1714;
+            min-height: 48px;
+        }
+        .product-info .price {
+            font-size: 18px;
+            color: #c9a86c;
+            font-weight: 700;
+        }
+        .product-info .original-price {
+            font-size: 14px;
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 10px;
+            font-weight: 300;
+        }
+        .product-info .price-tag {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            font-size: 11px;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-left: 10px;
+            font-weight: 600;
+        }
+        .add-to-cart {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            background: #1a1714;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            border-radius: 6px;
+        }
+        .add-to-cart:hover {
+            background: #c9a86c;
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 420px;
+            height: 100%;
+            background: white;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.15);
+            transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 30px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        .cart-sidebar.active {
+            right: 0;
+        }
+        .cart-sidebar h2 {
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #f5f0eb;
+            align-items: center;
+        }
+        .cart-item-info {
+            flex: 1;
+        }
+        .cart-item-info h4 {
+            font-size: 14px;
+            font-weight: 400;
+        }
+        .cart-item-info .item-price {
+            color: #c9a86c;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .remove-item {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 5px 10px;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        .remove-item:hover {
+            background: #fde8e8;
+        }
+        .cart-total {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 2px solid #1a1714;
+            font-size: 20px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+        .checkout-btn {
+            width: 100%;
+            padding: 16px;
+            margin-top: 20px;
+            background: #c9a86c;
+            color: white;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 6px;
+        }
+        .checkout-btn:hover {
+            background: #b8944a;
+        }
+        .close-cart {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 28px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #333;
+            transition: 0.3s;
+        }
+        .close-cart:hover {
+            color: #c9a86c;
+            transform: rotate(90deg);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            z-index: 999;
+        }
+        .overlay.active {
+            display: block;
+        }
+
+        .order-form {
+            max-width: 540px;
+            margin: 30px auto 0;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        .order-form input,
+        .order-form textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 14px;
+            border: 1px solid #e0d8d0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .order-form input:focus,
+        .order-form textarea:focus {
+            border-color: #c9a86c;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(201, 168, 108, 0.15);
+        }
+        .order-form textarea {
+            resize: vertical;
+            min-height: 80px;
+            font-family: inherit;
+        }
+        .order-form label {
+            font-size: 13px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+            color: #1a1714;
+        }
+        .order-summary {
+            background: #f8f5f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #c9a86c;
+        }
+        .order-summary p {
+            font-size: 14px;
+            margin: 4px 0;
+        }
+
+        .faq-section {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+        .faq-item {
+            border-bottom: 1px solid #e8e1d8;
+            padding: 20px 0;
+        }
+        .faq-item h4 {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #1a1714;
+        }
+        .faq-item p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .no-products {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+            font-size: 18px;
+        }
+
+        footer {
+            background: #1a1714;
+            color: #d4c5a0;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        .order-confirmation {
+            display: none;
+            max-width: 540px;
+            margin: 20px auto;
+            padding: 30px;
+            background: #d4edda;
+            border-radius: 12px;
+            border: 2px solid #28a745;
+        }
+        .order-confirmation h3 {
+            color: #155724;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .order-confirmation .sub-text {
+            color: #155724;
+            text-align: center;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+        .order-confirmation .order-details-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            white-space: pre-wrap;
+            font-size: 14px;
+            border: 1px solid #c3e6cb;
+            max-height: 350px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            color: #1a1714;
+            line-height: 1.6;
+        }
+        .order-confirmation .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .order-confirmation .action-buttons button {
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+        }
+        .btn-copy-order {
+            background: #c9a86c;
+            color: white;
+        }
+        .btn-copy-order:hover {
+            background: #b8944a;
+        }
+        .btn-copy-order.copied {
+            background: #28a745;
+        }
+        .btn-done-order {
+            background: #6c757d;
+            color: white;
+        }
+        .btn-done-order:hover {
+            background: #5a6268;
+        }
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+        .btn-whatsapp:hover {
+            background: #1da851;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.8s ease-in-out infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 20px;
+            }
+            nav {
+                gap: 12px;
+                justify-content: center;
+            }
+            nav a {
+                font-size: 12px;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .hero {
+                height: 350px;
+            }
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                padding: 0 15px 40px;
+                gap: 15px;
+            }
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+            .order-form {
+                margin: 15px 15px 0;
+                padding: 20px;
+            }
+            .product-card img {
+                height: 200px;
+            }
+            .order-confirmation {
+                margin: 15px;
+                padding: 20px;
+            }
+            .order-confirmation .order-details-box {
+                font-size: 12px;
+                max-height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">✨ FREE SHIPPING ON ORDERS OVER Rs. 25,000 • WORLDWIDE DELIVERY ✨</div>
+
+<header>
+    <div class="logo" onclick="scrollToTop()">MARIUM <span>AHMED</span></div>
+    <nav>
+        <a class="active" data-filter="all" onclick="filterProducts('all')">ALL</a>
+        <a data-filter="new" onclick="filterProducts('new')">NEW ARRIVALS</a>
+        <a data-filter="sale" onclick="filterProducts('sale')">ON SALE</a>
+        <a data-filter="stitched" onclick="filterProducts('stitched')">STITCHED</a>
+        <a data-filter="unstitched" onclick="filterProducts('unstitched')">UNSTITCHED</a>
+        <div class="cart-icon" onclick="toggleCart()">
+            🛒
+            <span class="cart-count" id="cartCount">0</span>
+        </div>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>MARIUM <span>AHMED</span></h1>
+    <p>Premium Ethnic Wear — Inspired by Heritage, Crafted for Elegance</p>
+    <a href="#" class="btn" onclick="filterProducts('all'); return false;">EXPLORE COLLECTION</a>
+</section>
+
+<h2 class="section-title" id="categoryTitle">OUR <span>COLLECTION</span></h2>
+<div class="product-grid" id="productGrid"></div>
+
+<section class="faq-section">
+    <h2 class="section-title" style="padding-top:20px;">FREQUENTLY ASKED <span>QUESTIONS</span></h2>
+    
+    <div class="faq-item">
+        <h4>What sizes are available in Marium Ahmed's collection?</h4>
+        <p>Our stitched collection articles are available in Small to Extra Large, tailored to flatter Pakistani body types. Each product page includes a detailed size chart so you can easily find your ideal fit. If you need help choosing, our support team is just a message away.</p>
+    </div>
+    
+    <div class="faq-item">
+        <h4>Are the colors shown on the website accurate to the actual product?</h4>
+        <p>We make every effort to ensure product images reflect true colors using natural lighting and high-quality photography. However, minor variations may occur due to screen brightness or device settings. Each outfit is carefully checked to meet our quality standards before shipping.</p>
+    </div>
+    
+    <div class="faq-item">
+        <h4>Do you ship internationally and how long does delivery take?</h4>
+        <p>Yes, Marium Ahmed ships worldwide. You'll receive a tracking link via SMS or email as soon as your parcel is dispatched.</p>
+    </div>
+    
+    <div class="faq-item">
+        <h4>Can I exchange an item if the size doesn't fit me?</h4>
+        <p>Yes, we offer exchanges within 14 days of delivery. Please contact our support team to initiate the process.</p>
+    </div>
+    
+    <div class="faq-item">
+        <h4>Do you offer stitched or unstitched outfits?</h4>
+        <p>Our clothing line includes both stitched and unstitched options. Each product description clearly mentions its type — stitched pieces are ready to wear, while unstitched suits let you tailor them to your personal style.</p>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 MARIUM AHMED — Premium Ethnic Wear. All rights reserved.</p>
+</footer>
+
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
+<div class="cart-sidebar" id="cartSidebar">
+    <button class="close-cart" onclick="toggleCart()">✕</button>
+    <h2>🛍️ Your Cart</h2>
+    <div id="cartItems"></div>
+    <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotal">Rs. 0</span>
+    </div>
+    <button class="checkout-btn" onclick="openCheckout()">PROCEED TO CHECKOUT</button>
+</div>
+
+<!-- CHECKOUT FORM -->
+<div style="display: none;" id="checkoutForm">
+    <div class="order-form">
+        <h3 style="text-align:center;margin-bottom:20px;font-weight:300;letter-spacing:2px;">📋 Complete Your Order</h3>
+        
+        <form id="orderForm" onsubmit="submitOrder(event)">
+            <label>Full Name *</label>
+            <input type="text" id="fullName" required placeholder="Enter your full name">
+            
+            <label>Email Address *</label>
+            <input type="email" id="email" required placeholder="your@email.com">
+            
+            <label>Phone Number *</label>
+            <input type="tel" id="phone" required placeholder="03XX-XXXXXXX">
+            
+            <label>Shipping Address *</label>
+            <input type="text" id="address" required placeholder="House #, Street, City, Country">
+            
+            <label>Special Instructions (Optional)</label>
+            <textarea id="instructions" placeholder="Any special requests..."></textarea>
+            
+            <div class="order-summary" id="orderSummary"></div>
+            
+            <button type="submit" id="placeOrderBtn" class="btn" style="width:100%;padding:16px;font-size:16px;cursor:pointer;">
+                ✅ PLACE ORDER
+            </button>
+            <button type="button" class="btn" style="width:100%;padding:12px;margin-top:10px;background:#888;cursor:pointer;" onclick="closeCheckout()">Cancel</button>
+        </form>
+    </div>
+</div>
+
+<!-- ORDER CONFIRMATION -->
+<div class="order-confirmation" id="orderConfirmation">
+    <h3>✅ Order Placed Successfully!</h3>
+    <p class="sub-text">Click the button below to send your order via WhatsApp.</p>
+    
+    <div class="order-details-box" id="orderDetailsBox"></div>
+    
+    <div class="action-buttons">
+        <button class="btn-whatsapp" onclick="sendWhatsApp()">📱 Send Order via WhatsApp</button>
+        <button class="btn-copy-order" onclick="copyOrderToClipboard()">📋 Copy Order Details</button>
+        <button class="btn-done-order" onclick="closeCheckout()">Done</button>
+    </div>
+</div>
+
+<script>
+    // ========================================
+    // ⚠️ REPLACE WITH YOUR WHATSAPP NUMBER
+    // Include country code, no plus sign
+    // Example: Pakistan number 0300-1234567 → 923128939838';
+    // ========================================
+    const WHATSAPP_NUMBER = '923128939838'; // ⚠️ REPLACE THIS
+
+    // ========================================
+    // PRODUCT DATA
+    // ========================================
+    const products = [
+        {
+            id: 1,
+            name: "Embroidered Lawn Suit - Pearl White",
+            originalPrice: 14999,
+            image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=400&h=500&fit=crop",
+            category: "new",
+            type: "stitched"
+        },
+        {
+            id: 2,
+            name: "Chiffon Embroidered Dupatta Set",
+            originalPrice: 21999,
+            image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=400&h=500&fit=crop&sat=-100",
+            category: "new",
+            type: "stitched"
+        },
+        {
+            id: 3,
+            name: "Premium Silk Stitched - Gold Edition",
+            originalPrice: 34999,
+            image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=400&h=500&fit=crop",
+            category: "new",
+            type: "stitched"
+        },
+        {
+            id: 4,
+            name: "Cotton Embroidered Kurti - Navy Blue",
+            originalPrice: 11999,
+            image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=400&h=500&fit=crop&sat=-50",
+            category: "new",
+            type: "stitched"
+        },
+        {
+            id: 5,
+            name: "Organza Party Dress - Rose Gold",
+            originalPrice: 27999,
+            image: "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=400&h=500&fit=crop",
+            category: "sale",
+            type: "stitched"
+        },
+        {
+            id: 6,
+            name: "Velvet Embroidered Ensemble - Emerald",
+            originalPrice: 44999,
+            image: "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=400&h=500&fit=crop&sat=30",
+            category: "sale",
+            type: "stitched"
+        },
+        {
+            id: 7,
+            name: "Linen Blend Casual Suit - Beige",
+            originalPrice: 13999,
+            image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=500&fit=crop",
+            category: "sale",
+            type: "unstitched"
+        },
+        {
+            id: 8,
+            name: "Digital Printed Lawn - Floral Collection",
+            originalPrice: 9999,
+            image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=500&fit=crop&sat=-30",
+            category: "sale",
+            type: "unstitched"
+        },
+        {
+            id: 9,
+            name: "Premium Stitched Suit - Royal Blue",
+            originalPrice: 18999,
+            image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=500&fit=crop&sat=20",
+            category: "new",
+            type: "stitched"
+        },
+        {
+            id: 10,
+            name: "Embroidered Unstitched Fabric - Cream",
+            originalPrice: 7999,
+            image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=400&h=500&fit=crop&sat=-20",
+            category: "sale",
+            type: "unstitched"
+        },
+        {
+            id: 11,
+            name: "Silk Chiffon Saree - Party Wear",
+            originalPrice: 25999,
+            image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=400&h=500&fit=crop&sat=20",
+            category: "new",
+            type: "unstitched"
+        },
+        {
+            id: 12,
+            name: "Cotton Casual Kurti - Summer Collection",
+            originalPrice: 6499,
+            image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=500&fit=crop&sat=-40",
+            category: "sale",
+            type: "stitched"
+        }
+    ];
+
+    // Calculate 30% price for each product (in PKR)
+    products.forEach(p => {
+        p.price = Math.round(p.originalPrice * 0.30);
+    });
+
+    let cart = [];
+    let currentFilter = 'all';
+    let lastOrderDetails = '';
+
+    // ========================================
+    // FORMAT CURRENCY
+    // ========================================
+    function formatPKR(amount) {
+        return 'Rs. ' + amount.toLocaleString();
+    }
+
+    // ========================================
+    // RENDER PRODUCTS
+    // ========================================
+    function renderProducts(filter = 'all') {
+        const grid = document.getElementById('productGrid');
+        const title = document.getElementById('categoryTitle');
+        
+        let filtered = products;
+        let titleText = 'OUR <span>COLLECTION</span>';
+        
+        if (filter === 'new') {
+            filtered = products.filter(p => p.category === 'new');
+            titleText = 'NEW <span>ARRIVALS</span>';
+        } else if (filter === 'sale') {
+            filtered = products.filter(p => p.category === 'sale');
+            titleText = 'ON <span>SALE</span>';
+        } else if (filter === 'stitched') {
+            filtered = products.filter(p => p.type === 'stitched');
+            titleText = 'STITCHED <span>COLLECTION</span>';
+        } else if (filter === 'unstitched') {
+            filtered = products.filter(p => p.type === 'unstitched');
+            titleText = 'UNSTITCHED <span>COLLECTION</span>';
+        }
+        
+        title.innerHTML = titleText;
+        
+        if (filtered.length === 0) {
+            grid.innerHTML = '<div class="no-products">No products found in this category.</div>';
+            return;
+        }
+
+        grid.innerHTML = '';
+        
+        filtered.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <img src="${p.image}" alt="${p.name}" 
+                     onerror="this.src='https://via.placeholder.com/400x500/f5f0eb/999?text=Product+Image'">
+                <div class="product-info">
+                    <h3>${p.name}</h3>
+                    <div>
+                        <span class="price">${formatPKR(p.price)}</span>
+                        <span class="original-price">${formatPKR(p.originalPrice)}</span>
+                        <span class="price-tag">70% OFF</span>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart(${p.id})">ADD TO CART</button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    // ========================================
+    // FILTER PRODUCTS
+    // ========================================
+    function filterProducts(filter) {
+        currentFilter = filter;
+        renderProducts(filter);
+        
+        document.querySelectorAll('nav a[data-filter]').forEach(link => {
+            link.classList.toggle('active', link.dataset.filter === filter);
+        });
+        
+        document.getElementById('categoryTitle').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // ========================================
+    // SCROLL TO TOP
+    // ========================================
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ========================================
+    // CART FUNCTIONS
+    // ========================================
+    function addToCart(productId) {
+        const product = products.find(p => p.id === productId);
+        const existing = cart.find(item => item.id === productId);
+        
+        if (existing) {
+            existing.quantity += 1;
+        } else {
+            cart.push({ ...product, quantity: 1 });
+        }
+        
+        updateCartUI();
+        document.getElementById('cartSidebar').classList.add('active');
+        document.getElementById('overlay').classList.add('active');
+    }
+
+    function removeFromCart(productId) {
+        cart = cart.filter(item => item.id !== productId);
+        updateCartUI();
+    }
+
+    function updateCartUI() {
+        const cartItems = document.getElementById('cartItems');
+        const cartCount = document.getElementById('cartCount');
+        const cartTotal = document.getElementById('cartTotal');
+        
+        let total = 0;
+        let itemCount = 0;
+        
+        cartItems.innerHTML = '';
+        
+        if (cart.length === 0) {
+            cartItems.innerHTML = '<p style="color:#999;text-align:center;padding:40px 0;">Your cart is empty</p>';
+        } else {
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+                itemCount += item.quantity;
+                
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                        <div class="item-price">${formatPKR(item.price * item.quantity)} (${item.quantity}x)</div>
+                    </div>
+                    <button class="remove-item" onclick="removeFromCart(${item.id})">✕</button>
+                `;
+                cartItems.appendChild(div);
+            });
+        }
+        
+        cartCount.textContent = itemCount;
+        cartTotal.textContent = formatPKR(total);
+    }
+
+    function toggleCart() {
+        document.getElementById('cartSidebar').classList.toggle('active');
+        document.getElementById('overlay').classList.toggle('active');
+    }
+
+    // ========================================
+    // CHECKOUT
+    // ========================================
+    function openCheckout() {
+        if (cart.length === 0) {
+            alert('Your cart is empty. Add some products first!');
+            return;
+        }
+        
+        document.getElementById('cartSidebar').classList.remove('active');
+        document.getElementById('overlay').classList.remove('active');
+        document.getElementById('checkoutForm').style.display = 'block';
+        document.getElementById('orderConfirmation').style.display = 'none';
+        document.getElementById('orderForm').style.display = 'block';
+        
+        let summary = '<h4 style="margin-bottom:10px;">📦 Order Summary</h4>';
+        let total = 0;
+        cart.forEach(item => {
+            summary += `<p>${item.name} x${item.quantity} = ${formatPKR(item.price * item.quantity)}</p>`;
+            total += item.price * item.quantity;
+        });
+        summary += `<p style="font-weight:700;font-size:20px;margin-top:12px;border-top:1px solid #ddd;padding-top:12px;">Total: ${formatPKR(total)}</p>`;
+        document.getElementById('orderSummary').innerHTML = summary;
+        
+        document.getElementById('checkoutForm').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function closeCheckout() {
+        document.getElementById('checkoutForm').style.display = 'none';
+        document.getElementById('orderConfirmation').style.display = 'none';
+        document.getElementById('orderForm').reset();
+        document.getElementById('orderForm').style.display = 'block';
+    }
+
+    // ========================================
+    // SUBMIT ORDER - PREPARES FOR WHATSAPP
+    // ========================================
+    function submitOrder(event) {
+        event.preventDefault();
+        
+        const name = document.getElementById('fullName').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const address = document.getElementById('address').value;
+        const instructions = document.getElementById('instructions').value;
+        
+        if (!name || !email || !phone || !address) {
+            alert('Please fill in all fields.');
+            return;
+        }
+        
+        // Build order details
+        let orderDetails = '=== NEW ORDER - MARIUM AHMED ===\n\n';
+        orderDetails += `Customer Name: ${name}\n`;
+        orderDetails += `Email: ${email}\n`;
+        orderDetails += `Phone: ${phone}\n`;
+        orderDetails += `Shipping Address: ${address}\n`;
+        if (instructions) {
+            orderDetails += `Instructions: ${instructions}\n`;
+        }
+        orderDetails += '\n--- Products Ordered ---\n';
+        
+        let total = 0;
+        cart.forEach(item => {
+            const itemTotal = item.price * item.quantity;
+            orderDetails += `  ${item.name}\n`;
+            orderDetails += `  Quantity: ${item.quantity} x ${formatPKR(item.price)} = ${formatPKR(itemTotal)}\n\n`;
+            total += itemTotal;
+        });
+        orderDetails += `\n${'='.repeat(40)}\n`;
+        orderDetails += `GRAND TOTAL: ${formatPKR(total)}\n`;
+        orderDetails += `${'='.repeat(40)}\n\n`;
+        orderDetails += `Thank you for your order!`;
+        
+        // Store for later
+        lastOrderDetails = orderDetails;
+        
+        // Hide form, show confirmation with WhatsApp button
+        document.getElementById('orderForm').style.display = 'none';
+        document.getElementById('orderConfirmation').style.display = 'block';
+        document.getElementById('orderDetailsBox').textContent = orderDetails;
+        
+        // Reset cart
+        cart = [];
+        updateCartUI();
+        
+        // Auto-copy and open WhatsApp
+        setTimeout(() => {
+            sendWhatsApp();
+        }, 500);
+    }
+
+    // ========================================
+    // SEND VIA WHATSAPP
+    // ========================================
+    function sendWhatsApp() {
+        const text = document.getElementById('orderDetailsBox').textContent;
+        const encodedText = encodeURIComponent(text);
+        const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedText}`;
+        window.open(url, '_blank');
+        
+        // Also copy to clipboard as backup
+        copyOrderToClipboard();
+    }
+
+    // ========================================
+    // COPY ORDER TO CLIPBOARD
+    // ========================================
+    function copyOrderToClipboard() {
+        const btn = document.querySelector('.btn-copy-order');
+        const text = document.getElementById('orderDetailsBox').textContent;
+        
+        if (!text) {
+            alert('No order details to copy.');
+            return;
+        }
+        
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(() => {
+                showCopiedFeedback(btn);
+            }).catch(() => {
+                fallbackCopy(text, btn);
+            });
+        } else {
+            fallbackCopy(text, btn);
+        }
+    }
+
+    function fallbackCopy(text, btn) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.top = '-9999px';
+        textarea.style.left = '-9999px';
+        textarea.style.width = '1px';
+        textarea.style.height = '1px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        
+        try {
+            const success = document.execCommand('copy');
+            if (success) {
+                showCopiedFeedback(btn);
+            } else {
+                alert('Please copy the order details manually from the box above.');
+            }
+        } catch (err) {
+            alert('Please copy the order details manually from the box above.');
+        }
+        
+        document.body.removeChild(textarea);
+    }
+
+    function showCopiedFeedback(btn) {
+        btn.textContent = '✅ Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+            btn.textContent = '📋 Copy Order Details';
+            btn.classList.remove('copied');
+        }, 3000);
+    }
+
+    // ========================================
+    // INITIALIZE
+    // ========================================
+    renderProducts('all');
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            document.getElementById('cartSidebar').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+        }
+    });
+</script>
+
+</body>
+</html>
