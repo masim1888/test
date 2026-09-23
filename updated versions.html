@@ -1,0 +1,2502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EbookHub — Premium Digital eBooks & Courses</title>
+<meta name="description" content="Buy premium digital eBooks: Social Media Tricks, Kids Poems, Language Learning, IELTS Prep, Computer Courses, and Cartoon Series. Instant PDF delivery via WhatsApp.">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif; }
+    :root {
+        --primary: #6366f1;
+        --primary-dark: #4f46e5;
+        --primary-light: #eef2ff;
+        --accent: #f59e0b;
+        --dark: #0f172a;
+        --dark-2: #1e293b;
+        --gray: #64748b;
+        --gray-light: #f1f5f9;
+        --light: #f8fafc;
+        --white: #ffffff;
+        --whatsapp: #25D366;
+        --whatsapp-dark: #1ebe5d;
+        --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+        --shadow: 0 4px 16px rgba(15,23,42,0.06);
+        --shadow-md: 0 8px 30px rgba(15,23,42,0.08);
+        --shadow-lg: 0 20px 50px rgba(15,23,42,0.12);
+        --radius: 14px;
+        --radius-sm: 10px;
+        --radius-lg: 20px;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--light); color: var(--dark-2); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    #homeView, #paymentView { display: none; }
+    #homeView.active, #paymentView.active { display: block; }
+
+    /* ============================================ */
+    /* TOP AD BANNER — all 3 ads inline, horizontally */
+    /* ============================================ */
+    .top-ads-strip {
+        background: #0f0f14;
+        border-bottom: 3px solid #ffd60a;
+        position: relative;
+        z-index: 1001;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+    .top-ads-strip::before {
+        content: 'SPONSORED';
+        position: absolute;
+        top: 6px;
+        left: 12px;
+        background: #ffd60a;
+        color: #0f0f14;
+        font-size: 8.5px;
+        font-weight: 900;
+        letter-spacing: 1.2px;
+        padding: 3px 8px;
+        border-radius: 4px;
+        line-height: 1;
+        z-index: 2;
+    }
+    .top-ads-inner {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 22px 5% 16px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        align-items: stretch;
+    }
+
+    /* Base ad tile */
+    .top-ad {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        border-radius: 12px;
+        text-decoration: none;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        position: relative;
+        overflow: hidden;
+        min-height: 78px;
+    }
+    .top-ad:hover {
+        transform: translateY(-3px);
+    }
+    .top-ad .ad-emoji {
+        font-size: 30px;
+        flex-shrink: 0;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 46px;
+        height: 46px;
+        border-radius: 10px;
+    }
+    .top-ad .ad-body {
+        flex-grow: 1;
+        min-width: 0;
+    }
+    .top-ad .ad-title {
+        font-size: 14.5px;
+        font-weight: 900;
+        line-height: 1.2;
+        margin-bottom: 3px;
+        letter-spacing: -0.3px;
+    }
+    .top-ad .ad-sub {
+        font-size: 11.5px;
+        line-height: 1.35;
+        margin-bottom: 5px;
+        opacity: 0.85;
+    }
+    .top-ad .ad-price-line {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 3px;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-weight: 900;
+    }
+    .top-ad .ad-price-line .amt {
+        font-size: 15px;
+        letter-spacing: -0.5px;
+    }
+    .top-ad .ad-price-line .per {
+        font-size: 10.5px;
+        font-weight: 700;
+    }
+    .top-ad .ad-cta {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 9px 14px;
+        border-radius: 10px;
+        font-size: 11.5px;
+        font-weight: 800;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        color: #fff;
+        background: #25D366;
+        box-shadow: 0 4px 12px rgba(37,211,102,0.4);
+        transition: all 0.25s;
+        white-space: nowrap;
+    }
+    .top-ad .ad-cta svg {
+        width: 13px;
+        height: 13px;
+        fill: #fff;
+    }
+    .top-ad:hover .ad-cta {
+        background: #1ebe5d;
+        transform: scale(1.05);
+    }
+
+    /* Ad #1 — Website Design (orange theme) */
+    .top-ad-website {
+        background: linear-gradient(135deg, #2a1400 0%, #4a2400 100%);
+        border: 2px solid #ff6b00;
+    }
+    .top-ad-website:hover { box-shadow: 0 10px 30px rgba(255,107,0,0.4); }
+    .top-ad-website .ad-emoji {
+        background: rgba(255,107,0,0.15);
+    }
+    .top-ad-website .ad-title { color: #ffd60a; }
+    .top-ad-website .ad-sub { color: #d4a373; }
+    .top-ad-website .ad-price-line {
+        background: linear-gradient(135deg, #ff6b00, #ff8c00);
+        color: #fff;
+        border: 1.5px solid #ffd60a;
+    }
+    .top-ad-website .ad-cta { background: #ff6b00; box-shadow: 0 4px 12px rgba(255,107,0,0.5); }
+    .top-ad-website:hover .ad-cta { background: #ff8c00; }
+
+    /* Ad #2 — Advertise With Us (pink/purple theme) */
+    .top-ad-advertise {
+        background: linear-gradient(135deg, #2a0029 0%, #4a0044 100%);
+        border: 2px solid #ec4899;
+    }
+    .top-ad-advertise:hover { box-shadow: 0 10px 30px rgba(236,72,153,0.4); }
+    .top-ad-advertise .ad-emoji {
+        background: rgba(236,72,153,0.15);
+    }
+    .top-ad-advertise .ad-title { color: #f9a8d4; }
+    .top-ad-advertise .ad-sub { color: #d8b4d0; }
+    .top-ad-advertise .ad-price-line {
+        background: linear-gradient(135deg, #ec4899, #db2777);
+        color: #fff;
+        border: 1.5px solid #f9a8d4;
+    }
+    .top-ad-advertise .ad-cta { background: #ec4899; box-shadow: 0 4px 12px rgba(236,72,153,0.5); }
+    .top-ad-advertise:hover .ad-cta { background: #db2777; }
+
+    /* Ad #3 — Bookkeeping & Accounting (blue/teal theme) */
+    .top-ad-accounting {
+        background: linear-gradient(135deg, #001f2e 0%, #003a52 100%);
+        border: 2px solid #06b6d4;
+    }
+    .top-ad-accounting:hover { box-shadow: 0 10px 30px rgba(6,182,212,0.4); }
+    .top-ad-accounting .ad-emoji {
+        background: rgba(6,182,212,0.15);
+    }
+    .top-ad-accounting .ad-title { color: #67e8f9; }
+    .top-ad-accounting .ad-sub { color: #a5d8e8; }
+    .top-ad-accounting .ad-price-line {
+        background: linear-gradient(135deg, #06b6d4, #0891b2);
+        color: #fff;
+        border: 1.5px solid #67e8f9;
+    }
+    .top-ad-accounting .ad-cta { background: #06b6d4; box-shadow: 0 4px 12px rgba(6,182,212,0.5); }
+    .top-ad-accounting:hover .ad-cta { background: #0891b2; }
+
+    /* Responsive top ad banner */
+    @media (max-width: 1100px) {
+        .top-ads-inner {
+            grid-template-columns: 1fr;
+            gap: 10px;
+            padding: 22px 4% 14px;
+        }
+        .top-ad {
+            min-height: 68px;
+            padding: 10px 14px;
+        }
+        .top-ad .ad-emoji { font-size: 26px; width: 40px; height: 40px; }
+        .top-ad .ad-title { font-size: 13.5px; }
+        .top-ad .ad-sub { font-size: 11px; }
+    }
+    @media (max-width: 600px) {
+        .top-ad {
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .top-ad .ad-cta {
+            flex-basis: 100%;
+            justify-content: center;
+            padding: 8px;
+        }
+    }
+
+    header {
+        background: rgba(255,255,255,0.85);
+        backdrop-filter: saturate(180%) blur(14px);
+        -webkit-backdrop-filter: saturate(180%) blur(14px);
+        border-bottom: 1px solid rgba(15,23,42,0.06);
+        position: sticky; top: 0; z-index: 1000;
+        padding: 16px 5%;
+        display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo {
+        font-size: 24px; font-weight: 800;
+        letter-spacing: -0.5px;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .logo span { color: var(--dark); -webkit-text-fill-color: var(--dark); }
+    nav { display: flex; gap: 28px; align-items: center; }
+    nav a {
+        text-decoration: none; color: var(--gray);
+        font-weight: 500; font-size: 14.5px;
+        transition: color 0.2s;
+        letter-spacing: -0.1px;
+        cursor: pointer;
+    }
+    nav a:hover { color: var(--primary); }
+    .nav-wa {
+        background: var(--whatsapp); color: #fff !important;
+        padding: 9px 20px; border-radius: 30px;
+        font-weight: 600 !important; font-size: 13.5px !important;
+        display: flex; align-items: center; gap: 6px;
+        box-shadow: 0 4px 14px rgba(37,211,102,0.3);
+        transition: all 0.25s;
+        cursor: pointer;
+    }
+    .nav-wa:hover { background: var(--whatsapp-dark); box-shadow: 0 6px 20px rgba(37,211,102,0.4); transform: translateY(-1px); }
+    .back-link {
+        text-decoration: none; color: var(--gray);
+        font-weight: 500; font-size: 14.5px;
+        display: none; align-items: center; gap: 6px;
+        transition: color 0.2s;
+        cursor: pointer;
+        background: none; border: none;
+        font-family: inherit;
+    }
+    .back-link.visible { display: flex; }
+    .back-link:hover { color: var(--primary); }
+
+    .hero {
+        background: radial-gradient(ellipse at top right, rgba(99,102,241,0.12), transparent 60%),
+                    radial-gradient(ellipse at bottom left, rgba(245,158,11,0.08), transparent 60%),
+                    linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+        color: var(--dark);
+        padding: 100px 5% 110px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .hero::before {
+        content: '';
+        position: absolute; top: -30%; right: -5%;
+        width: 480px; height: 480px;
+        background: radial-gradient(circle, rgba(99,102,241,0.15), transparent 70%);
+        border-radius: 50%;
+        filter: blur(20px);
+    }
+    .hero::after {
+        content: '';
+        position: absolute; bottom: -25%; left: -5%;
+        width: 400px; height: 400px;
+        background: radial-gradient(circle, rgba(245,158,11,0.12), transparent 70%);
+        border-radius: 50%;
+        filter: blur(20px);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 820px; margin: 0 auto; }
+    .hero-badge {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: #fff; border: 1px solid rgba(99,102,241,0.2);
+        color: var(--primary-dark);
+        padding: 7px 18px; border-radius: 30px;
+        font-size: 13px; font-weight: 600;
+        margin-bottom: 24px;
+        box-shadow: var(--shadow-sm);
+    }
+    .hero-badge .dot {
+        width: 7px; height: 7px; border-radius: 50%;
+        background: var(--whatsapp);
+        box-shadow: 0 0 0 3px rgba(37,211,102,0.2);
+        animation: livePulse 1.8s infinite;
+    }
+    @keyframes livePulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+    .hero h1 {
+        font-size: 52px; font-weight: 800;
+        margin-bottom: 20px; line-height: 1.12;
+        letter-spacing: -1.5px;
+        color: var(--dark);
+    }
+    .hero h1 .grad {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .hero p {
+        font-size: 18px; color: var(--gray);
+        margin-bottom: 38px; line-height: 1.7;
+        max-width: 640px; margin-left: auto; margin-right: auto;
+    }
+    .hero-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 15px 30px; border-radius: 50px;
+        text-decoration: none; font-weight: 600;
+        font-size: 15px; transition: all 0.25s;
+        border: none; cursor: pointer;
+        letter-spacing: -0.1px;
+    }
+    .btn-primary {
+        background: var(--dark); color: #fff;
+        box-shadow: 0 8px 24px rgba(15,23,42,0.25);
+    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(99,102,241,0.35); }
+    .btn-wa {
+        background: var(--whatsapp); color: #fff;
+        box-shadow: 0 8px 24px rgba(37,211,102,0.3);
+    }
+    .btn-wa:hover { background: var(--whatsapp-dark); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(37,211,102,0.4); }
+
+    .stats {
+        display: flex; justify-content: center; gap: 50px;
+        padding: 38px 5%; background: #fff;
+        flex-wrap: wrap;
+        box-shadow: var(--shadow-lg);
+        margin-top: -55px;
+        max-width: 1000px;
+        margin-left: auto; margin-right: auto;
+        border-radius: var(--radius-lg);
+        position: relative; z-index: 5;
+        border: 1px solid rgba(15,23,42,0.04);
+    }
+    .stat { text-align: center; position: relative; }
+    .stat + .stat::before {
+        content: ''; position: absolute; left: -25px; top: 15%; height: 70%; width: 1px;
+        background: var(--gray-light);
+    }
+    .stat h3 {
+        font-size: 32px; color: var(--dark);
+        font-weight: 800; margin-bottom: 4px;
+        letter-spacing: -1px;
+    }
+    .stat p { color: var(--gray); font-size: 13.5px; font-weight: 500; }
+
+    section { padding: 90px 5%; }
+    .section-title {
+        text-align: center; margin-bottom: 55px;
+    }
+    .section-eyebrow {
+        display: inline-block;
+        font-size: 12.5px; font-weight: 700;
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 14px;
+    }
+    .section-title h2 {
+        font-size: 38px; font-weight: 800;
+        color: var(--dark); margin-bottom: 14px;
+        letter-spacing: -1px;
+    }
+    .section-title p {
+        color: var(--gray); font-size: 16.5px;
+        max-width: 620px; margin: 0 auto;
+        line-height: 1.65;
+    }
+
+    .categories {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 22px;
+        max-width: 1200px; margin: 0 auto;
+    }
+    .cat-card {
+        background: #fff;
+        border-radius: var(--radius);
+        padding: 34px 24px;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        cursor: pointer;
+        transition: all 0.28s cubic-bezier(0.4,0,0.2,1);
+        border: 1.5px solid rgba(15,23,42,0.06);
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        position: relative;
+        overflow: hidden;
+    }
+    .cat-card::before {
+        content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        transform: scaleX(0); transition: transform 0.3s;
+        transform-origin: left;
+    }
+    .cat-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(99,102,241,0.3);
+        box-shadow: 0 16px 40px rgba(99,102,241,0.12);
+    }
+    .cat-card:hover::before { transform: scaleX(1); }
+    .cat-card.active {
+        border-color: var(--primary);
+        background: linear-gradient(180deg, var(--primary-light), #fff);
+        box-shadow: 0 16px 40px rgba(99,102,241,0.18);
+    }
+    .cat-card.active::before { transform: scaleX(1); }
+    .cat-icon {
+        font-size: 42px; margin-bottom: 16px;
+        display: block;
+        filter: drop-shadow(0 4px 8px rgba(99,102,241,0.15));
+    }
+    .cat-card h3 {
+        font-size: 17px; color: var(--dark);
+        margin-bottom: 8px; font-weight: 700;
+        letter-spacing: -0.3px;
+    }
+    .cat-card p { color: var(--gray); font-size: 13.5px; line-height: 1.5; }
+
+    .products-section { background: #fff; }
+
+    .filter-bar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+        padding: 0 20px;
+    }
+    .filter-pill {
+        padding: 10px 20px;
+        border-radius: 30px;
+        background: var(--gray-light);
+        color: var(--gray);
+        font-weight: 600;
+        font-size: 13.5px;
+        border: 1.5px solid transparent;
+        cursor: pointer;
+        transition: all 0.22s;
+        font-family: inherit;
+        letter-spacing: -0.1px;
+    }
+    .filter-pill:hover {
+        background: #e2e8f0;
+        color: var(--dark-2);
+        transform: translateY(-1px);
+    }
+    .filter-pill.active {
+        background: var(--dark);
+        color: #fff;
+        border-color: var(--dark);
+        box-shadow: 0 6px 18px rgba(15,23,42,0.2);
+    }
+
+    .active-filter-banner {
+        display: none;
+        max-width: 1200px;
+        margin: 0 auto 30px;
+        padding: 16px 24px;
+        background: var(--primary-light);
+        border: 1.5px solid rgba(99,102,241,0.25);
+        border-radius: var(--radius);
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    .active-filter-banner.show { display: flex; }
+    .active-filter-banner .info {
+        display: flex; align-items: center; gap: 12px;
+        font-weight: 600; color: var(--dark);
+        font-size: 14.5px;
+    }
+    .active-filter-banner .count {
+        background: var(--primary);
+        color: #fff;
+        padding: 3px 12px;
+        border-radius: 20px;
+        font-size: 12.5px;
+        font-weight: 700;
+    }
+    .clear-filter {
+        background: #fff;
+        color: var(--primary);
+        border: 1.5px solid var(--primary);
+        padding: 8px 18px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.22s;
+        font-family: inherit;
+    }
+    .clear-filter:hover {
+        background: var(--primary);
+        color: #fff;
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 28px;
+        max-width: 1200px; margin: 0 auto;
+    }
+    .product-card {
+        background: #fff;
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        transition: all 0.28s cubic-bezier(0.4,0,0.2,1);
+        display: flex; flex-direction: column;
+        border: 1.5px solid rgba(15,23,42,0.06);
+    }
+    .product-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 45px rgba(15,23,42,0.1);
+        border-color: rgba(99,102,241,0.2);
+    }
+
+    .product-cover {
+        height: 210px;
+        position: relative;
+        overflow: hidden;
+        display: flex; align-items: center; justify-content: center;
+        background: var(--gray-light);
+    }
+    .product-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+    .product-card:hover .product-cover img { transform: scale(1.06); }
+    .product-cover::after {
+        content: ''; position: absolute; inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.35) 100%);
+        pointer-events: none;
+    }
+    .product-cover .overlay-icon {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        background: rgba(255,255,255,0.95);
+        color: var(--dark);
+        font-size: 20px;
+        padding: 6px 10px;
+        border-radius: 10px;
+        backdrop-filter: blur(6px);
+        z-index: 2;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        line-height: 1;
+    }
+    .badge {
+        position: absolute; top: 14px; right: 14px;
+        background: #fff; color: var(--dark);
+        padding: 5px 12px; border-radius: 20px;
+        font-size: 11px; font-weight: 800;
+        letter-spacing: 0.5px;
+        z-index: 2;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        text-transform: uppercase;
+    }
+    .badge.hot { background: linear-gradient(135deg, #ef4444, #dc2626); color: #fff; }
+    .product-info {
+        padding: 22px;
+        flex-grow: 1; display: flex; flex-direction: column;
+    }
+    .product-cat {
+        font-size: 11.5px; color: var(--primary);
+        font-weight: 700; text-transform: uppercase;
+        letter-spacing: 0.8px; margin-bottom: 8px;
+    }
+    .product-title {
+        font-size: 16.5px; font-weight: 700;
+        color: var(--dark); margin-bottom: 10px;
+        line-height: 1.4; letter-spacing: -0.3px;
+    }
+    .product-desc {
+        font-size: 13.5px; color: var(--gray);
+        margin-bottom: 16px; line-height: 1.55;
+    }
+    .product-meta {
+        display: flex; align-items: center;
+        gap: 12px; margin-bottom: 16px;
+        font-size: 12px; color: var(--gray);
+        padding-top: 14px;
+        border-top: 1px solid var(--gray-light);
+    }
+    .product-meta span { display: flex; align-items: center; gap: 4px; }
+    .product-price {
+        display: flex; align-items: baseline;
+        gap: 10px; margin-bottom: 16px;
+    }
+    .price-current {
+        font-size: 26px; font-weight: 800; color: var(--dark);
+        letter-spacing: -1px;
+    }
+    .price-old {
+        font-size: 14px; color: #cbd5e1;
+        text-decoration: line-through;
+    }
+    .order-btn {
+        display: flex; align-items: center; justify-content: center;
+        gap: 8px;
+        background: var(--whatsapp); color: #fff;
+        padding: 13px; border-radius: var(--radius-sm);
+        text-decoration: none; font-weight: 600;
+        font-size: 14px;
+        transition: all 0.25s; margin-top: auto;
+        border: none; cursor: pointer;
+        letter-spacing: -0.1px;
+        font-family: inherit;
+    }
+    .order-btn:hover { background: var(--whatsapp-dark); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(37,211,102,0.35); }
+    .order-btn svg { width: 17px; height: 17px; fill: #fff; }
+
+    .no-products {
+        display: none;
+        text-align: center;
+        padding: 60px 20px;
+        color: var(--gray);
+    }
+    .no-products.show { display: block; }
+    .no-products h3 {
+        font-size: 22px; color: var(--dark);
+        margin-bottom: 10px;
+    }
+
+    .how-section { background: var(--light); }
+    .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 24px;
+        max-width: 1100px; margin: 0 auto;
+    }
+    .step {
+        text-align: center; padding: 34px 22px;
+        background: #fff; border-radius: var(--radius);
+        box-shadow: var(--shadow-sm);
+        position: relative;
+        border: 1.5px solid rgba(15,23,42,0.06);
+        transition: all 0.25s;
+    }
+    .step:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 40px rgba(15,23,42,0.08);
+        border-color: rgba(99,102,241,0.2);
+    }
+    .step-num {
+        width: 46px; height: 46px;
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: #fff; border-radius: 12px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 19px; font-weight: 800;
+        margin: 0 auto 18px;
+        box-shadow: 0 8px 20px rgba(99,102,241,0.3);
+    }
+    .step h4 { color: var(--dark); margin-bottom: 8px; font-size: 16px; font-weight: 700; letter-spacing: -0.3px; }
+    .step p { color: var(--gray); font-size: 13.5px; line-height: 1.55; }
+
+    .pricing-section { background: #fff; }
+    .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 22px;
+        max-width: 1250px; margin: 0 auto;
+    }
+    .price-card {
+        background: #fff; border-radius: var(--radius-lg);
+        padding: 34px 26px;
+        box-shadow: var(--shadow-sm);
+        border: 1.5px solid rgba(15,23,42,0.06);
+        transition: all 0.28s cubic-bezier(0.4,0,0.2,1);
+        position: relative;
+        display: flex; flex-direction: column;
+    }
+    .price-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(99,102,241,0.3);
+        box-shadow: 0 20px 50px rgba(99,102,241,0.12);
+    }
+    .price-card.featured {
+        border-color: var(--primary);
+        background: linear-gradient(180deg, var(--primary-light), #fff);
+        transform: scale(1.03);
+        box-shadow: 0 20px 50px rgba(99,102,241,0.15);
+    }
+    .price-card.featured::before {
+        content: 'MOST POPULAR';
+        position: absolute; top: -13px; left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: #fff; font-size: 10.5px;
+        font-weight: 800; letter-spacing: 1.2px;
+        padding: 6px 18px; border-radius: 20px;
+        white-space: nowrap;
+        box-shadow: 0 6px 16px rgba(99,102,241,0.35);
+    }
+    .price-card.ultimate {
+        border-color: rgba(245,158,11,0.4);
+        background: linear-gradient(180deg, #fffbeb, #fff);
+    }
+    .price-card.ultimate::before {
+        content: 'BEST VALUE';
+        position: absolute; top: -13px; left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, var(--accent), #ef4444);
+        color: #fff; font-size: 10.5px;
+        font-weight: 800; letter-spacing: 1.2px;
+        padding: 6px 18px; border-radius: 20px;
+        white-space: nowrap;
+        box-shadow: 0 6px 16px rgba(245,158,11,0.35);
+    }
+    .price-tier {
+        font-size: 12px; color: var(--primary);
+        font-weight: 700; text-transform: uppercase;
+        letter-spacing: 1.2px; margin-bottom: 10px;
+    }
+    .price-tag {
+        font-size: 42px; font-weight: 800;
+        color: var(--dark); margin-bottom: 6px;
+        line-height: 1; letter-spacing: -2px;
+    }
+    .price-tag small { font-size: 15px; color: var(--gray); font-weight: 500; letter-spacing: 0; }
+    .price-desc {
+        color: var(--gray); font-size: 13.5px;
+        margin-bottom: 22px; padding-bottom: 22px;
+        border-bottom: 1px solid var(--gray-light);
+        min-height: 60px; line-height: 1.55;
+    }
+    .price-features {
+        list-style: none; margin-bottom: 25px; flex-grow: 1;
+    }
+    .price-features li {
+        display: flex; align-items: flex-start; gap: 10px;
+        margin-bottom: 11px; font-size: 13.5px;
+        color: var(--dark-2); line-height: 1.5;
+    }
+    .price-features li::before {
+        content: '✓';
+        color: var(--whatsapp); font-weight: 800;
+        flex-shrink: 0;
+        font-size: 14px;
+    }
+    .price-btn {
+        display: block; text-align: center;
+        padding: 13px; border-radius: var(--radius-sm);
+        background: var(--dark); color: #fff;
+        text-decoration: none; font-weight: 600;
+        font-size: 14px; transition: all 0.25s;
+        letter-spacing: -0.1px;
+        border: none; cursor: pointer; font-family: inherit;
+    }
+    .price-btn:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(99,102,241,0.3); }
+    .price-card.featured .price-btn { background: var(--primary); }
+    .price-card.featured .price-btn:hover { background: var(--primary-dark); }
+    .price-card.ultimate .price-btn { background: var(--accent); }
+    .price-card.ultimate .price-btn:hover { background: #d97706; }
+
+    .payment-section { background: var(--light); }
+    .payment-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 22px;
+        max-width: 900px; margin: 0 auto;
+    }
+    .payment-card {
+        background: #fff;
+        border-radius: var(--radius);
+        padding: 30px 22px;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        transition: all 0.25s;
+        border: 1.5px solid rgba(15,23,42,0.06);
+    }
+    .payment-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(99,102,241,0.3);
+        box-shadow: 0 16px 40px rgba(99,102,241,0.1);
+    }
+    .payment-icon {
+        font-size: 38px; margin-bottom: 12px; display: block;
+    }
+    .payment-card h4 {
+        font-size: 15.5px; color: var(--dark);
+        margin-bottom: 6px; font-weight: 700;
+        letter-spacing: -0.3px;
+    }
+    .payment-card p { color: var(--gray); font-size: 13px; }
+
+    .features-section {
+        background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 100%);
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+    }
+    .features-section::before {
+        content: ''; position: absolute; top: -20%; right: -10%;
+        width: 500px; height: 500px;
+        background: radial-gradient(circle, rgba(99,102,241,0.15), transparent 70%);
+        border-radius: 50%;
+    }
+    .features-section .section-title h2 { color: #fff; }
+    .features-section .section-title p { color: #94a3b8; }
+    .features-section .section-eyebrow { color: #a5b4fc; }
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 24px;
+        max-width: 1100px; margin: 0 auto;
+        position: relative; z-index: 2;
+    }
+    .feature {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        padding: 30px 25px; border-radius: var(--radius);
+        transition: all 0.28s;
+    }
+    .feature:hover {
+        background: rgba(255,255,255,0.08);
+        transform: translateY(-4px);
+        border-color: rgba(255,255,255,0.15);
+    }
+    .feature-icon { font-size: 34px; margin-bottom: 14px; display: block; }
+    .feature h4 { font-size: 17px; margin-bottom: 10px; font-weight: 700; letter-spacing: -0.3px; }
+    .feature p { font-size: 13.5px; color: #94a3b8; line-height: 1.6; }
+
+    .faq-section { background: #fff; }
+    .faq-container { max-width: 780px; margin: 0 auto; }
+    .faq-item {
+        background: #fff; border-radius: var(--radius);
+        margin-bottom: 12px; overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        border: 1.5px solid rgba(15,23,42,0.06);
+        transition: border-color 0.25s;
+    }
+    .faq-item:hover { border-color: rgba(99,102,241,0.2); }
+    .faq-q {
+        padding: 20px 24px; cursor: pointer;
+        font-weight: 600; color: var(--dark);
+        display: flex; justify-content: space-between;
+        align-items: center; font-size: 15.5px;
+        user-select: none;
+        letter-spacing: -0.2px;
+    }
+    .faq-q::after {
+        content: '+'; font-size: 22px;
+        color: var(--primary); font-weight: 400;
+        transition: transform 0.3s;
+        line-height: 1;
+        width: 24px; height: 24px;
+        display: flex; align-items: center; justify-content: center;
+        border-radius: 50%;
+        background: var(--primary-light);
+        flex-shrink: 0;
+    }
+    .faq-item.open { border-color: rgba(99,102,241,0.3); }
+    .faq-item.open .faq-q::after { transform: rotate(45deg); background: var(--primary); color: #fff; }
+    .faq-a {
+        max-height: 0; overflow: hidden;
+        transition: max-height 0.35s ease, padding 0.3s;
+        padding: 0 24px; color: var(--gray);
+        font-size: 14px; line-height: 1.7;
+    }
+    .faq-item.open .faq-a {
+        max-height: 400px; padding: 0 24px 22px;
+    }
+
+    .cta-section {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        padding: 80px 5%; text-align: center; color: #fff;
+        position: relative;
+        overflow: hidden;
+    }
+    .cta-section::before {
+        content: ''; position: absolute; top: -50%; right: -10%;
+        width: 400px; height: 400px;
+        background: rgba(255,255,255,0.06);
+        border-radius: 50%;
+    }
+    .cta-section::after {
+        content: ''; position: absolute; bottom: -50%; left: -10%;
+        width: 350px; height: 350px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 50%;
+    }
+    .cta-section h2 { font-size: 36px; margin-bottom: 14px; font-weight: 800; letter-spacing: -1px; position: relative; z-index: 2; }
+    .cta-section p { font-size: 16.5px; opacity: 0.95; margin-bottom: 32px; position: relative; z-index: 2; }
+    .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2; }
+    .cta-section .btn-wa { background: #fff; color: var(--primary); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+    .cta-section .btn-wa:hover { background: #f8fafc; color: var(--primary-dark); }
+    .cta-section .btn-wa svg { fill: var(--primary); }
+
+    .floating-wa {
+        position: fixed; bottom: 28px; right: 28px;
+        width: 58px; height: 58px;
+        background: var(--whatsapp); border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+        z-index: 999; text-decoration: none;
+        transition: all 0.28s;
+        cursor: pointer;
+    }
+    .floating-wa:hover { transform: scale(1.08); box-shadow: 0 12px 32px rgba(37, 211, 102, 0.55); }
+    .floating-wa svg { width: 30px; height: 30px; fill: #fff; }
+
+    footer {
+        background: var(--dark); color: #94a3b8;
+        padding: 65px 5% 25px;
+    }
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1.5fr;
+        gap: 40px;
+        max-width: 1200px; margin: 0 auto 45px;
+    }
+    .footer-col h4 {
+        color: #fff; font-size: 15px;
+        margin-bottom: 20px; font-weight: 700;
+        letter-spacing: -0.2px;
+    }
+    .footer-col p { font-size: 13.5px; line-height: 1.7; margin-bottom: 12px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a {
+        color: #94a3b8; text-decoration: none;
+        font-size: 13.5px; transition: color 0.25s;
+        cursor: pointer;
+    }
+    .footer-col ul li a:hover { color: var(--accent); }
+    .footer-col .contact-item {
+        display: flex; align-items: center; gap: 10px;
+        margin-bottom: 12px; font-size: 13.5px;
+    }
+    .footer-col .contact-item a {
+        color: var(--whatsapp); text-decoration: none;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    .footer-bottom {
+        text-align: center; padding-top: 25px;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        color: #64748b; font-size: 13px;
+        max-width: 1200px; margin: 0 auto;
+    }
+    .footer-bottom a { color: var(--whatsapp); text-decoration: none; cursor: pointer; }
+
+    .payment-wrapper {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 50px 5% 80px;
+    }
+    .stepper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+    }
+    .step-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .step-circle {
+        width: 32px; height: 32px;
+        border-radius: 50%;
+        background: var(--gray-light);
+        color: var(--gray);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 13px; font-weight: 700;
+        flex-shrink: 0;
+        transition: all 0.3s;
+    }
+    .step-circle.done { background: var(--whatsapp); color: #fff; }
+    .step-circle.active {
+        background: var(--primary); color: #fff;
+        box-shadow: 0 0 0 4px rgba(99,102,241,0.15);
+    }
+    .step-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--gray);
+        white-space: nowrap;
+    }
+    .step-label.active { color: var(--dark); }
+    .step-label.done { color: var(--whatsapp); }
+    .step-connector {
+        width: 40px; height: 2px;
+        background: var(--gray-light);
+        margin: 0 10px;
+    }
+    .step-connector.done { background: var(--whatsapp); }
+
+    .order-summary {
+        background: #fff;
+        border-radius: var(--radius-lg);
+        padding: 28px;
+        box-shadow: var(--shadow);
+        border: 1.5px solid rgba(15,23,42,0.06);
+        margin-bottom: 24px;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+    .order-summary .icon-box {
+        width: 64px; height: 64px;
+        border-radius: var(--radius);
+        background: var(--primary-light);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 30px;
+        flex-shrink: 0;
+    }
+    .order-summary .details { flex-grow: 1; }
+    .order-summary .label {
+        font-size: 11.5px;
+        font-weight: 700;
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 4px;
+    }
+    .order-summary h2 {
+        font-size: 19px;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 6px;
+        line-height: 1.35;
+        letter-spacing: -0.3px;
+    }
+    .order-summary .price-row {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+    }
+    .order-summary .price {
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--dark);
+        letter-spacing: -1px;
+    }
+    .order-summary .old-price {
+        font-size: 14px;
+        color: #cbd5e1;
+        text-decoration: line-through;
+    }
+
+    .card {
+        background: #fff;
+        border-radius: var(--radius-lg);
+        padding: 28px;
+        box-shadow: var(--shadow);
+        border: 1.5px solid rgba(15,23,42,0.06);
+        margin-bottom: 24px;
+    }
+    .card-title {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 6px;
+        letter-spacing: -0.3px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .card-subtitle {
+        font-size: 13.5px;
+        color: var(--gray);
+        margin-bottom: 22px;
+        line-height: 1.55;
+    }
+
+    .method-tabs {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 22px;
+    }
+    .method-tab {
+        padding: 10px 18px;
+        border-radius: 30px;
+        background: var(--gray-light);
+        color: var(--gray);
+        font-weight: 600;
+        font-size: 13.5px;
+        border: 1.5px solid transparent;
+        cursor: pointer;
+        transition: all 0.22s;
+        font-family: inherit;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .method-tab:hover {
+        background: #e2e8f0;
+        color: var(--dark-2);
+    }
+    .method-tab.active {
+        background: var(--dark);
+        color: #fff;
+        border-color: var(--dark);
+        box-shadow: 0 6px 18px rgba(15,23,42,0.2);
+    }
+
+    .method-panel {
+        display: none;
+        background: var(--light);
+        border-radius: var(--radius);
+        padding: 22px;
+        border: 1.5px solid rgba(15,23,42,0.06);
+    }
+    .method-panel.active { display: block; }
+    .method-panel .panel-intro {
+        font-size: 13.5px;
+        color: var(--gray);
+        margin-bottom: 18px;
+        line-height: 1.55;
+    }
+    .detail-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(15,23,42,0.06);
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+    .detail-row:last-child { border-bottom: none; }
+    .detail-row .label {
+        font-size: 13px;
+        color: var(--gray);
+        font-weight: 500;
+    }
+    .detail-row .value {
+        font-size: 14.5px;
+        color: var(--dark);
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        word-break: break-all;
+        text-align: right;
+    }
+    .copy-btn {
+        background: var(--primary-light);
+        color: var(--primary-dark);
+        border: none;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 11.5px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.22s;
+        font-family: inherit;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        flex-shrink: 0;
+    }
+    .copy-btn:hover { background: var(--primary); color: #fff; }
+    .copy-btn.copied { background: var(--whatsapp); color: #fff; }
+
+    .amount-highlight {
+        background: linear-gradient(135deg, var(--primary-light), #fff);
+        border: 1.5px dashed var(--primary);
+        border-radius: var(--radius);
+        padding: 18px;
+        text-align: center;
+        margin-top: 18px;
+    }
+    .amount-highlight .amt-label {
+        font-size: 12px;
+        color: var(--primary-dark);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 4px;
+    }
+    .amount-highlight .amt-value {
+        font-size: 30px;
+        font-weight: 800;
+        color: var(--dark);
+        letter-spacing: -1px;
+    }
+    .amount-highlight .amt-note {
+        font-size: 12px;
+        color: var(--gray);
+        margin-top: 4px;
+    }
+
+    .instructions {
+        list-style: none;
+        counter-reset: step;
+        margin-top: 8px;
+    }
+    .instructions li {
+        counter-increment: step;
+        position: relative;
+        padding-left: 40px;
+        margin-bottom: 16px;
+        font-size: 13.5px;
+        color: var(--dark-2);
+        line-height: 1.55;
+    }
+    .instructions li::before {
+        content: counter(step);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 26px;
+        height: 26px;
+        background: var(--primary);
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12.5px;
+        font-weight: 700;
+    }
+    .instructions li strong { color: var(--dark); }
+
+    .note-box {
+        background: #fffbeb;
+        border: 1.5px solid rgba(245,158,11,0.3);
+        border-radius: var(--radius-sm);
+        padding: 14px 18px;
+        font-size: 13px;
+        color: #92400e;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        margin-top: 18px;
+        line-height: 1.55;
+    }
+    .note-box .ico { font-size: 16px; flex-shrink: 0; line-height: 1.4; }
+
+    .trust-row {
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin-bottom: 24px;
+    }
+    .trust-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12.5px;
+        color: var(--gray);
+        font-weight: 600;
+    }
+    .trust-item .ico { font-size: 15px; }
+
+    .wa-cta {
+        background: linear-gradient(135deg, var(--whatsapp), var(--whatsapp-dark));
+        border-radius: var(--radius-lg);
+        padding: 32px 28px;
+        text-align: center;
+        color: #fff;
+        box-shadow: 0 20px 50px rgba(37,211,102,0.25);
+        position: relative;
+        overflow: hidden;
+    }
+    .wa-cta::before {
+        content: '';
+        position: absolute;
+        top: -50%; right: -10%;
+        width: 300px; height: 300px;
+        background: rgba(255,255,255,0.08);
+        border-radius: 50%;
+    }
+    .wa-cta h3 {
+        font-size: 22px;
+        font-weight: 800;
+        margin-bottom: 8px;
+        position: relative;
+        z-index: 2;
+        letter-spacing: -0.5px;
+    }
+    .wa-cta p {
+        font-size: 14px;
+        opacity: 0.95;
+        margin-bottom: 22px;
+        position: relative;
+        z-index: 2;
+        line-height: 1.55;
+    }
+    .wa-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: #fff;
+        color: var(--whatsapp-dark);
+        padding: 16px 34px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 15px;
+        transition: all 0.25s;
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        letter-spacing: -0.2px;
+        cursor: pointer;
+    }
+    .wa-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+    .wa-btn svg { width: 20px; height: 20px; fill: var(--whatsapp); }
+
+    .help-footer {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 13.5px;
+        color: var(--gray);
+    }
+    .help-footer a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    .help-footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 900px) {
+        .footer-grid { grid-template-columns: 1fr 1fr; }
+        .stat + .stat::before { display: none; }
+    }
+    @media (max-width: 768px) {
+        header { padding: 14px 4%; }
+        nav { gap: 14px; }
+        nav a:not(.nav-wa) { display: none; }
+        .hero { padding: 65px 5% 75px; }
+        .hero h1 { font-size: 34px; letter-spacing: -1px; }
+        .hero p { font-size: 16px; }
+        section { padding: 60px 5%; }
+        .section-title h2 { font-size: 28px; }
+        .section-title p { font-size: 15px; }
+        .stats { gap: 28px; padding: 30px 4%; margin-top: -40px; }
+        .stat h3 { font-size: 24px; }
+        .stat p { font-size: 12.5px; }
+        .product-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; }
+        .product-cover { height: 170px; }
+        .price-card.featured { transform: none; }
+        .cta-section h2 { font-size: 26px; }
+        .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+        .floating-wa { width: 52px; height: 52px; bottom: 18px; right: 18px; }
+        .floating-wa svg { width: 26px; height: 26px; }
+        .filter-pill { padding: 8px 15px; font-size: 13px; }
+        .active-filter-banner { padding: 14px 18px; }
+        .product-info { padding: 18px; }
+        .payment-wrapper { padding: 30px 4% 60px; }
+        .order-summary { padding: 20px; gap: 14px; flex-direction: column; text-align: center; }
+        .order-summary .icon-box { width: 56px; height: 56px; font-size: 26px; }
+        .card { padding: 22px; }
+        .detail-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+        .detail-row .value { text-align: left; width: 100%; justify-content: space-between; }
+        .stepper { gap: 4px; }
+        .step-label { font-size: 11.5px; }
+        .step-connector { width: 20px; }
+        .step-circle { width: 28px; height: 28px; font-size: 12px; }
+        .wa-cta { padding: 26px 20px; }
+        .wa-cta h3 { font-size: 19px; }
+        .wa-btn { padding: 14px 24px; font-size: 14px; width: 100%; }
+    }
+    @media (max-width: 480px) {
+        .hero h1 { font-size: 27px; }
+        .hero-buttons { flex-direction: column; align-items: stretch; }
+        .btn { justify-content: center; }
+        .product-grid { grid-template-columns: 1fr; }
+        .stats { flex-direction: column; gap: 20px; }
+        .stat + .stat::before { display: none; }
+    }
+</style>
+</head>
+<body>
+
+<!-- ============================================ -->
+<!-- TOP ADS STRIP — all 3 ads side by side -->
+<!-- ============================================ -->
+<div class="top-ads-strip">
+    <div class="top-ads-inner">
+
+        <!-- Ad #1 — Website Design / SEO / Logo -->
+        <a class="top-ad top-ad-website" data-wa="website-services">
+            <span class="ad-emoji">🚀</span>
+            <div class="ad-body">
+                <div class="ad-title">Build Your Website</div>
+                <div class="ad-sub">Websites, SEO & business logos</div>
+                <span class="ad-price-line">
+                    <span class="amt">$50 – $150</span>
+                </span>
+            </div>
+            <span class="ad-cta">
+                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Get Quote
+            </span>
+        </a>
+
+        <!-- Ad #2 — Advertise With Us -->
+        <a class="top-ad top-ad-advertise" data-wa="advertise">
+            <span class="ad-emoji">📢</span>
+            <div class="ad-body">
+                <div class="ad-title">Advertise With Us</div>
+                <div class="ad-sub">Reach thousands of daily visitors</div>
+                <span class="ad-price-line">
+                    <span class="amt">$20</span>
+                    <span class="per">/ day</span>
+                </span>
+            </div>
+            <span class="ad-cta">
+                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Book Now
+            </span>
+        </a>
+
+        <!-- Ad #3 — Bookkeeping & Accounting -->
+        <a class="top-ad top-ad-accounting" data-wa="accounting">
+            <span class="ad-emoji">📊</span>
+            <div class="ad-body">
+                <div class="ad-title">Bookkeeping & Accounting</div>
+                <div class="ad-sub">Monthly books & tax-ready reports</div>
+                <span class="ad-price-line">
+                    <span class="amt">$5</span>
+                    <span class="per">/ hour</span>
+                </span>
+            </div>
+            <span class="ad-cta">
+                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Start
+            </span>
+        </a>
+
+    </div>
+</div>
+
+<header>
+    <a class="logo" onclick="goHome()">📚 Ebook<span>Hub</span></a>
+    <nav id="mainNav">
+        <a onclick="navTo('categories')">Categories</a>
+        <a onclick="navTo('products')">eBooks</a>
+        <a onclick="navTo('pricing')">Pricing</a>
+        <a onclick="navTo('payments')">Payments</a>
+        <a onclick="navTo('faq')">FAQ</a>
+        <a class="nav-wa" data-wa="order-now">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Order Now
+        </a>
+    </nav>
+    <button class="back-link" id="backBtn" onclick="goHome()">← Back to Store</button>
+</header>
+
+<div id="homeView" class="active">
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                Trusted by 10,000+ learners worldwide
+            </div>
+            <h1>Premium Digital eBooks<br><span class="grad">For Every Learner</span></h1>
+            <p>Social Media Tricks • Kids' Poem Books • Language Learning • IELTS Preparation • Computer Courses • Cartoon Series — All in beautifully designed PDFs, delivered instantly to your WhatsApp.</p>
+            <div class="hero-buttons">
+                <a onclick="navTo('products')" class="btn btn-primary">📖 Browse eBooks</a>
+                <a class="btn btn-wa" data-wa="hero-order">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Order on WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="stats">
+        <div class="stat"><h3>100+</h3><p>eBooks Available</p></div>
+        <div class="stat"><h3>10K+</h3><p>Happy Customers</p></div>
+        <div class="stat"><h3>5★</h3><p>Average Rating</p></div>
+        <div class="stat"><h3>24/7</h3><p>WhatsApp Support</p></div>
+    </div>
+
+    <section id="categories">
+        <div class="section-title">
+            <span class="section-eyebrow">Browse by Category</span>
+            <h2>Explore Our Categories</h2>
+            <p>Click any category to see its eBooks — filter will update automatically.</p>
+        </div>
+        <div class="categories">
+            <div class="cat-card" data-filter="Social Media Tricks">
+                <span class="cat-icon">📱</span>
+                <h3>Social Media Tricks</h3>
+                <p>Growth hacks, viral techniques & monetization</p>
+            </div>
+            <div class="cat-card" data-filter="Kids Poem Books">
+                <span class="cat-icon">🧸</span>
+                <h3>Kids Poem Books</h3>
+                <p>Rhymes, poems & fun learning for children</p>
+            </div>
+            <div class="cat-card" data-filter="Language Learning">
+                <span class="cat-icon">🌍</span>
+                <h3>Language Learning</h3>
+                <p>English, Arabic, Urdu, French, German, Spanish & more</p>
+            </div>
+            <div class="cat-card" data-filter="IELTS Preparation">
+                <span class="cat-icon">🎯</span>
+                <h3>IELTS Preparation</h3>
+                <p>Speaking, writing, reading & listening</p>
+            </div>
+            <div class="cat-card" data-filter="Computer Courses">
+                <span class="cat-icon">💻</span>
+                <h3>Computer Courses</h3>
+                <p>Programming, Web Dev, Cyber Security, AI & more</p>
+            </div>
+            <div class="cat-card" data-filter="Cartoons">
+                <span class="cat-icon">🎬</span>
+                <h3>Cartoon Series</h3>
+                <p>Full cartoon series for kids & family</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="products-section">
+        <div class="section-title">
+            <span class="section-eyebrow">Our Collection</span>
+            <h2 id="productsHeading">Featured eBooks & Courses</h2>
+            <p id="productsSubtitle">Instant PDF delivery via WhatsApp after payment. Order now and start learning today!</p>
+        </div>
+
+        <div class="filter-bar">
+            <button class="filter-pill active" data-filter="all">🎓 All eBooks</button>
+            <button class="filter-pill" data-filter="Social Media Tricks">📱 Social Media</button>
+            <button class="filter-pill" data-filter="Kids Poem Books">🧸 Kids Books</button>
+            <button class="filter-pill" data-filter="Language Learning">🌍 Languages</button>
+            <button class="filter-pill" data-filter="IELTS Preparation">🎯 IELTS</button>
+            <button class="filter-pill" data-filter="Computer Courses">💻 Computer Courses</button>
+            <button class="filter-pill" data-filter="Cartoons">🎬 Cartoons</button>
+        </div>
+
+        <div class="active-filter-banner" id="activeFilterBanner">
+            <div class="info">
+                <span id="filterLabel">Showing all eBooks</span>
+                <span class="count" id="filterCount">0</span>
+            </div>
+            <button class="clear-filter" id="clearFilter">✕ Show All eBooks</button>
+        </div>
+
+        <div class="product-grid" id="productGrid"></div>
+
+        <div class="no-products" id="noProducts">
+            <h3>😕 No eBooks found in this category</h3>
+            <p>Please try another category or contact us on WhatsApp for custom requests.</p>
+        </div>
+    </section>
+
+    <section class="how-section">
+        <div class="section-title">
+            <span class="section-eyebrow">Simple Process</span>
+            <h2>How It Works</h2>
+            <p>Getting your eBook is as easy as 1-2-3-4</p>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <h4>Choose eBook</h4>
+                <p>Browse our collection and pick the eBook or course you want.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <h4>Pay Securely</h4>
+                <p>Complete payment via Bank Transfer, JazzCash, Easypaisa, USDT or USDC.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <h4>Send Screenshot</h4>
+                <p>Send your payment screenshot to us on WhatsApp.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <h4>Get PDF Instantly</h4>
+                <p>Receive your eBook PDF directly on WhatsApp within minutes!</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing-section">
+        <div class="section-title">
+            <span class="section-eyebrow">Pricing Plans</span>
+            <h2>Simple, Affordable Pricing</h2>
+            <p>Pick a plan that fits your learning goals — starting from just $10.</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <div class="price-tier">Starter</div>
+                <div class="price-tag">$10<small></small></div>
+                <div class="price-desc">Perfect for trying out a single eBook</div>
+                <ul class="price-features">
+                    <li>1 eBook of your choice</li>
+                    <li>Instant PDF delivery</li>
+                    <li>WhatsApp support</li>
+                    <li>Lifetime access</li>
+                    <li>Basic email support</li>
+                </ul>
+                <a class="price-btn" data-wa="plan-starter">Order on WhatsApp</a>
+            </div>
+
+            <div class="price-card featured">
+                <div class="price-tier">Value Pack</div>
+                <div class="price-tag">$20<small></small></div>
+                <div class="price-desc">Great value — 2 eBooks of your choice</div>
+                <ul class="price-features">
+                    <li>2 eBooks of your choice</li>
+                    <li>Instant PDF delivery</li>
+                    <li>Priority WhatsApp support</li>
+                    <li>Lifetime access</li>
+                    <li>Bonus: Study tips PDF</li>
+                    <li>Free updates</li>
+                </ul>
+                <a class="price-btn" data-wa="plan-value">Order on WhatsApp</a>
+            </div>
+
+            <div class="price-card">
+                <div class="price-tier">Super Pack</div>
+                <div class="price-tag">$50<small></small></div>
+                <div class="price-desc">Serious learners — 5 eBooks of your choice</div>
+                <ul class="price-features">
+                    <li>5 eBooks of your choice</li>
+                    <li>Instant PDF delivery</li>
+                    <li>Priority WhatsApp support</li>
+                    <li>Lifetime access + updates</li>
+                    <li>Bonus: Study tips PDF</li>
+                    <li>Free future updates</li>
+                </ul>
+                <a class="price-btn" data-wa="plan-super">Order on WhatsApp</a>
+            </div>
+
+            <div class="price-card ultimate">
+                <div class="price-tier">Mega Bundle</div>
+                <div class="price-tag">$100<small></small></div>
+                <div class="price-desc">All-access — 10 eBooks of your choice from our entire library</div>
+                <ul class="price-features">
+                    <li>10 eBooks of your choice</li>
+                    <li>Instant PDF delivery</li>
+                    <li>VIP WhatsApp support</li>
+                    <li>Lifetime access + updates</li>
+                    <li>Free future releases</li>
+                    <li>1-on-1 guidance session</li>
+                    <li>Certificate of completion</li>
+                </ul>
+                <a class="price-btn" data-wa="plan-mega">Order on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="payments" class="payment-section">
+        <div class="section-title">
+            <span class="section-eyebrow">Secure Payments</span>
+            <h2>Accepted Payment Methods</h2>
+            <p>Simple, secure & international payment options</p>
+        </div>
+        <div class="payment-grid">
+            <div class="payment-card">
+                <span class="payment-icon">🏦</span>
+                <h4>Bank Transfer</h4>
+                <p>Direct bank transfers accepted</p>
+            </div>
+            <div class="payment-card">
+                <span class="payment-icon">📱</span>
+                <h4>JazzCash / Easypaisa</h4>
+                <p>Local mobile wallet payments</p>
+            </div>
+            <div class="payment-card">
+                <span class="payment-icon">💵</span>
+                <h4>USDT (Tether)</h4>
+                <p>Crypto payment — TRC20 & ERC20</p>
+            </div>
+            <div class="payment-card">
+                <span class="payment-icon">🪙</span>
+                <h4>USDC</h4>
+                <p>Crypto payment — multiple chains</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="section-title">
+            <span class="section-eyebrow">Why EbookHub</span>
+            <h2>Why Choose EbookHub?</h2>
+            <p>Trusted by thousands of learners across Pakistan and beyond.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature">
+                <span class="feature-icon">⚡</span>
+                <h4>Instant Delivery</h4>
+                <p>Get your eBook PDF on WhatsApp within 2-3 minutes of payment confirmation.</p>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">💎</span>
+                <h4>Premium Quality</h4>
+                <p>Professionally designed PDFs with clear formatting and beautiful layouts.</p>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">🔒</span>
+                <h4>Secure Payments</h4>
+                <p>Pay safely via Bank Transfer, JazzCash, Easypaisa, USDT or USDC.</p>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">🎓</span>
+                <h4>Expert Content</h4>
+                <p>Content crafted by experts with practical, real-world knowledge.</p>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">💬</span>
+                <h4>24/7 Support</h4>
+                <p>Our WhatsApp team is always available to help you with any question.</p>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">✍️</span>
+                <h4>Custom eBooks</h4>
+                <p>Need something specific? We can create a customized eBook just for you.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <div class="section-title">
+            <span class="section-eyebrow">Questions</span>
+            <h2>Frequently Asked Questions</h2>
+            <p>Everything you need to know before ordering</p>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-q">How will I receive my eBook?</div>
+                <div class="faq-a">After payment confirmation, we'll send you the PDF directly on WhatsApp. You can download and read it on any device — phone, tablet, or computer.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">What payment methods do you accept?</div>
+                <div class="faq-a">We accept Bank Transfers, JazzCash, Easypaisa, and cryptocurrency payments including USDT (Tether) and USDC. Payment details are shown on the payment page when you place your order.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Which languages are available for learning?</div>
+                <div class="faq-a">We offer language learning eBooks for English, Arabic, Urdu, French, German, Spanish, Italian, Chinese, Japanese, Korean, Turkish, Russian and Portuguese. More languages are added regularly. Ask us on WhatsApp for availability.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Can I get a refund if I don't like the eBook?</div>
+                <div class="faq-a">Since these are digital products delivered instantly, we don't offer refunds. However, we'll always try to resolve any issue — just message us on WhatsApp.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Can you create a customized eBook for me?</div>
+                <div class="faq-a">Yes! We can create a customized eBook on any topic you need. Simply contact us on WhatsApp with your requirements and we'll provide a personalized quote.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">How long does delivery take?</div>
+                <div class="faq-a">Typically 2-5 minutes after payment confirmation. During peak hours it may take up to 30 minutes — but we always deliver the same day.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Ready to Start Learning?</h2>
+        <p>Order now and get your eBook instantly!</p>
+        <div class="cta-buttons">
+            <a onclick="navTo('products')" class="btn btn-wa">
+                <svg viewBox="0 0 24 24" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Browse eBooks
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>📚 EbookHub</h4>
+                <p>Your trusted source for premium digital eBooks and courses. We deliver knowledge instantly via WhatsApp — anywhere, anytime.</p>
+                <div class="contact-item">
+                    <span>💬</span>
+                    <a data-wa="footer-contact">Chat with us on WhatsApp</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a data-footer-filter="Social Media Tricks">Social Media Tricks</a></li>
+                    <li><a data-footer-filter="Kids Poem Books">Kids Poem Books</a></li>
+                    <li><a data-footer-filter="Language Learning">Language Learning</a></li>
+                    <li><a data-footer-filter="IELTS Preparation">IELTS Preparation</a></li>
+                    <li><a data-footer-filter="Computer Courses">Computer Courses</a></li>
+                    <li><a data-footer-filter="Cartoons">Cartoon Series</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a onclick="navTo('categories')">Categories</a></li>
+                    <li><a onclick="navTo('products')">All eBooks</a></li>
+                    <li><a onclick="navTo('pricing')">Pricing</a></li>
+                    <li><a onclick="navTo('payments')">Payments</a></li>
+                    <li><a onclick="navTo('faq')">FAQ</a></li>
+                    <li><a data-wa="footer-contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Get in Touch</h4>
+                <p>Have a question or need a customized eBook? Message us on WhatsApp — we reply within minutes!</p>
+                <a class="btn btn-wa" data-wa="footer-contact" style="padding: 12px 22px; font-size: 13.5px; margin-top: 10px;">
+                    Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 EbookHub. All rights reserved. | <a data-wa="footer-contact">Order via WhatsApp</a></p>
+        </div>
+    </footer>
+</div>
+
+<div id="paymentView">
+    <div class="payment-wrapper">
+
+        <div class="stepper">
+            <div class="step-item">
+                <div class="step-circle done">✓</div>
+                <span class="step-label done">Choose</span>
+            </div>
+            <div class="step-connector done"></div>
+            <div class="step-item">
+                <div class="step-circle active">2</div>
+                <span class="step-label active">Pay</span>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step-item">
+                <div class="step-circle">3</div>
+                <span class="step-label">Receive</span>
+            </div>
+        </div>
+
+        <div class="order-summary">
+            <div class="icon-box" id="productIcon">📖</div>
+            <div class="details">
+                <div class="label" id="productCategory">eBook</div>
+                <h2 id="productTitle">Loading...</h2>
+                <div class="price-row">
+                    <span class="price" id="productPrice">$0</span>
+                    <span class="old-price" id="productOldPrice"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="trust-row">
+            <div class="trust-item"><span class="ico">🔒</span> Secure Payment</div>
+            <div class="trust-item"><span class="ico">⚡</span> Instant Delivery</div>
+            <div class="trust-item"><span class="ico">✅</span> 7-Day Guarantee</div>
+        </div>
+
+        <div class="card">
+            <h3 class="card-title">💳 Choose Payment Method</h3>
+            <p class="card-subtitle">Select your preferred method below and follow the instructions.</p>
+
+            <div class="method-tabs">
+                <button class="method-tab active" data-method="bank">🏦 Bank Transfer</button>
+                <button class="method-tab" data-method="jazzcash">📱 JazzCash</button>
+                <button class="method-tab" data-method="easypaisa">📲 Easypaisa</button>
+                <button class="method-tab" data-method="usdt">💵 USDT</button>
+                <button class="method-tab" data-method="usdc">🪙 USDC</button>
+            </div>
+
+            <div class="method-panel active" data-panel="bank">
+                <p class="panel-intro">Transfer the exact amount to the bank account below. Bank transfers usually confirm within 1–2 hours.</p>
+                <div class="detail-row">
+                    <span class="label">Bank</span>
+                    <span class="value">Meezan Bank <button class="copy-btn" data-copy="Meezan Bank">📋 Copy</button></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Account Title</span>
+                    <span class="value">EbookHub <button class="copy-btn" data-copy="EbookHub">📋 Copy</button></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Account Number / IBAN</span>
+                    <span class="value">PK00MEZN0000000000000000 <button class="copy-btn" data-copy="PK00MEZN0000000000000000">📋 Copy</button></span>
+                </div>
+                <div class="amount-highlight">
+                    <div class="amt-label">Amount to Transfer</div>
+                    <div class="amt-value" id="bankAmount">$0</div>
+                    <div class="amt-note">Send the exact amount to avoid delays</div>
+                </div>
+                <div class="note-box">
+                    <span class="ico">⚠️</span>
+                    <span>After transferring, take a screenshot of the confirmation and send it to us on WhatsApp.</span>
+                </div>
+            </div>
+
+            <div class="method-panel" data-panel="jazzcash">
+                <p class="panel-intro">Send the exact amount to the JazzCash number below. You'll receive a confirmation SMS instantly.</p>
+                <div class="detail-row">
+                    <span class="label">JazzCash Number</span>
+                    <span class="value">●●●●● ●●●●● <button class="copy-btn" id="jazzCopyBtn">📋 Copy</button></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Account Name</span>
+                    <span class="value">EbookHub <button class="copy-btn" data-copy="EbookHub">📋 Copy</button></span>
+                </div>
+                <div class="amount-highlight">
+                    <div class="amt-label">Amount to Send</div>
+                    <div class="amt-value" id="jazzAmount">$0</div>
+                    <div class="amt-note">Send the exact amount</div>
+                </div>
+                <div class="note-box">
+                    <span class="ico">⚠️</span>
+                    <span>After sending, take a screenshot of the confirmation SMS and send it to us on WhatsApp.</span>
+                </div>
+            </div>
+
+            <div class="method-panel" data-panel="easypaisa">
+                <p class="panel-intro">Send the exact amount to the Easypaisa number below. You'll receive a confirmation SMS instantly.</p>
+                <div class="detail-row">
+                    <span class="label">Easypaisa Number</span>
+                    <span class="value">●●●●● ●●●●● <button class="copy-btn" id="easyCopyBtn">📋 Copy</button></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Account Name</span>
+                    <span class="value">EbookHub <button class="copy-btn" data-copy="EbookHub">📋 Copy</button></span>
+                </div>
+                <div class="amount-highlight">
+                    <div class="amt-label">Amount to Send</div>
+                    <div class="amt-value" id="easyAmount">$0</div>
+                    <div class="amt-note">Send the exact amount</div>
+                </div>
+                <div class="note-box">
+                    <span class="ico">⚠️</span>
+                    <span>After sending, take a screenshot of the confirmation SMS and send it to us on WhatsApp.</span>
+                </div>
+            </div>
+
+            <div class="method-panel" data-panel="usdt">
+                <p class="panel-intro">Send USDT (Tether) to the wallet address below. We accept both TRC20 and ERC20 networks.</p>
+                <div class="detail-row">
+                    <span class="label">Network</span>
+                    <span class="value">TRC20 or ERC20</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">USDT Wallet Address</span>
+                    <span class="value">TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX <button class="copy-btn" data-copy="TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX">📋 Copy</button></span>
+                </div>
+                <div class="amount-highlight">
+                    <div class="amt-label">Amount to Send</div>
+                    <div class="amt-value" id="usdtAmount">0 USDT</div>
+                    <div class="amt-note">Match the USD price exactly</div>
+                </div>
+                <div class="note-box">
+                    <span class="ico">⚠️</span>
+                    <span>After sending, take a screenshot of the transaction hash and send it to us on WhatsApp.</span>
+                </div>
+            </div>
+
+            <div class="method-panel" data-panel="usdc">
+                <p class="panel-intro">Send USDC to the wallet address below. We accept Ethereum, Polygon, and BSC networks.</p>
+                <div class="detail-row">
+                    <span class="label">Supported Networks</span>
+                    <span class="value">Ethereum, Polygon, BSC</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">USDC Wallet Address</span>
+                    <span class="value">0xXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX <button class="copy-btn" data-copy="0xXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX">📋 Copy</button></span>
+                </div>
+                <div class="amount-highlight">
+                    <div class="amt-label">Amount to Send</div>
+                    <div class="amt-value" id="usdcAmount">0 USDC</div>
+                    <div class="amt-note">Match the USD price exactly</div>
+                </div>
+                <div class="note-box">
+                    <span class="ico">⚠️</span>
+                    <span>After sending, take a screenshot of the transaction hash and send it to us on WhatsApp.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 class="card-title">📋 How to Complete Your Order</h3>
+            <p class="card-subtitle">Follow these simple steps and receive your eBook within minutes.</p>
+            <ol class="instructions">
+                <li><strong>Send payment</strong> using your preferred method above.</li>
+                <li><strong>Take a screenshot</strong> of the payment confirmation.</li>
+                <li><strong>Click the WhatsApp button below</strong> and send us the screenshot.</li>
+                <li><strong>Receive your eBook PDF</strong> directly on WhatsApp within 2–5 minutes.</li>
+            </ol>
+        </div>
+
+        <div class="wa-cta">
+            <h3>✅ Payment Done?</h3>
+            <p>Click below to send your screenshot on WhatsApp and get your eBook instantly.</p>
+            <a class="wa-btn" id="waButton">
+                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Send Screenshot on WhatsApp
+            </a>
+        </div>
+
+        <div class="help-footer">
+            Need help? <a data-wa="help">Chat with us on WhatsApp</a>
+        </div>
+
+    </div>
+</div>
+
+<a class="floating-wa" data-wa="floating" title="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+</a>
+
+<script>
+// ============================================================
+// ENCODED WHATSAPP NUMBER — not visible as plain string
+// ============================================================
+(function() {
+    var _k = [57, 50, 51, 49, 50, 56, 57, 51, 57, 56, 51, 56];
+    var WHATSAPP_NUMBER = _k.map(function(c) { return String.fromCharCode(c); }).join('');
+
+    var MESSAGES = {
+        'website-services': 'Hi, I want to know about your Website Creation, SEO and Logo Design services',
+        'advertise': 'Hi, I want to advertise my business on your website',
+        'accounting': 'Hi, I want to know more about your Bookkeeping and Accounting services',
+        'order-now': 'Hello, I want to know more about your eBooks',
+        'hero-order': 'Hello, I want to place an order',
+        'plan-starter': 'Hi, I want to order the $10 Starter Plan',
+        'plan-value': 'Hi, I want to order the $20 Value Pack',
+        'plan-super': 'Hi, I want to order the $50 Super Pack',
+        'plan-mega': 'Hi, I want to order the $100 Mega Bundle',
+        'footer-contact': 'Hi, I need help',
+        'help': 'Hi, I need help with payment',
+        'floating': 'Hi, I want to know more about your eBooks'
+    };
+
+    function applyWaLinks() {
+        document.querySelectorAll('[data-wa]').forEach(function(el) {
+            var key = el.getAttribute('data-wa');
+            var msg = MESSAGES[key] || 'Hello';
+            el.setAttribute('href', 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg));
+            el.setAttribute('target', '_blank');
+            el.setAttribute('rel', 'noopener');
+        });
+    }
+    applyWaLinks();
+
+    // Silent copy for JazzCash + Easypaisa
+    function setupSilentCopy(btn) {
+        if (!btn) return;
+        btn.addEventListener('click', async function() {
+            try {
+                await navigator.clipboard.writeText(WHATSAPP_NUMBER);
+                var original = btn.innerHTML;
+                btn.innerHTML = '✅ Copied';
+                btn.classList.add('copied');
+                setTimeout(function() {
+                    btn.innerHTML = original;
+                    btn.classList.remove('copied');
+                }, 1500);
+            } catch (err) {
+                var ta = document.createElement('textarea');
+                ta.value = WHATSAPP_NUMBER;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                var original = btn.innerHTML;
+                btn.innerHTML = '✅ Copied';
+                btn.classList.add('copied');
+                setTimeout(function() {
+                    btn.innerHTML = original;
+                    btn.classList.remove('copied');
+                }, 1500);
+            }
+        });
+    }
+    setupSilentCopy(document.getElementById('jazzCopyBtn'));
+    setupSilentCopy(document.getElementById('easyCopyBtn'));
+
+    var UNIQUE_IMAGES = {
+        "Social Media Growth Hacks": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&h=400&fit=crop&q=80",
+        "Viral Content Mastery Guide": "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=600&h=400&fit=crop&q=80",
+        "Instagram Monetization Blueprint": "https://images.unsplash.com/photo-1611262588024-d12430b98920?w=600&h=400&fit=crop&q=80",
+        "YouTube Success Formula": "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&h=400&fit=crop&q=80",
+        "TikTok Marketing Playbook": "https://images.unsplash.com/photo-1596558450268-9c27524ba856?w=600&h=400&fit=crop&q=80",
+        "Facebook Ads Mastery": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=400&fit=crop&q=80",
+        "Influencer Marketing Guide": "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop&q=80",
+
+        "My First Poem Book for Kids": "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&h=400&fit=crop&q=80",
+        "Bachon Ki Nazmein (Urdu Poems)": "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&h=400&fit=crop&q=80",
+        "Bedtime Stories & Rhymes Bundle": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&h=400&fit=crop&q=80",
+        "ABC & 123 Learning Book for Toddlers": "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=600&h=400&fit=crop&q=80",
+        "Islamic Stories for Kids": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&h=400&fit=crop&q=80",
+        "Animal Kingdom Poem Collection": "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&h=400&fit=crop&q=80",
+
+        "English Speaking Course (Beginner to Advanced)": "https://images.unsplash.com/photo-1543160282-5c73e9a5b1c6?w=600&h=400&fit=crop&q=80",
+        "Arabic for Beginners": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=400&fit=crop&q=80",
+        "French Language Starter Kit": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=400&fit=crop&q=80",
+        "German Language Course for Beginners": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop&q=80",
+        "Spanish for Everyday Conversations": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=400&fit=crop&q=80",
+        "Italian Language Mastery": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&h=400&fit=crop&q=80",
+        "Chinese Mandarin for Beginners": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=400&fit=crop&q=80",
+        "Japanese Language Starter Guide": "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop&q=80",
+        "Korean Language Learning Course": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&h=400&fit=crop&q=80",
+        "Turkish Language for Beginners": "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=600&h=400&fit=crop&q=80",
+        "Russian Language Crash Course": "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?w=600&h=400&fit=crop&q=80",
+        "Portuguese Language Guide": "https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=600&h=400&fit=crop&q=80",
+
+        "IELTS Complete Preparation Guide": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=400&fit=crop&q=80",
+        "IELTS Speaking Mastery": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&h=400&fit=crop&q=80",
+        "IELTS Writing Task 1 & 2 Templates": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=400&fit=crop&q=80",
+        "IELTS Vocabulary Builder": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=400&fit=crop&q=80",
+        "IELTS Reading & Listening Practice Pack": "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop&q=80",
+        "IELTS Band 9 Essay Collection": "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=600&h=400&fit=crop&q=80",
+
+        "Python Programming for Beginners": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop&q=80",
+        "MS Excel Complete Mastery": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop&q=80",
+        "Web Development Bootcamp (HTML, CSS, JS)": "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=600&h=400&fit=crop&q=80",
+        "AI Tools & ChatGPT Mastery": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop&q=80",
+        "JavaScript Complete Course": "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop&q=80",
+        "React.js Development Course": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop&q=80",
+        "WordPress Website Development": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&h=400&fit=crop&q=80",
+        "Graphic Design Mastery (Canva & Photoshop)": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&q=80",
+        "Video Editing Course (Premiere Pro & CapCut)": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&h=400&fit=crop&q=80",
+        "Cyber Security Fundamentals": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop&q=80",
+        "Ethical Hacking for Beginners": "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600&h=400&fit=crop&q=80",
+        "Data Science & Analytics with Python": "https://images.unsplash.com/photo-1555066932-e78dd8fb77bb?w=600&h=400&fit=crop&q=80",
+        "SQL & Database Management": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop&q=80",
+        "C++ Programming Mastery": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop&q=80",
+        "Digital Marketing Complete Course": "https://images.unsplash.com/photo-1550439062-609e1531270e?w=600&h=400&fit=crop&q=80",
+        "Freelancing & Fiverr Mastery": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=400&fit=crop&q=80",
+        "Android App Development with Kotlin": "https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?w=600&h=400&fit=crop&q=80",
+        "Machine Learning Fundamentals": "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?w=600&h=400&fit=crop&q=80",
+
+        "Bluey": "https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?w=600&h=400&fit=crop&q=80",
+        "CoComelon": "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&h=400&fit=crop&q=80",
+        "PAW Patrol": "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600&h=400&fit=crop&q=80",
+        "SpongeBob SquarePants": "https://images.unsplash.com/photo-1620331311520-246422fd82f9?w=600&h=400&fit=crop&q=80",
+        "Nickelodeon Shows": "https://images.unsplash.com/photo-1601944177325-f8867652837f?w=600&h=400&fit=crop&q=80",
+        "LEGO Content": "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&h=400&fit=crop&q=80",
+        "MrBeast": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&h=400&fit=crop&q=80"
+    };
+
+    var FALLBACK_BY_CATEGORY = {
+        "Social Media Tricks": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&h=400&fit=crop&q=80",
+        "Kids Poem Books": "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&h=400&fit=crop&q=80",
+        "Language Learning": "https://images.unsplash.com/photo-1543160282-5c73e9a5b1c6?w=600&h=400&fit=crop&q=80",
+        "IELTS Preparation": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=400&fit=crop&q=80",
+        "Computer Courses": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop&q=80",
+        "Cartoons": "https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?w=600&h=400&fit=crop&q=80"
+    };
+
+    function getImageForProduct(product) {
+        return UNIQUE_IMAGES[product.title] 
+            || FALLBACK_BY_CATEGORY[product.category] 
+            || "https://placehold.co/600x400/6366f1/ffffff?text=Book";
+    }
+
+    var products = [
+        { title: "Social Media Growth Hacks", category: "Social Media Tricks", catClass: "social", icon: "🚀", price: 20, oldPrice: 30, badge: "HOT", badgeClass: "hot", description: "Proven strategies to grow Instagram, TikTok, Facebook & YouTube organically.", format: "PDF eBook", lang: "English" },
+        { title: "Viral Content Mastery Guide", category: "Social Media Tricks", catClass: "social", icon: "🎬", price: 10, oldPrice: 20, badge: "NEW", badgeClass: "", description: "Learn how to create content that goes viral and builds a loyal audience.", format: "PDF eBook", lang: "English" },
+        { title: "Instagram Monetization Blueprint", category: "Social Media Tricks", catClass: "social", icon: "💰", price: 30, oldPrice: 40, badge: "", badgeClass: "", description: "Turn your Instagram into a money-making machine with proven monetization tactics.", format: "PDF eBook", lang: "English/Urdu" },
+        { title: "YouTube Success Formula", category: "Social Media Tricks", catClass: "social", icon: "📺", price: 30, oldPrice: 50, badge: "", badgeClass: "", description: "From zero to monetized YouTube channel — scripting, SEO, thumbnails & growth.", format: "PDF eBook", lang: "English/Urdu" },
+        { title: "TikTok Marketing Playbook", category: "Social Media Tricks", catClass: "social", icon: "🎵", price: 20, oldPrice: 30, badge: "", badgeClass: "", description: "Master the TikTok algorithm, trends and viral hooks to explode your reach.", format: "PDF eBook", lang: "English" },
+        { title: "Facebook Ads Mastery", category: "Social Media Tricks", catClass: "social", icon: "📘", price: 30, oldPrice: 50, badge: "HOT", badgeClass: "hot", description: "Run profitable Facebook & Instagram ad campaigns from scratch.", format: "PDF eBook", lang: "English/Urdu" },
+        { title: "Influencer Marketing Guide", category: "Social Media Tricks", catClass: "social", icon: "🌟", price: 20, oldPrice: 30, badge: "", badgeClass: "", description: "Become a paid influencer — pitching brands, negotiating rates & growing your brand.", format: "PDF eBook", lang: "English" },
+
+        { title: "My First Poem Book for Kids", category: "Kids Poem Books", catClass: "kids", icon: "🧸", price: 10, oldPrice: 20, badge: "POPULAR", badgeClass: "", description: "Delightful poems with colorful illustrations for ages 3-7.", format: "Illustrated PDF", lang: "English" },
+        { title: "Bachon Ki Nazmein (Urdu Poems)", category: "Kids Poem Books", catClass: "kids", icon: "🌙", price: 10, oldPrice: 20, badge: "", badgeClass: "", description: "Beautiful Urdu poems for children with moral lessons and fun rhymes.", format: "Illustrated PDF", lang: "Urdu" },
+        { title: "Bedtime Stories & Rhymes Bundle", category: "Kids Poem Books", catClass: "kids", icon: "⭐", price: 20, oldPrice: 30, badge: "BUNDLE", badgeClass: "", description: "A wonderful collection of bedtime stories, rhymes and lullabies for kids.", format: "Illustrated PDF", lang: "English" },
+        { title: "ABC & 123 Learning Book for Toddlers", category: "Kids Poem Books", catClass: "kids", icon: "🔤", price: 10, oldPrice: 20, badge: "", badgeClass: "", description: "Fun and colorful alphabet and numbers book to kickstart early learning.", format: "Illustrated PDF", lang: "English" },
+        { title: "Islamic Stories for Kids", category: "Kids Poem Books", catClass: "kids", icon: "🕌", price: 20, oldPrice: 30, badge: "NEW", badgeClass: "", description: "Beautifully illustrated stories of prophets and Islamic values for children.", format: "Illustrated PDF", lang: "English/Urdu" },
+        { title: "Animal Kingdom Poem Collection", category: "Kids Poem Books", catClass: "kids", icon: "🦁", price: 10, oldPrice: 20, badge: "", badgeClass: "", description: "Adorable rhymes about animals that teach kids about nature & sounds.", format: "Illustrated PDF", lang: "English" },
+
+        { title: "English Speaking Course (Beginner to Advanced)", category: "Language Learning", catClass: "lang", icon: "🗣️", price: 30, oldPrice: 50, badge: "BESTSELLER", badgeClass: "hot", description: "Complete spoken English course with daily practice dialogues and exercises.", format: "PDF + Audio", lang: "English/Urdu" },
+        { title: "Arabic for Beginners", category: "Language Learning", catClass: "lang", icon: "🕌", price: 20, oldPrice: 30, badge: "", badgeClass: "", description: "Learn Arabic from scratch — alphabet, vocabulary, grammar and conversation.", format: "PDF eBook", lang: "English/Arabic" },
+        { title: "French Language Starter Kit", category: "Language Learning", catClass: "lang", icon: "🇫🇷", price: 20, oldPrice: 30, badge: "NEW", badgeClass: "", description: "Master French basics with audio-friendly dialogues and pronunciation guides.", format: "PDF + Audio", lang: "English/French" },
+        { title: "German Language Course for Beginners", category: "Language Learning", catClass: "lang", icon: "🇩🇪", price: 20, oldPrice: 30, badge: "NEW", badgeClass: "", description: "Learn German from A1 level — grammar, vocabulary, and everyday conversations.", format: "PDF eBook", lang: "English/German" },
+        { title: "Spanish for Everyday Conversations", category: "Language Learning", catClass: "lang", icon: "🇪🇸", price: 20, oldPrice: 30, badge: "", badgeClass: "", description: "Speak Spanish confidently with practical dialogues and essential vocabulary.", format: "PDF eBook", lang: "English/Spanish" },
+        { title: "Italian Language Mastery", category: "Language Learning", catClass: "lang", icon: "🇮🇹", price: 20, oldPrice: 30, badge: "", badgeClass: "", description: "Discover Italian — from greetings to full conversations, explained simply.", format: "PDF eBook", lang: "English/Italian" },
+        { title: "Chinese Mandarin for Beginners", category: "Language Learning", catClass: "lang", icon: "🇨🇳", price: 30, oldPrice: 40, badge: "HOT", badgeClass: "hot", description: "Learn Mandarin Chinese with pinyin, tones, and 500+ essential characters.", format: "PDF eBook", lang: "English/Chinese" },
+        { title: "Japanese Language Starter Guide", category: "Language Learning", catClass: "lang", icon: "🇯🇵", price: 20, oldPrice: 30, badge: "", badgeClass: "", description: "Master Hiragana, Katakana and basic Japanese conversation for everyday use.", format: "PDF eBook", lang: "English/Japanese" },
+        { title: "Korean Language Learning Course", category: "Language Learning", catClass: "lang", icon: "🇰🇷", price: 20, oldPrice: 30, badge: "NEW", badgeClass: "", description: "Learn Hangul, Korean grammar and K-drama style conversations quickly.", format: "PDF eBook", lang: "English/Korean" },
+        { title: "Turkish Language for Beginners", category: "Language Learning", catClass: "lang", icon: "🇹🇷", price: 20, oldPrice: 30, badge: "NEW", badgeClass: "", description: "Explore Turkish — grammar, phrases and everyday conversation for travel & life.", format: "PDF eBook", lang: "English/Turkish" },
+        { title: "Russian Language Crash Course", category: "Language Learning", catClass: "lang", icon: "🇷🇺", price: 20, oldPrice: 30, badge: "", badgeClass: "", description: "Learn Cyrillic, basic Russian grammar, and essential conversation fast.", format: "PDF eBook", lang: "English/Russian" },
+        { title: "Portuguese Language Guide", category: "Language Learning", catClass: "lang", icon: "🇵🇹", price: 20, oldPrice: 30, badge: "", badgeClass: "", description: "Speak Portuguese (Brazil & Portugal) with practical dialogues and audio-friendly lessons.", format: "PDF eBook", lang: "English/Portuguese" },
+
+        { title: "IELTS Complete Preparation Guide", category: "IELTS Preparation", catClass: "ielts", icon: "🎯", price: 30, oldPrice: 50, badge: "TOP RATED", badgeClass: "hot", description: "All-in-one IELTS prep covering Listening, Reading, Writing & Speaking with band 8+ tips.", format: "PDF eBook", lang: "English" },
+        { title: "IELTS Speaking Mastery", category: "IELTS Preparation", catClass: "ielts", icon: "🗨️", price: 20, oldPrice: 30, badge: "", badgeClass: "", description: "Cue cards, sample answers, and strategies to score band 8+ in IELTS Speaking.", format: "PDF eBook", lang: "English" },
+        { title: "IELTS Writing Task 1 & 2 Templates", category: "IELTS Preparation", catClass: "ielts", icon: "✍️", price: 20, oldPrice: 30, badge: "", badgeClass: "", description: "Ready-to-use templates, model answers and vocabulary for high band scores.", format: "PDF eBook", lang: "English" },
+        { title: "IELTS Vocabulary Builder", category: "IELTS Preparation", catClass: "ielts", icon: "📚", price: 20, oldPrice: 30, badge: "", badgeClass: "", description: "500+ high-scoring IELTS words with meanings, examples & usage in sentences.", format: "PDF eBook", lang: "English" },
+        { title: "IELTS Reading & Listening Practice Pack", category: "IELTS Preparation", catClass: "ielts", icon: "🎧", price: 30, oldPrice: 50, badge: "NEW", badgeClass: "", description: "Full-length practice tests for Reading & Listening with answer keys and explanations.", format: "PDF + Audio", lang: "English" },
+        { title: "IELTS Band 9 Essay Collection", category: "IELTS Preparation", catClass: "ielts", icon: "🏆", price: 20, oldPrice: 30, badge: "", badgeClass: "", description: "50+ band-9 sample essays for Task 1 and Task 2 — perfect for last-minute revision.", format: "PDF eBook", lang: "English" },
+
+        { title: "Python Programming for Beginners", category: "Computer Courses", catClass: "comp", icon: "🐍", price: 30, oldPrice: 50, badge: "HOT", badgeClass: "hot", description: "Learn Python from zero to hero with hands-on projects and real examples.", format: "PDF + Code", lang: "English" },
+        { title: "MS Excel Complete Mastery", category: "Computer Courses", catClass: "comp", icon: "📊", price: 20, oldPrice: 30, badge: "", badgeClass: "", description: "From basic formulas to advanced pivot tables, charts and data analysis.", format: "PDF + Samples", lang: "English/Urdu" },
+        { title: "Web Development Bootcamp (HTML, CSS, JS)", category: "Computer Courses", catClass: "comp", icon: "🌐", price: 50, oldPrice: 75, badge: "BESTSELLER", badgeClass: "hot", description: "Build real websites from scratch with HTML, CSS, JavaScript and responsive design.", format: "PDF + Code", lang: "English" },
+        { title: "AI Tools & ChatGPT Mastery", category: "Computer Courses", catClass: "comp", icon: "🤖", price: 30, oldPrice: 50, badge: "NEW", badgeClass: "", description: "Master ChatGPT, Midjourney, and 50+ AI tools for productivity and income.", format: "PDF eBook", lang: "English/Urdu" },
+        { title: "JavaScript Complete Course", category: "Computer Courses", catClass: "comp", icon: "⚡", price: 30, oldPrice: 50, badge: "", badgeClass: "", description: "Master modern JavaScript — ES6+, DOM, async, APIs, and real projects.", format: "PDF + Code", lang: "English" },
+        { title: "React.js Development Course", category: "Computer Courses", catClass: "comp", icon: "⚛️", price: 40, oldPrice: 60, badge: "HOT", badgeClass: "hot", description: "Build modern web apps with React, Hooks, Context API, and React Router.", format: "PDF + Code", lang: "English" },
+        { title: "WordPress Website Development", category: "Computer Courses", catClass: "comp", icon: "🛠️", price: 20, oldPrice: 30, badge: "", badgeClass: "", description: "Create professional websites & e-commerce stores with WordPress — no coding needed.", format: "PDF eBook", lang: "English/Urdu" },
+        { title: "Graphic Design Mastery (Canva & Photoshop)", category: "Computer Courses", catClass: "comp", icon: "🎨", price: 30, oldPrice: 50, badge: "", badgeClass: "", description: "Design stunning visuals, social posts, logos & thumbnails like a pro.", format: "PDF eBook", lang: "English/Urdu" },
+        { title: "Video Editing Course (Premiere Pro & CapCut)", category: "Computer Courses", catClass: "comp", icon: "🎬", price: 30, oldPrice: 50, badge: "NEW", badgeClass: "", description: "Edit professional videos for YouTube, TikTok, and reels — beginner to advanced.", format: "PDF eBook", lang: "English/Urdu" },
+        { title: "Cyber Security Fundamentals", category: "Computer Courses", catClass: "comp", icon: "🔐", price: 40, oldPrice: 60, badge: "HOT", badgeClass: "hot", description: "Learn ethical hacking basics, network security, encryption and threat detection.", format: "PDF eBook", lang: "English" },
+        { title: "Ethical Hacking for Beginners", category: "Computer Courses", catClass: "comp", icon: "🕵️", price: 50, oldPrice: 75, badge: "", badgeClass: "", description: "Step-by-step ethical hacking guide — recon, exploitation, and reporting.", format: "PDF eBook", lang: "English" },
+        { title: "Data Science & Analytics with Python", category: "Computer Courses", catClass: "comp", icon: "📈", price: 50, oldPrice: 75, badge: "BESTSELLER", badgeClass: "hot", description: "NumPy, Pandas, Matplotlib, and real-world data analysis projects from scratch.", format: "PDF + Code", lang: "English" },
+        { title: "SQL & Database Management", category: "Computer Courses", catClass: "comp", icon: "🗄️", price: 20, oldPrice: 30, badge: "", badgeClass: "", description: "Master SQL queries, joins, and database design for MySQL, PostgreSQL & SQL Server.", format: "PDF + Code", lang: "English" },
+        { title: "C++ Programming Mastery", category: "Computer Courses", catClass: "comp", icon: "➕", price: 30, oldPrice: 50, badge: "", badgeClass: "", description: "Learn C++ from basics to OOP, data structures, and competitive programming.", format: "PDF + Code", lang: "English" },
+        { title: "Digital Marketing Complete Course", category: "Computer Courses", catClass: "comp", icon: "📢", price: 30, oldPrice: 50, badge: "HOT", badgeClass: "hot", description: "SEO, Google Ads, email marketing, and social media strategy for real growth.", format: "PDF eBook", lang: "English/Urdu" },
+        { title: "Freelancing & Fiverr Mastery", category: "Computer Courses", catClass: "comp", icon: "💼", price: 20, oldPrice: 30, badge: "", badgeClass: "", description: "Start freelancing on Fiverr & Upwork — profile setup, gigs, and client handling.", format: "PDF eBook", lang: "English/Urdu" },
+        { title: "Android App Development with Kotlin", category: "Computer Courses", catClass: "comp", icon: "📱", price: 40, oldPrice: 60, badge: "NEW", badgeClass: "", description: "Build real Android apps using Kotlin, Android Studio, and modern UI practices.", format: "PDF + Code", lang: "English" },
+        { title: "Machine Learning Fundamentals", category: "Computer Courses", catClass: "comp", icon: "🧠", price: 50, oldPrice: 75, badge: "", badgeClass: "", description: "Intro to ML — supervised learning, regression, classification & neural networks.", format: "PDF + Code", lang: "English" },
+
+        { title: "Bluey", category: "Cartoons", catClass: "cartoon", icon: "🐶", price: 30, oldPrice: 40, badge: "NEW", badgeClass: "", description: "Full Bluey series — heartwarming adventures of a lovable Blue Heeler puppy family. Kids and parents both love it.", format: "Video Series", lang: "English" },
+        { title: "CoComelon", category: "Cartoons", catClass: "cartoon", icon: "🎵", price: 30, oldPrice: 40, badge: "HOT", badgeClass: "hot", description: "Nursery rhymes, songs, and educational content for toddlers and preschoolers. 193M+ subscriber channel.", format: "Video Series", lang: "English" },
+        { title: "PAW Patrol", category: "Cartoons", catClass: "cartoon", icon: "🐾", price: 30, oldPrice: 40, badge: "", badgeClass: "", description: "Action-packed adventures of Ryder and his team of heroic rescue pups. Complete seasons included.", format: "Video Series", lang: "English" },
+        { title: "SpongeBob SquarePants", category: "Cartoons", catClass: "cartoon", icon: "🧽", price: 30, oldPrice: 40, badge: "", badgeClass: "", description: "Classic SpongeBob SquarePants episodes — hilarious underwater adventures in Bikini Bottom.", format: "Video Series", lang: "English" },
+        { title: "Nickelodeon Shows", category: "Cartoons", catClass: "cartoon", icon: "🟠", price: 30, oldPrice: 40, badge: "", badgeClass: "", description: "Classic Nickelodeon cartoon collection — Rugrats, Hey Arnold, Rocko's Modern Life & more.", format: "Video Series", lang: "English" },
+        { title: "LEGO Content", category: "Cartoons", catClass: "cartoon", icon: "🧱", price: 30, oldPrice: 40, badge: "NEW", badgeClass: "", description: "Full LEGO animated series including LEGO City No Limits, Ninjago, and more brick-building adventures.", format: "Video Series", lang: "English" },
+        { title: "MrBeast", category: "Cartoons", catClass: "cartoon", icon: "💰", price: 30, oldPrice: 40, badge: "HOT", badgeClass: "hot", description: "Complete MrBeast video collection — challenges, giveaways, and viral stunts that broke YouTube records.", format: "Video Series", lang: "English" }
+    ];
+
+    var productGrid = document.getElementById('productGrid');
+    var noProducts = document.getElementById('noProducts');
+    var activeFilterBanner = document.getElementById('activeFilterBanner');
+    var filterLabel = document.getElementById('filterLabel');
+    var filterCount = document.getElementById('filterCount');
+    var productsHeading = document.getElementById('productsHeading');
+    var productsSubtitle = document.getElementById('productsSubtitle');
+
+    function createProductCard(p) {
+        var imgSrc = getImageForProduct(p);
+        return '<div class="product-card">' +
+            '<div class="product-cover ' + p.catClass + '">' +
+                '<img src="' + imgSrc + '" alt="' + p.title + '" loading="lazy" onerror="this.onerror=null;this.src=\'https://placehold.co/600x400/6366f1/ffffff?text=' + encodeURIComponent(p.title) + '\';">' +
+                '<span class="overlay-icon">' + p.icon + '</span>' +
+                (p.badge ? '<span class="badge ' + p.badgeClass + '">' + p.badge + '</span>' : '') +
+            '</div>' +
+            '<div class="product-info">' +
+                '<div class="product-cat">' + p.category + '</div>' +
+                '<h3 class="product-title">' + p.title + '</h3>' +
+                '<p class="product-desc">' + p.description + '</p>' +
+                '<div class="product-meta">' +
+                    '<span>📕 ' + p.format + '</span>' +
+                    '<span>🌐 ' + p.lang + '</span>' +
+                '</div>' +
+                '<div class="product-price">' +
+                    '<span class="price-current">$' + p.price + '</span>' +
+                    (p.oldPrice ? '<span class="price-old">$' + p.oldPrice + '</span>' : '') +
+                '</div>' +
+                '<button class="order-btn" data-product=\'' + JSON.stringify(p).replace(/'/g, "&#39;") + '\'>' +
+                    '<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>' +
+                    'Order Now — $' + p.price +
+                '</button>' +
+            '</div>' +
+        '</div>';
+    }
+
+    function applyFilter(filter) {
+        var filtered = filter === 'all'
+            ? products
+            : products.filter(function(p) { return p.category === filter; });
+
+        if (filtered.length > 0) {
+            productGrid.innerHTML = filtered.map(createProductCard).join('');
+            noProducts.classList.remove('show');
+            productGrid.style.display = '';
+        } else {
+            productGrid.innerHTML = '';
+            productGrid.style.display = 'none';
+            noProducts.classList.add('show');
+        }
+
+        if (filter === 'all') {
+            productsHeading.textContent = 'Featured eBooks & Courses';
+            productsSubtitle.textContent = 'Instant PDF delivery via WhatsApp after payment. Order now and start learning today!';
+            activeFilterBanner.classList.remove('show');
+        } else {
+            productsHeading.textContent = filter;
+            productsSubtitle.textContent = 'Browse all our ' + filter.toLowerCase() + ' — order instantly.';
+            filterLabel.textContent = 'Showing: ' + filter;
+            filterCount.textContent = filtered.length;
+            activeFilterBanner.classList.add('show');
+        }
+
+        document.querySelectorAll('.filter-pill').forEach(function(pill) {
+            pill.classList.toggle('active', pill.dataset.filter === filter);
+        });
+        document.querySelectorAll('.cat-card').forEach(function(card) {
+            card.classList.toggle('active', card.dataset.filter === filter);
+        });
+    }
+
+    applyFilter('all');
+
+    productGrid.addEventListener('click', function(e) {
+        var btn = e.target.closest('.order-btn');
+        if (!btn) return;
+        try {
+            var p = JSON.parse(btn.getAttribute('data-product').replace(/&#39;/g, "'"));
+            openPayment(p);
+        } catch (err) {
+            console.error('Product parse error', err);
+        }
+    });
+
+    document.querySelectorAll('.cat-card').forEach(function(card) {
+        card.addEventListener('click', function() {
+            applyFilter(card.dataset.filter);
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+    document.querySelectorAll('.filter-pill').forEach(function(pill) {
+        pill.addEventListener('click', function() { applyFilter(pill.dataset.filter); });
+    });
+    document.getElementById('clearFilter').addEventListener('click', function() {
+        applyFilter('all');
+        document.getElementById('categories').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    document.querySelectorAll('[data-footer-filter]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            applyFilter(link.dataset.footerFilter);
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+    document.querySelectorAll('.faq-q').forEach(function(q) {
+        q.addEventListener('click', function() {
+            var item = q.parentElement;
+            var wasOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+            if (!wasOpen) item.classList.add('open');
+        });
+    });
+
+    window.goHome = function() {
+        document.getElementById('homeView').classList.add('active');
+        document.getElementById('paymentView').classList.remove('active');
+        document.getElementById('backBtn').classList.remove('visible');
+        document.getElementById('mainNav').style.display = '';
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        if (window.location.hash !== '') {
+            history.replaceState(null, '', window.location.pathname);
+        }
+    };
+
+    window.navTo = function(id) {
+        if (document.getElementById('paymentView').classList.contains('active')) {
+            goHome();
+            setTimeout(function() {
+                var el = document.getElementById(id);
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 50);
+        } else {
+            var el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
+    window.openPayment = function(p) {
+        document.getElementById('homeView').classList.remove('active');
+        document.getElementById('paymentView').classList.add('active');
+        document.getElementById('backBtn').classList.add('visible');
+        document.getElementById('mainNav').style.display = 'none';
+
+        document.getElementById('productTitle').textContent = p.title;
+        document.getElementById('productCategory').textContent = p.category;
+        document.getElementById('productIcon').textContent = p.icon;
+        document.getElementById('productPrice').textContent = '$' + p.price;
+        document.getElementById('productOldPrice').textContent = p.oldPrice ? '$' + p.oldPrice : '';
+
+        document.getElementById('bankAmount').textContent = '$' + p.price;
+        document.getElementById('jazzAmount').textContent = '$' + p.price;
+        document.getElementById('easyAmount').textContent = '$' + p.price;
+        document.getElementById('usdtAmount').textContent = p.price + ' USDT';
+        document.getElementById('usdcAmount').textContent = p.price + ' USDC';
+
+        document.querySelectorAll('.method-tab').forEach(function(t, i) { t.classList.toggle('active', i === 0); });
+        document.querySelectorAll('.method-panel').forEach(function(pnl, i) { pnl.classList.toggle('active', i === 0); });
+
+        updateWhatsAppLink(p, '🏦 Bank Transfer');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        history.replaceState(null, '', '#payment');
+    };
+
+    var currentProduct = null;
+
+    function updateWhatsAppLink(p, methodName) {
+        currentProduct = p;
+        var message = encodeURIComponent(
+            'Hello! I\'ve just completed my payment.\n\n' +
+            '📖 *' + p.title + '*\n' +
+            '📂 Category: ' + p.category + '\n' +
+            '💵 Amount Paid: $' + p.price + '\n' +
+            '💳 Payment Method: ' + methodName + '\n\n' +
+            '📎 Payment screenshot attached below.\n\n' +
+            'Please confirm and send my eBook PDF. Thank you!'
+        );
+        var waBtn = document.getElementById('waButton');
+        waBtn.setAttribute('href', 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + message);
+        waBtn.setAttribute('target', '_blank');
+        waBtn.setAttribute('rel', 'noopener');
+    }
+
+    document.querySelectorAll('.method-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            var method = tab.dataset.method;
+            document.querySelectorAll('.method-tab').forEach(function(t) { t.classList.remove('active'); });
+            document.querySelectorAll('.method-panel').forEach(function(p) { p.classList.remove('active'); });
+            tab.classList.add('active');
+            document.querySelector('.method-panel[data-panel="' + method + '"]').classList.add('active');
+
+            if (currentProduct) {
+                var methodName = tab.textContent.trim();
+                updateWhatsAppLink(currentProduct, methodName);
+            }
+        });
+    });
+
+    document.querySelectorAll('.copy-btn').forEach(function(btn) {
+        if (btn.id === 'jazzCopyBtn' || btn.id === 'easyCopyBtn') return;
+        btn.addEventListener('click', async function() {
+            var text = btn.dataset.copy;
+            try {
+                await navigator.clipboard.writeText(text);
+                var original = btn.innerHTML;
+                btn.innerHTML = '✅ Copied';
+                btn.classList.add('copied');
+                setTimeout(function() { btn.innerHTML = original; btn.classList.remove('copied'); }, 1500);
+            } catch (err) {
+                var ta = document.createElement('textarea');
+                ta.value = text;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                var original = btn.innerHTML;
+                btn.innerHTML = '✅ Copied';
+                btn.classList.add('copied');
+                setTimeout(function() { btn.innerHTML = original; btn.classList.remove('copied'); }, 1500);
+            }
+        });
+    });
+
+    window.addEventListener('popstate', function() { goHome(); });
+    if (window.location.hash === '#payment') goHome();
+})();
+</script>
+</body>
+</html>
