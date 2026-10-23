@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en"
+      dir="ltr"
+      class="fresh-html"
+      data-controller="accounts/profile/personal"
+      data-action="show">
+  <head>
+    <meta charset="utf-8">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='preconnect' href='https://shopify-assets.shopifycdn.com' crossorigin>
+<link rel='preconnect' href='https://monorail-edge.shopifysvc.com' crossorigin>
+<link rel='preconnect' href='https://www.gstatic.com' crossorigin>
+<link rel='preconnect' href='https://www.google.com' crossorigin>
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+<link rel='preconnect' href='https://www.recaptcha.net' crossorigin>
+
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.shopify.com/static/fonts/shopifyinter/v0/styles.css" crossorigin="anonymous">
+
+
+    <title>Shopify account profile</title>
+    <meta name="description" content="The ecommerce platform made for you">
+
+    <link rel="shortcut icon" type="image/x-icon" href="//shopify-assets.shopifycdn.com/shopify-marketing_assets/static/shopify-favicon.png">
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="gYBsJU1v29U48vN6-sIMFwbMIxW6mOvdp_wIKMQfKH3mSaui-t6qwwjDOoHJPBDVbS4idjqv1ke0UdHXHZglFQ" />
+    <meta name="action-cable-url" content="/cable" />
+    <meta name="referrer" content="no-referrer" />
+    
+
+    
+
+<link rel="stylesheet" crossorigin="anonymous" href="https://shopify-assets.shopifycdn.com/shopifycloud/identity/assets/merchant-authenticated-0d9e81a4787ee076b48cae8deea9c1565c7bc4468dcda4490736f4dbad17508c.css" media="all" data-turbolinks-track="reload" integrity="sha256-GiaYNzFPgZnDuciij2SUQVF99MXPdbCOxYwsGwu2/nM=" />
+
+<script src="https://shopify-assets.shopifycdn.com/shopifycloud/identity/assets/shared-f8295ac52f4000515b326858d518b4c1d2a7898de4ebd6d6682e7824ad34c4c0.js" crossorigin="anonymous" data-appversion="db54829237977725b98e6f9b20ff8bde1ccac0cb" data-bugsnagkey="424330c435072c4c39f8e66cf77d504f" data-releaseStage="production" data-turbolinks-track="reload" integrity="sha256-GLFi3/0M3Ep+/2lQu+5gSBtEtozzY28eLNxsHR1hxvM="></script>
+
+<script src="https://shopify-assets.shopifycdn.com/shopifycloud/identity/assets/merchant-authenticated-939a881f193cb6451f791c8684e919c1413d6ae9aca13cbd63df4ab245c41de8.js" crossorigin="anonymous" data-appversion="db54829237977725b98e6f9b20ff8bde1ccac0cb" data-bugsnagkey="424330c435072c4c39f8e66cf77d504f" data-releaseStage="production" data-turbolinks-track="reload" defer="defer" integrity="sha256-1Sy4xlyMsmvhNFlKt/6qJeZpB5cjnA7kdLtosz5hAAo="></script>
+
+<script nonce="nAL++CGDWc1yJmD+sogwwg==" data-cdn-host="shopify-assets.shopifycdn.com" data-identity-dux>
+  (function() {
+    var cdnHost = document.currentScript.dataset.cdnHost;
+    const loadScript = (src) => {
+      const promise = new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.crossOrigin = 'anonymous';
+        script.type = 'module';
+        script.onload = () => {
+          resolve(true);
+        };
+        script.onerror = () => {
+          reject(new Error('Failed to load Dux from CDN'));
+        };
+        document.head.appendChild(script);
+      });
+      return promise;
+    }
+    loadScript('https://' + cdnHost + '/shopifycloud/dux/dux-portal-7.5.0.min.js')
+      .then(() => {
+        Dux.init({
+          eventHandlerEndpoint: 'https://accounts.shopify.com/.well-known/dux?v2',
+          mode: "production" || 'production',
+          service: 'identity-dux',
+          locale: "en",
+          identityUuid: "ab4450a5-0d32-4eca-b6e3-488c967806c5",
+          enableActiveConsent: false,
+          enableConsentBuffer: true,
+          countryCode: "PK",
+          enableDenormalization: true,
+          protoEventSource: 'EVENT_APP_IDENTITY',
+          disableLegacyTracking: true,
+          ...{"protoSessionAppType":"merchant","disableLegacyCookies":true},
+          disableLogger: {
+            visibility: true,
+            trafficQuality: true,
+            form: true,
+            scroll: true,
+          }
+        })
+      })
+      .catch((error) => {
+        console.warn('Failed to load Dux from CDN:', error);
+      });
+  })();
+</script>
+
+<script src="https://shopify-assets.shopifycdn.com/shopifycloud/identity/assets/human_signals-005159e58932afa73011c063300e478d983c5deba5c3cbd60d6b9316466dd60a.js" crossorigin="anonymous" defer="defer" integrity="sha256-99WG0vpg221kjrhxSGgymLsz3vv09+MoZbSSe7GKj3Q="></script>
+
+
+
+  </head>
+  <body class="page-layout fresh-ui">
+  <div style="--p-background:rgb(11, 12, 13);--p-background-hovered:rgb(11, 12, 13);--p-background-pressed:rgb(11, 12, 13);--p-background-selected:rgb(11, 12, 13);--p-surface:rgb(32, 33, 35);--p-surface-neutral:rgb(49, 51, 53);--p-surface-neutral-hovered:rgb(49, 51, 53);--p-surface-neutral-pressed:rgb(49, 51, 53);--p-surface-neutral-disabled:rgb(49, 51, 53);--p-surface-neutral-subdued:rgb(68, 71, 74);--p-surface-subdued:rgb(26, 28, 29);--p-surface-disabled:rgb(26, 28, 29);--p-surface-hovered:rgb(47, 49, 51);--p-surface-pressed:rgb(62, 64, 67);--p-surface-depressed:rgb(80, 83, 86);--p-backdrop:rgba(0, 0, 0, 0.5);--p-overlay:rgba(33, 33, 33, 0.5);--p-shadow-from-dim-light:rgba(255, 255, 255, 0.2);--p-shadow-from-ambient-light:rgba(23, 24, 24, 0.05);--p-shadow-from-direct-light:rgba(255, 255, 255, 0.15);--p-hint-from-direct-light:rgba(185, 185, 185, 0.2);--p-on-surface-background:rgb(47, 49, 51);--p-border:rgb(80, 83, 86);--p-border-neutral-subdued:rgb(130, 135, 139);--p-border-hovered:rgb(80, 83, 86);--p-border-disabled:rgb(103, 107, 111);--p-border-subdued:rgb(130, 135, 139);--p-border-depressed:rgb(142, 145, 145);--p-border-shadow:rgb(91, 95, 98);--p-border-shadow-subdued:rgb(130, 135, 139);--p-divider:rgb(26, 28, 29);--p-icon:rgb(166, 172, 178);--p-icon-hovered:rgb(225, 227, 229);--p-icon-pressed:rgb(166, 172, 178);--p-icon-disabled:rgb(84, 87, 90);--p-icon-subdued:rgb(120, 125, 129);--p-text:rgb(227, 229, 231);--p-text-disabled:rgb(111, 115, 119);--p-text-subdued:rgb(153, 159, 164);--p-interactive:rgb(54, 163, 255);--p-interactive-disabled:rgb(38, 98, 182);--p-interactive-hovered:rgb(103, 175, 255);--p-interactive-pressed:rgb(136, 188, 255);--p-focused:rgb(38, 98, 182);--p-surface-selected:rgb(2, 14, 35);--p-surface-selected-hovered:rgb(7, 29, 61);--p-surface-selected-pressed:rgb(13, 43, 86);--p-icon-on-interactive:rgb(255, 255, 255);--p-text-on-interactive:rgb(255, 255, 255);--p-action-secondary:rgb(77, 80, 83);--p-action-secondary-disabled:rgb(32, 34, 35);--p-action-secondary-hovered:rgb(84, 87, 91);--p-action-secondary-pressed:rgb(96, 100, 103);--p-action-secondary-depressed:rgb(123, 127, 132);--p-action-primary:rgb(0, 128, 96);--p-action-primary-disabled:rgb(0, 86, 64);--p-action-primary-hovered:rgb(0, 150, 113);--p-action-primary-pressed:rgb(0, 164, 124);--p-action-primary-depressed:rgb(0, 179, 136);--p-icon-on-primary:rgb(230, 255, 244);--p-text-on-primary:rgb(255, 255, 255);--p-surface-primary-selected:rgb(12, 18, 16);--p-surface-primary-selected-hovered:rgb(40, 48, 44);--p-surface-primary-selected-pressed:rgb(54, 64, 59);--p-border-critical:rgb(227, 47, 14);--p-border-critical-subdued:rgb(227, 47, 14);--p-border-critical-disabled:rgb(131, 23, 4);--p-icon-critical:rgb(218, 45, 13);--p-surface-critical:rgb(69, 7, 1);--p-surface-critical-subdued:rgb(69, 7, 1);--p-surface-critical-subdued-hovered:rgb(68, 23, 20);--p-surface-critical-subdued-pressed:rgb(107, 16, 3);--p-surface-critical-subdued-depressed:rgb(135, 24, 5);--p-text-critical:rgb(233, 128, 122);--p-action-critical:rgb(205, 41, 12);--p-action-critical-disabled:rgb(187, 37, 10);--p-action-critical-hovered:rgb(227, 47, 14);--p-action-critical-pressed:rgb(250, 53, 17);--p-action-critical-depressed:rgb(253, 87, 73);--p-icon-on-critical:rgb(255, 248, 247);--p-text-on-critical:rgb(255, 255, 255);--p-interactive-critical:rgb(253, 114, 106);--p-interactive-critical-disabled:rgb(254, 172, 168);--p-interactive-critical-hovered:rgb(253, 138, 132);--p-interactive-critical-pressed:rgb(253, 159, 155);--p-border-warning:rgb(153, 112, 0);--p-border-warning-subdued:rgb(153, 112, 0);--p-icon-warning:rgb(104, 75, 0);--p-surface-warning:rgb(153, 112, 0);--p-surface-warning-subdued:rgb(77, 59, 29);--p-surface-warning-subdued-hovered:rgb(82, 63, 32);--p-surface-warning-subdued-pressed:rgb(87, 67, 34);--p-text-warning:rgb(202, 149, 0);--p-border-highlight:rgb(68, 157, 167);--p-border-highlight-subdued:rgb(68, 157, 167);--p-icon-highlight:rgb(44, 108, 115);--p-surface-highlight:rgb(0, 105, 113);--p-surface-highlight-subdued:rgb(18, 53, 57);--p-surface-highlight-subdued-hovered:rgb(20, 58, 62);--p-surface-highlight-subdued-pressed:rgb(24, 65, 70);--p-text-highlight:rgb(162, 239, 250);--p-border-success:rgb(0, 135, 102);--p-border-success-subdued:rgb(0, 135, 102);--p-icon-success:rgb(0, 94, 70);--p-surface-success:rgb(0, 94, 70);--p-surface-success-subdued:rgb(28, 53, 44);--p-surface-success-subdued-hovered:rgb(31, 58, 48);--p-surface-success-subdued-pressed:rgb(35, 65, 54);--p-text-success:rgb(88, 173, 142);--p-decorative-one-icon:rgb(255, 186, 67);--p-decorative-one-surface:rgb(142, 102, 9);--p-decorative-one-text:rgb(255, 255, 255);--p-decorative-two-icon:rgb(245, 182, 192);--p-decorative-two-surface:rgb(206, 88, 20);--p-decorative-two-text:rgb(255, 255, 255);--p-decorative-three-icon:rgb(0, 227, 141);--p-decorative-three-surface:rgb(0, 124, 90);--p-decorative-three-text:rgb(255, 255, 255);--p-decorative-four-icon:rgb(0, 221, 218);--p-decorative-four-surface:rgb(22, 124, 121);--p-decorative-four-text:rgb(255, 255, 255);--p-decorative-five-icon:rgb(244, 183, 191);--p-decorative-five-surface:rgb(194, 51, 86);--p-decorative-five-text:rgb(255, 255, 255);--p-border-radius-base:0.25rem;--p-border-radius-wide:0.5rem;--p-card-shadow:0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light);--p-popover-shadow:-1px 0px 20px var(--p-shadow-from-ambient-light), 0px 1px 5px var(--p-shadow-from-direct-light);--p-modal-shadow:0px 6px 32px var(--p-shadow-from-ambient-light), 0px 1px 6px var(--p-shadow-from-direct-light);--p-top-bar-shadow:0 2px 2px -1px var(--p-shadow-from-direct-light);--p-override-none:none;--p-override-transparent:transparent;--p-override-one:1;--p-override-visible:visible;--p-override-zero:0;--p-override-loading-z-index:514;--p-button-font-weight:500;--p-choice-size:1.25rem;--p-icon-size:0.625rem;--p-choice-margin:0.0625rem;--p-control-border-width:0.125rem;--p-text-field-spinner-offset:0.125rem;--p-text-field-focus-ring-offset:-0.25rem;--p-text-field-focus-ring-border-radius:0.4375rem;--p-button-group-item-spacing:0.125rem;--p-top-bar-height:68px;--p-contextual-save-bar-height:64px;--p-banner-border-default:inset 0 0.125rem 0 0 var(--p-border), inset 0 0 0 0.125rem var(--p-border);--p-banner-border-success:inset 0 0.125rem 0 0 var(--p-border-success), inset 0 0 0 0.125rem var(--p-border-success);--p-banner-border-highlight:inset 0 0.125rem 0 0 var(--p-border-highlight), inset 0 0 0 0.125rem var(--p-border-highlight);--p-banner-border-warning:inset 0 0.125rem 0 0 var(--p-border-warning), inset 0 0 0 0.125rem var(--p-border-warning);--p-banner-border-critical:inset 0 0.125rem 0 0 var(--p-border-critical), inset 0 0 0 0.125rem var(--p-border-critical);--p-badge-mix-blend-mode:luminosity;--p-badge-font-weight:500;--p-non-null-content:'';--p-thin-border-subdued:0.0625rem solid var(--p-border-subdued);--p-duration-1-0-0:100ms;--p-duration-1-5-0:150ms;--p-ease-in:cubic-bezier(0.5, 0.1, 1, 1);--p-ease:cubic-bezier(0.4, 0.22, 0.28, 1); color: var(--p-text);"><div class="ui-flash-wrapper" id="UIFlashWrapper"><div class="ui-flash" id="UIFlashMessage" data-tg-refresh-always="true" data-flash-has-message="false"><p class="ui-flash__message" tabindex="-1" aria-live="off"></p><div class="ui-flash__close-button"><button class="ui-button ui-button--transparent ui-button--icon-only" aria-label="Close message" type="button" name="button"><svg aria-hidden="true" focusable="false" class="next-icon next-icon--color-white next-icon--size-12"> <use xlink:href="#next-remove" /> </svg></button></div></div></div></div>
+
+  <style>          html, body {
+            background-color: rgb(246, 246, 247);
+            color: rgb(32, 34, 35);
+          }
+</style><div style="--p-background:rgb(246, 246, 247);--p-background-hovered:rgb(241, 242, 243);--p-background-pressed:rgb(237, 238, 239);--p-background-selected:rgb(237, 238, 239);--p-surface:rgb(255, 255, 255);--p-surface-neutral:rgb(228, 229, 231);--p-surface-neutral-hovered:rgb(219, 221, 223);--p-surface-neutral-pressed:rgb(201, 204, 208);--p-surface-neutral-disabled:rgb(241, 242, 243);--p-surface-neutral-subdued:rgb(246, 246, 247);--p-surface-subdued:rgb(250, 251, 251);--p-surface-disabled:rgb(250, 251, 251);--p-surface-hovered:rgb(246, 246, 247);--p-surface-pressed:rgb(241, 242, 243);--p-surface-depressed:rgb(237, 238, 239);--p-backdrop:rgba(0, 0, 0, 0.5);--p-overlay:rgba(255, 255, 255, 0.5);--p-shadow-from-dim-light:rgba(0, 0, 0, 0.2);--p-shadow-from-ambient-light:rgba(23, 24, 24, 0.05);--p-shadow-from-direct-light:rgba(0, 0, 0, 0.15);--p-hint-from-direct-light:rgba(0, 0, 0, 0.15);--p-on-surface-background:rgb(241, 242, 243);--p-border:rgb(140, 145, 150);--p-border-neutral-subdued:rgb(186, 191, 195);--p-border-hovered:rgb(153, 158, 164);--p-border-disabled:rgb(210, 213, 216);--p-border-subdued:rgb(201, 204, 207);--p-border-depressed:rgb(87, 89, 89);--p-border-shadow:rgb(174, 180, 185);--p-border-shadow-subdued:rgb(186, 191, 196);--p-divider:rgb(225, 227, 229);--p-icon:rgb(92, 95, 98);--p-icon-hovered:rgb(26, 28, 29);--p-icon-pressed:rgb(68, 71, 74);--p-icon-disabled:rgb(186, 190, 195);--p-icon-subdued:rgb(140, 145, 150);--p-text:rgb(32, 34, 35);--p-text-disabled:rgb(140, 145, 150);--p-text-subdued:rgb(109, 113, 117);--p-interactive:rgb(44, 110, 203);--p-interactive-disabled:rgb(189, 193, 204);--p-interactive-hovered:rgb(31, 81, 153);--p-interactive-pressed:rgb(16, 50, 98);--p-focused:rgb(69, 143, 255);--p-surface-selected:rgb(242, 247, 254);--p-surface-selected-hovered:rgb(237, 244, 254);--p-surface-selected-pressed:rgb(229, 239, 253);--p-icon-on-interactive:rgb(255, 255, 255);--p-text-on-interactive:rgb(255, 255, 255);--p-action-secondary:rgb(255, 255, 255);--p-action-secondary-disabled:rgb(255, 255, 255);--p-action-secondary-hovered:rgb(246, 246, 247);--p-action-secondary-pressed:rgb(241, 242, 243);--p-action-secondary-depressed:rgb(109, 113, 117);--p-action-primary:rgb(0, 128, 96);--p-action-primary-disabled:rgb(241, 241, 241);--p-action-primary-hovered:rgb(0, 110, 82);--p-action-primary-pressed:rgb(0, 94, 70);--p-action-primary-depressed:rgb(0, 61, 44);--p-icon-on-primary:rgb(255, 255, 255);--p-text-on-primary:rgb(255, 255, 255);--p-surface-primary-selected:rgb(241, 248, 245);--p-surface-primary-selected-hovered:rgb(179, 208, 195);--p-surface-primary-selected-pressed:rgb(162, 188, 176);--p-border-critical:rgb(253, 87, 73);--p-border-critical-subdued:rgb(224, 179, 178);--p-border-critical-disabled:rgb(255, 167, 163);--p-icon-critical:rgb(215, 44, 13);--p-surface-critical:rgb(254, 211, 209);--p-surface-critical-subdued:rgb(255, 244, 244);--p-surface-critical-subdued-hovered:rgb(255, 240, 240);--p-surface-critical-subdued-pressed:rgb(255, 233, 232);--p-surface-critical-subdued-depressed:rgb(254, 188, 185);--p-text-critical:rgb(215, 44, 13);--p-action-critical:rgb(216, 44, 13);--p-action-critical-disabled:rgb(241, 241, 241);--p-action-critical-hovered:rgb(188, 34, 0);--p-action-critical-pressed:rgb(162, 27, 0);--p-action-critical-depressed:rgb(108, 15, 0);--p-icon-on-critical:rgb(255, 255, 255);--p-text-on-critical:rgb(255, 255, 255);--p-interactive-critical:rgb(216, 44, 13);--p-interactive-critical-disabled:rgb(253, 147, 141);--p-interactive-critical-hovered:rgb(205, 41, 12);--p-interactive-critical-pressed:rgb(103, 15, 3);--p-border-warning:rgb(185, 137, 0);--p-border-warning-subdued:rgb(225, 184, 120);--p-icon-warning:rgb(185, 137, 0);--p-surface-warning:rgb(255, 215, 157);--p-surface-warning-subdued:rgb(255, 245, 234);--p-surface-warning-subdued-hovered:rgb(255, 242, 226);--p-surface-warning-subdued-pressed:rgb(255, 235, 211);--p-text-warning:rgb(145, 106, 0);--p-border-highlight:rgb(68, 157, 167);--p-border-highlight-subdued:rgb(152, 198, 205);--p-icon-highlight:rgb(0, 160, 172);--p-surface-highlight:rgb(164, 232, 242);--p-surface-highlight-subdued:rgb(235, 249, 252);--p-surface-highlight-subdued-hovered:rgb(228, 247, 250);--p-surface-highlight-subdued-pressed:rgb(213, 243, 248);--p-text-highlight:rgb(52, 124, 132);--p-border-success:rgb(0, 164, 124);--p-border-success-subdued:rgb(149, 201, 180);--p-icon-success:rgb(0, 127, 95);--p-surface-success:rgb(174, 233, 209);--p-surface-success-subdued:rgb(241, 248, 245);--p-surface-success-subdued-hovered:rgb(236, 246, 241);--p-surface-success-subdued-pressed:rgb(226, 241, 234);--p-text-success:rgb(0, 128, 96);--p-decorative-one-icon:rgb(126, 87, 0);--p-decorative-one-surface:rgb(255, 201, 107);--p-decorative-one-text:rgb(61, 40, 0);--p-decorative-two-icon:rgb(175, 41, 78);--p-decorative-two-surface:rgb(255, 196, 176);--p-decorative-two-text:rgb(73, 11, 28);--p-decorative-three-icon:rgb(0, 109, 65);--p-decorative-three-surface:rgb(146, 230, 181);--p-decorative-three-text:rgb(0, 47, 25);--p-decorative-four-icon:rgb(0, 106, 104);--p-decorative-four-surface:rgb(145, 224, 214);--p-decorative-four-text:rgb(0, 45, 45);--p-decorative-five-icon:rgb(174, 43, 76);--p-decorative-five-surface:rgb(253, 201, 208);--p-decorative-five-text:rgb(79, 14, 31);--p-border-radius-base:0.25rem;--p-border-radius-wide:0.5rem;--p-card-shadow:0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light);--p-popover-shadow:-1px 0px 20px var(--p-shadow-from-ambient-light), 0px 1px 5px var(--p-shadow-from-direct-light);--p-modal-shadow:0px 6px 32px var(--p-shadow-from-ambient-light), 0px 1px 6px var(--p-shadow-from-direct-light);--p-top-bar-shadow:0 2px 2px -1px var(--p-shadow-from-direct-light);--p-override-none:none;--p-override-transparent:transparent;--p-override-one:1;--p-override-visible:visible;--p-override-zero:0;--p-override-loading-z-index:514;--p-button-font-weight:500;--p-choice-size:1.25rem;--p-icon-size:0.625rem;--p-choice-margin:0.0625rem;--p-control-border-width:0.125rem;--p-text-field-spinner-offset:0.125rem;--p-text-field-focus-ring-offset:-0.25rem;--p-text-field-focus-ring-border-radius:0.4375rem;--p-button-group-item-spacing:0.125rem;--p-top-bar-height:68px;--p-contextual-save-bar-height:64px;--p-banner-border-default:inset 0 0.125rem 0 0 var(--p-border), inset 0 0 0 0.125rem var(--p-border);--p-banner-border-success:inset 0 0.125rem 0 0 var(--p-border-success), inset 0 0 0 0.125rem var(--p-border-success);--p-banner-border-highlight:inset 0 0.125rem 0 0 var(--p-border-highlight), inset 0 0 0 0.125rem var(--p-border-highlight);--p-banner-border-warning:inset 0 0.125rem 0 0 var(--p-border-warning), inset 0 0 0 0.125rem var(--p-border-warning);--p-banner-border-critical:inset 0 0.125rem 0 0 var(--p-border-critical), inset 0 0 0 0.125rem var(--p-border-critical);--p-badge-mix-blend-mode:luminosity;--p-badge-font-weight:500;--p-non-null-content:'';--p-thin-border-subdued:0.0625rem solid var(--p-border-subdued);--p-duration-1-0-0:100ms;--p-duration-1-5-0:150ms;--p-ease-in:cubic-bezier(0.5, 0.1, 1, 1);--p-ease:cubic-bezier(0.4, 0.22, 0.28, 1); color: var(--p-text);">
+    <div class="ui-app-frame">
+  <header class="ui-app-frame__header"><a href="#AppFrameMain" class="ui-button ui-app-frame__skip-to-content">Skip to content</a>
+
+    <div style="--p-background:rgb(11, 12, 13);--p-background-hovered:rgb(11, 12, 13);--p-background-pressed:rgb(11, 12, 13);--p-background-selected:rgb(11, 12, 13);--p-surface:rgb(32, 33, 35);--p-surface-neutral:rgb(49, 51, 53);--p-surface-neutral-hovered:rgb(49, 51, 53);--p-surface-neutral-pressed:rgb(49, 51, 53);--p-surface-neutral-disabled:rgb(49, 51, 53);--p-surface-neutral-subdued:rgb(68, 71, 74);--p-surface-subdued:rgb(26, 28, 29);--p-surface-disabled:rgb(26, 28, 29);--p-surface-hovered:rgb(47, 49, 51);--p-surface-pressed:rgb(62, 64, 67);--p-surface-depressed:rgb(80, 83, 86);--p-backdrop:rgba(0, 0, 0, 0.5);--p-overlay:rgba(33, 33, 33, 0.5);--p-shadow-from-dim-light:rgba(255, 255, 255, 0.2);--p-shadow-from-ambient-light:rgba(23, 24, 24, 0.05);--p-shadow-from-direct-light:rgba(255, 255, 255, 0.15);--p-hint-from-direct-light:rgba(185, 185, 185, 0.2);--p-on-surface-background:rgb(47, 49, 51);--p-border:rgb(80, 83, 86);--p-border-neutral-subdued:rgb(130, 135, 139);--p-border-hovered:rgb(80, 83, 86);--p-border-disabled:rgb(103, 107, 111);--p-border-subdued:rgb(130, 135, 139);--p-border-depressed:rgb(142, 145, 145);--p-border-shadow:rgb(91, 95, 98);--p-border-shadow-subdued:rgb(130, 135, 139);--p-divider:rgb(26, 28, 29);--p-icon:rgb(166, 172, 178);--p-icon-hovered:rgb(225, 227, 229);--p-icon-pressed:rgb(166, 172, 178);--p-icon-disabled:rgb(84, 87, 90);--p-icon-subdued:rgb(120, 125, 129);--p-text:rgb(227, 229, 231);--p-text-disabled:rgb(111, 115, 119);--p-text-subdued:rgb(153, 159, 164);--p-interactive:rgb(54, 163, 255);--p-interactive-disabled:rgb(38, 98, 182);--p-interactive-hovered:rgb(103, 175, 255);--p-interactive-pressed:rgb(136, 188, 255);--p-focused:rgb(38, 98, 182);--p-surface-selected:rgb(2, 14, 35);--p-surface-selected-hovered:rgb(7, 29, 61);--p-surface-selected-pressed:rgb(13, 43, 86);--p-icon-on-interactive:rgb(255, 255, 255);--p-text-on-interactive:rgb(255, 255, 255);--p-action-secondary:rgb(77, 80, 83);--p-action-secondary-disabled:rgb(32, 34, 35);--p-action-secondary-hovered:rgb(84, 87, 91);--p-action-secondary-pressed:rgb(96, 100, 103);--p-action-secondary-depressed:rgb(123, 127, 132);--p-action-primary:rgb(0, 128, 96);--p-action-primary-disabled:rgb(0, 86, 64);--p-action-primary-hovered:rgb(0, 150, 113);--p-action-primary-pressed:rgb(0, 164, 124);--p-action-primary-depressed:rgb(0, 179, 136);--p-icon-on-primary:rgb(230, 255, 244);--p-text-on-primary:rgb(255, 255, 255);--p-surface-primary-selected:rgb(12, 18, 16);--p-surface-primary-selected-hovered:rgb(40, 48, 44);--p-surface-primary-selected-pressed:rgb(54, 64, 59);--p-border-critical:rgb(227, 47, 14);--p-border-critical-subdued:rgb(227, 47, 14);--p-border-critical-disabled:rgb(131, 23, 4);--p-icon-critical:rgb(218, 45, 13);--p-surface-critical:rgb(69, 7, 1);--p-surface-critical-subdued:rgb(69, 7, 1);--p-surface-critical-subdued-hovered:rgb(68, 23, 20);--p-surface-critical-subdued-pressed:rgb(107, 16, 3);--p-surface-critical-subdued-depressed:rgb(135, 24, 5);--p-text-critical:rgb(233, 128, 122);--p-action-critical:rgb(205, 41, 12);--p-action-critical-disabled:rgb(187, 37, 10);--p-action-critical-hovered:rgb(227, 47, 14);--p-action-critical-pressed:rgb(250, 53, 17);--p-action-critical-depressed:rgb(253, 87, 73);--p-icon-on-critical:rgb(255, 248, 247);--p-text-on-critical:rgb(255, 255, 255);--p-interactive-critical:rgb(253, 114, 106);--p-interactive-critical-disabled:rgb(254, 172, 168);--p-interactive-critical-hovered:rgb(253, 138, 132);--p-interactive-critical-pressed:rgb(253, 159, 155);--p-border-warning:rgb(153, 112, 0);--p-border-warning-subdued:rgb(153, 112, 0);--p-icon-warning:rgb(104, 75, 0);--p-surface-warning:rgb(153, 112, 0);--p-surface-warning-subdued:rgb(77, 59, 29);--p-surface-warning-subdued-hovered:rgb(82, 63, 32);--p-surface-warning-subdued-pressed:rgb(87, 67, 34);--p-text-warning:rgb(202, 149, 0);--p-border-highlight:rgb(68, 157, 167);--p-border-highlight-subdued:rgb(68, 157, 167);--p-icon-highlight:rgb(44, 108, 115);--p-surface-highlight:rgb(0, 105, 113);--p-surface-highlight-subdued:rgb(18, 53, 57);--p-surface-highlight-subdued-hovered:rgb(20, 58, 62);--p-surface-highlight-subdued-pressed:rgb(24, 65, 70);--p-text-highlight:rgb(162, 239, 250);--p-border-success:rgb(0, 135, 102);--p-border-success-subdued:rgb(0, 135, 102);--p-icon-success:rgb(0, 94, 70);--p-surface-success:rgb(0, 94, 70);--p-surface-success-subdued:rgb(28, 53, 44);--p-surface-success-subdued-hovered:rgb(31, 58, 48);--p-surface-success-subdued-pressed:rgb(35, 65, 54);--p-text-success:rgb(88, 173, 142);--p-decorative-one-icon:rgb(255, 186, 67);--p-decorative-one-surface:rgb(142, 102, 9);--p-decorative-one-text:rgb(255, 255, 255);--p-decorative-two-icon:rgb(245, 182, 192);--p-decorative-two-surface:rgb(206, 88, 20);--p-decorative-two-text:rgb(255, 255, 255);--p-decorative-three-icon:rgb(0, 227, 141);--p-decorative-three-surface:rgb(0, 124, 90);--p-decorative-three-text:rgb(255, 255, 255);--p-decorative-four-icon:rgb(0, 221, 218);--p-decorative-four-surface:rgb(22, 124, 121);--p-decorative-four-text:rgb(255, 255, 255);--p-decorative-five-icon:rgb(244, 183, 191);--p-decorative-five-surface:rgb(194, 51, 86);--p-decorative-five-text:rgb(255, 255, 255);--p-border-radius-base:0.25rem;--p-border-radius-wide:0.5rem;--p-card-shadow:0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light);--p-popover-shadow:-1px 0px 20px var(--p-shadow-from-ambient-light), 0px 1px 5px var(--p-shadow-from-direct-light);--p-modal-shadow:0px 6px 32px var(--p-shadow-from-ambient-light), 0px 1px 6px var(--p-shadow-from-direct-light);--p-top-bar-shadow:0 2px 2px -1px var(--p-shadow-from-direct-light);--p-override-none:none;--p-override-transparent:transparent;--p-override-one:1;--p-override-visible:visible;--p-override-zero:0;--p-override-loading-z-index:514;--p-button-font-weight:500;--p-choice-size:1.25rem;--p-icon-size:0.625rem;--p-choice-margin:0.0625rem;--p-control-border-width:0.125rem;--p-text-field-spinner-offset:0.125rem;--p-text-field-focus-ring-offset:-0.25rem;--p-text-field-focus-ring-border-radius:0.4375rem;--p-button-group-item-spacing:0.125rem;--p-top-bar-height:68px;--p-contextual-save-bar-height:64px;--p-banner-border-default:inset 0 0.125rem 0 0 var(--p-border), inset 0 0 0 0.125rem var(--p-border);--p-banner-border-success:inset 0 0.125rem 0 0 var(--p-border-success), inset 0 0 0 0.125rem var(--p-border-success);--p-banner-border-highlight:inset 0 0.125rem 0 0 var(--p-border-highlight), inset 0 0 0 0.125rem var(--p-border-highlight);--p-banner-border-warning:inset 0 0.125rem 0 0 var(--p-border-warning), inset 0 0 0 0.125rem var(--p-border-warning);--p-banner-border-critical:inset 0 0.125rem 0 0 var(--p-border-critical), inset 0 0 0 0.125rem var(--p-border-critical);--p-badge-mix-blend-mode:luminosity;--p-badge-font-weight:500;--p-non-null-content:'';--p-thin-border-subdued:0.0625rem solid var(--p-border-subdued);--p-duration-1-0-0:100ms;--p-duration-1-5-0:150ms;--p-ease-in:cubic-bezier(0.5, 0.1, 1, 1);--p-ease:cubic-bezier(0.4, 0.22, 0.28, 1); color: var(--p-text);"><div class="ui-context-bar" theme_disabled="false">
+      <div class="ui-context-bar__branding">
+        <svg focusable="false" aria-hidden="true" class="ui-inline-svg" role="img" viewBox="0 0 604 173" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="#919EAB"><path d="M209 95.9c-5.2-2.8-8-5.1-8-8.4 0-4.2 3.7-6.8 9.6-6.8 6.7 0 12.7 2.9 12.7 2.9L228 69s-4.3-3.4-17.2-3.4c-17.8 0-30.3 10.3-30.3 24.7 0 8 5.9 14.3 13.6 18.7 6.2 3.6 8.3 6.1 8.3 9.8 0 3.9-3 7-8.9 7-8.6 0-16.7-4.5-16.7-4.5l-5 14.5s7.5 5 20.1 5c18.4 0 31.5-9 31.5-25.3.3-8.9-6.5-15.1-14.5-19.7zM282.2 65.5c-9 0-16 4.3-21.6 10.8l-.3-.1 7.9-41.2h-20.6l-19.9 104.6h20.4l6.8-35.7C257.6 90.4 264.5 82 271 82c4.6 0 6.4 3.1 6.4 7.6 0 2.8-.3 6.2-1 9l-7.7 41h20.4l8-42.2a71 71 0 001.5-13.4c.3-11.7-5.7-18.6-16.4-18.6zM345.1 65.5c-24.6 0-41 22.1-41 46.9 0 15.8 9.8 28.7 28.2 28.7 24.2 0 40.4-21.7 40.4-47 .1-14.7-8.4-28.6-27.6-28.6zm-10 59.7c-7 0-9.9-6-9.9-13.4 0-11.7 6.1-30.8 17.2-30.8 7.3 0 9.6 6.2 9.6 12.3 0 12.7-6 32-17 32zM425.1 65.5c-13.7 0-21.6 12.1-21.6 12.1h-.3l1.3-11h-18.2c-1 7.5-2.5 18.7-4.2 27.3L368 168.5h20.5l5.6-30.3h.4s4.2 2.7 12 2.7c24.2 0 39.8-24.6 39.8-49.5 0-13.6-6-26-21-26zm-19.4 60.1c-5.3 0-8.4-3-8.4-3l3.4-19c2.4-12.7 9-21.2 16-21.2 6.3 0 8.2 5.8 8.2 11.2 0 13.1-7.9 32-19.2 32zM475.4 36.1c-6.4 0-11.7 5.2-11.7 12 0 6 3.8 10.2 9.6 10.2h.3c6.3 0 11.8-4.3 12-11.9.1-6-4-10.3-10.2-10.3zM446.8 139.6h20.5l14-72.5h-20.7zM533.2 67H519l.7-3.4c1.2-7 5.2-13.3 12.1-13.3 3.7 0 6.5 1.1 6.5 1.1l4-16s-3.4-1.7-11-1.7c-7.3 0-14.5 2-20 6.8-7 6-10.3 14.4-12 23l-.5 3.5h-9.4l-3 15.4h9.5L485 139.6h20.5l10.8-57.2h14l2.9-15.4zM582.4 67s-12.8 32.3-18.5 49.9h-.3c-.4-5.7-5-49.8-5-49.8h-21.5l12.3 66.5c.3 1.5.1 2.5-.4 3.4-2.4 4.6-6.4 9-11 12.3a43.8 43.8 0 01-11.6 5.8l5.7 17.3c4.2-1 12.7-4.3 20-11 9.3-8.9 18-22.2 26.8-40.6l25-53.7h-21.5z"/></g><path d="M101.3 20l-5 1.5c-.5-1.7-1.4-3.8-2.4-6-3.5-6.7-8.8-10.3-15-10.3l-1.4.1-.5-.7C74.3 1.6 70.7.3 66.6.4 58.4.7 50.3 6.5 43.8 17a64.2 64.2 0 00-9 23.7c-9.4 2.8-15.8 4.9-16 5-4.7 1.5-4.8 1.6-5.4 6L.6 150.4 102.8 168V19.9l-1.5.1zm-23.7 7.3l-17.1 5.3A41.8 41.8 0 0169 15.7c1.5-1.5 3.5-3.2 5.8-4.3a37.8 37.8 0 012.7 16zM66.6 6c1.8 0 3.5.4 4.8 1.2-2.1 1-4.3 2.8-6.3 4.9-5.2 5.5-9 14.2-10.7 22.4l-14.2 4.3c3-13 14-32.6 26.4-32.8zM83 25.7c0-4-.5-9.9-2.4-14.7 6.2 1.2 9.2 8 10.6 12.3L83 25.7z" fill="#919EAB"/><path d="M50.9 80.3c.5 8.7 23.4 10.6 24.7 31 1 16.1-8.5 27-22.2 27.9-16.5 1-25.5-8.7-25.5-8.7l3.5-14.9s9 7 16.4 6.4a6.5 6.5 0 006.3-7c-.7-11.3-19.3-10.6-20.5-29.2-1.1-15.7 9.2-31.6 31.9-33 8.8-.6 13.2 1.6 13.2 1.6l-5.1 19.5s-5.8-2.8-12.7-2.2c-10 .7-10.2 7-10 8.6z" fill="#FFF"/><path d="M105.9 167.7l42.5-10.6L130 33c-.2-.8-.8-1.4-1.5-1.4l-12.6-.2s-7.3-7-10-9.8v146.2z" fill="#919EAB"/></g></svg>
+</div><div class="ui-context-bar__contents"><p class="ui-context-bar__message">Unsaved changes</p><div class="ui-context-bar__actions-group"><div><button class="ui-button ui-context-bar__actions-cancel" type="button" name="button">Cancel</button></div><div><button class="ui-button ui-button--primary js-btn-loadable js-btn-primary ui-context-bar__actions-primary" type="button" name="button">Save</button></div></div></div></div></div>
+    <div class="ui-top-bar"><div class="ui-top-bar__list">
+      <div class="ui-top-bar__item ui-top-bar__item--fill">
+        <div class="ui-navbar__logo">
+          <a href="https://admin.shopify.com?from=accountSettings"><img alt="Shopify" src="https://shopify-assets.shopifycdn.com/accounts/production/theme_configuration/logo/oauth_provider/merchant/logo.svg?v=1631025778" /></a>
+        </div>
+</div>
+      <div class="ui-top-bar__item">
+        <div class="ui-popover__container ui-popover__container--full-width-container">
+            <button name="button" type="button" class="profile-button">
+              <div class="user-avatar user-avatar--style-5">
+  <span class="user-avatar__initials">
+    At
+  </span>
+
+  <img class="avatar" data-gravatar="https://proxy.shopifycdn.com/f04fc83a4a8106b3525d56319deee4340daa7e41beba0eb9cb57f27deef8df41/www.gravatar.com/avatar/086546819434e04fc0df3b826f8af771.jpg?default=404&amp;size=72" src="https://proxy.shopifycdn.com/f04fc83a4a8106b3525d56319deee4340daa7e41beba0eb9cb57f27deef8df41/www.gravatar.com/avatar/086546819434e04fc0df3b826f8af771.jpg?default=404&amp;size=72" />
+</div>
+
+              <span class="profile-button__label">
+                Asim talha
+              </span>
+</button><div class="ui-popover ui-popover--full-height ui-popover--reduced-spacing" data-popover-preferred-position="top"><div class="ui-popover__content-wrapper"><div class="ui-popover__content">
+                    <div class="ui-popover__pane">
+            <ul class="ui-action-list">
+                <li class="ui-action-list__item"><a href="/switch-account" class="ui-action-list-action"><span class="ui-action-list-action__text">
+                  <div class="ui-stack ui-stack--wrap ui-stack--alignment-center ui-stack--spacing-tight">
+                    <div class="ui-stack-item">
+                      <svg aria-labelledby="RefreshMinor-16b619efe924d0bba9841f63ee4deeda-title" role="img" class="next-icon next-icon--color-slate next-icon--size-16"><title id="RefreshMinor-16b619efe924d0bba9841f63ee4deeda-title">Switch account icon</title> <use xlink:href="#RefreshMinor" /> </svg>
+</div>                    <div class="ui-stack-item ui-stack-item--fill">
+                      <span>Switch account</span>
+</div></div></span></a></li>              <li class="ui-action-list__item"><a href="/logout?account%5Buuid%5D=ab4450a5-0d32-4eca-b6e3-488c967806c5" class="ui-action-list-action" data-method="post" data-disable="true"><span class="ui-action-list-action__text">
+                <div class="ui-stack ui-stack--wrap ui-stack--alignment-center ui-stack--spacing-tight">
+                  <div class="ui-stack-item">
+                    <svg aria-labelledby="minor-log-out-bfb8f55b83a47ff9575c487d22a83b00-title" role="img" class="next-icon next-icon--color-slate next-icon--size-16"><title id="minor-log-out-bfb8f55b83a47ff9575c487d22a83b00-title">Checkmark icon</title> <use xlink:href="#minor-log-out" /> </svg>
+</div>                  <div class="ui-stack-item ui-stack-item--fill">
+                    <span>Log out</span>
+</div></div></span></a></li></ul></div>          <div class="ui-popover__pane">
+            <ul class="ui-action-list">
+              <li class="ui-action-list__item"><a href="https://help.shopify.com/en/manual/your-account/logging-in#desktop" class="ui-action-list-action" target="_blank" rel="noopener noreferrer"><span class="ui-action-list-action__text">Shopify help center</span></a></li>
+
+                <li class="ui-action-list__item"><a href="https://community.shopify.com" class="ui-action-list-action" target="_blank" rel="noopener noreferrer"><span class="ui-action-list-action__text">Community forums</span></a></li>
+</ul></div></div></div></div></div></div></div></div></header>
+    <aside id="AppFrameAside" class="ui-app-frame__aside">
+      <div class="ui-scrollable ui-scrollable--scroll-shadow"><div class="ui-scrollable__container">
+        <nav class="ui-nav">
+          <li class="ui-nav__item ui-nav__item--parent ui-nav__item--selected ui-rollup__item--force-show"><a href="/accounts/296867919/personal" class="ui-nav__link ui-nav__link--parent"><svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false"> <use xlink:href="#merchant" /> </svg><span class="ui-nav__label ui-nav__label--parent">General</span></a></li>
+          <li class="ui-nav__item ui-nav__item--parent"><a href="/accounts/296867919/security" class="ui-nav__link ui-nav__link--parent"><svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false"> <use xlink:href="#lock" /> </svg><span class="ui-nav__label ui-nav__label--parent">Security</span></a></li>
+</nav></div></div><div class="ui-app-frame__aside-closer"><button class="ui-button ui-button--transparent ui-button--icon-only" aria-controls="AppFrameAside" aria-label="Close navigation" type="button" name="button"><svg aria-hidden="true" focusable="false" class="next-icon next-icon--size-20"> <use xlink:href="#MobileCancelMajor" /> </svg></button></div></aside>
+  <main id="AppFrameMain" class="ui-app-frame__main">
+      <nav class="ui-nav mobile-nav">
+        <li class="ui-nav__item ui-nav__item--child ui-nav__item--selected"><a href="/accounts/296867919/personal" class="ui-nav__link ui-nav__link--child"><span class="ui-nav__label ui-nav__label--child">General</span></a></li>
+        <li class="ui-nav__item ui-nav__item--child"><a href="/accounts/296867919/security" class="ui-nav__link ui-nav__link--child"><span class="ui-nav__label ui-nav__label--child">Security</span></a></li>
+</nav>    <div class="ui-layout"><div class="ui-layout__sections"><div class="ui-layout__section"><div class="ui-layout__item">
+  
+    
+<header class="ui-title-bar-container ui-title-bar-container--no-breadcrumbs ui-title-bar-container--no-actions"><div class="ui-title-bar main-title-bar"><div class="ui-title-bar__heading-group"><h1 class="ui-title-bar__title">General</h1></div></div></header>
+  
+  <form autocomplete="off" define="{
+        userLocale: new UserLocale($context, {locale: &#39;en&#39;}),
+      }" enctype="multipart/form-data" action="/accounts/296867919/personal" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="patch" autocomplete="off" /><input type="hidden" name="authenticity_token" value="Poold04VwhJxs_xVSm2qXCvQlEM9dheouYvDKnEK827ZgT8AAGr103rb2teTCvJCWpF2W3g9fbqIschKcn80wA" autocomplete="off" />
+    
+  
+  <section class="ui-annotated-section-container"><div class="ui-annotated-section"><div class="ui-annotated-section__annotation"><div class="ui-annotated-section__title"><h2 class="ui-heading">Details</h2></div></div><div class="ui-annotated-section__content">
+    <section class="ui-card">
+      <div class="ui-card__section"><div class="ui-type-container">
+        <div class="ui-form__section">
+          <div class="ui-form__group">
+            <div class="ui-form__element">
+              <div class="next-input-wrapper user-avatar-form">
+  <div class="user-avatar user-avatar--style-5">
+  <span class="user-avatar__initials">
+    At
+  </span>
+
+  <img class="avatar" data-gravatar="https://proxy.shopifycdn.com/f04fc83a4a8106b3525d56319deee4340daa7e41beba0eb9cb57f27deef8df41/www.gravatar.com/avatar/086546819434e04fc0df3b826f8af771.jpg?default=404&amp;size=72" src="https://proxy.shopifycdn.com/f04fc83a4a8106b3525d56319deee4340daa7e41beba0eb9cb57f27deef8df41/www.gravatar.com/avatar/086546819434e04fc0df3b826f8af771.jpg?default=404&amp;size=72" />
+</div>
+
+
+  <div class="button-group">
+    <button class="ui-button" id="account_upload_avatar_button" type="button" name="button">Upload photo</button>
+  </div>
+
+  <div style="display: none">
+    <input accept=".jpg,.jpeg,.png" size="30" type="file" name="account[avatar]" id="account_avatar" />
+    <input name="account[remove_avatar]" type="hidden" value="0" autocomplete="off" /><input type="checkbox" value="1" name="account[remove_avatar]" id="account_remove_avatar" />
+  </div>
+</div>
+
+</div></div></div></div></div>      <div class="ui-card__section"><div class="ui-type-container">
+        <div class="ui-form__section">
+          <div class="ui-form__group">
+              <div class="next-input-wrapper"><label class="next-label" for="account_first_name">First name</label><input autocomplete="given-name" class="next-input" size="30" type="text" value="Asim" name="account[first_name]" id="account_first_name" /></div>
+              <div class="next-input-wrapper"><label class="next-label" for="account_last_name">Last name</label><input autocomplete="family-name" class="next-input" size="30" type="text" value="talha" name="account[last_name]" id="account_last_name" /></div>
+</div><div class="ui-form__element ui-form__section--help-text"><p class="next-input__help-text">Use your first and last name as they appear on your government-issued ID.</p></div></div></div></div>
+      <div class="ui-data-table__wrapper ui-data-table__wrapper--is-hiding-navigation"><div class="ui-data-table__navigation"><button class="ui-button ui-button--transparent ui-button--icon-only ui-data-table__previous-button" aria-label="Previous Column" type="button" name="button"><svg aria-hidden="true" focusable="false" class="next-icon next-icon--rotate-180 next-icon--size-16"> <use xlink:href="#next-chevron" /> </svg></button><button class="ui-button ui-button--transparent ui-button--icon-only ui-data-table__next-button" aria-label="Next Column" type="button" name="button"><svg aria-hidden="true" focusable="false" class="next-icon next-icon--size-16"> <use xlink:href="#next-chevron" /> </svg></button></div><div class="ui-data-table__scroll-wrapper"><table class="ui-data-table ui-data-table--scroll details-bar">
+        <tbody class="ui-data-table__body">
+          <div data-modal-context-ref-for="change_email" data-define="{ change_email: new Shopify.UIModal(this.childNodes[0], { placeholder: this }) }"><div id="change_email" class="ui-modal" role="dialog" aria-hidden="true" aria-labelledby="change_email_heading" data-trust-challenge-method="GET" data-anchor-open="true" data-preload="false" data-start-visible="false" data-height="false" data-width="false" data-content-from="/accounts/296867919/emails/new" data-modal-reload-always="true"><div></div></div></div>
+
+
+
+<tr class="ui-data-table__row details-bar__row" data-label="email">
+  <td class="ui-data-table__cell details-bar__value-cell">
+    <div class="ui-stack ui-stack--wrap ui-stack--vertical">
+      <p class="next-input__help-text">Email</p>
+        <p class="details-bar__value details-bar__value--truncated" title="talhaasim365@gmail.com">talhaasim365@gmail.com</p>
+</div></td>
+  <td class="ui-data-table__cell details-bar__status-cell">
+      <div class="ui-stack ui-stack--wrap status">
+          <svg aria-hidden="true" focusable="false" class="next-icon next-icon--color-success next-icon--size-20"> <use xlink:href="#CircleTickMajor" /> </svg>
+          <span class="text-verified">Verified</span>
+</div></td>
+  <td class="ui-data-table__cell ui-data-table__cell--alignment-right details-bar__actions-cell">
+    <div class="ui-stack ui-stack--wrap ui-stack--distribution-trailing">
+        <button class="ui-button ui-button--link" data-bind-event-click="change_email.trust_challenge_show()" type="button" name="button">Update</button>
+
+</div></td></tr>
+
+
+          <div data-modal-context-ref-for="change_phone_number" data-define="{ change_phone_number: new Shopify.UIModal(this.childNodes[0], { placeholder: this }) }"><div id="change_phone_number" class="ui-modal" role="dialog" aria-hidden="true" aria-labelledby="change_phone_number_heading" data-trust-challenge-method="GET" data-anchor-open="true" data-preload="false" data-start-visible="false" data-height="false" data-width="false" data-content-from="/accounts/296867919/phone-number" data-modal-reload-always="true"><div></div></div></div>
+
+
+
+<tr class="ui-data-table__row details-bar__row" data-label="phone-number">
+  <td class="ui-data-table__cell details-bar__value-cell">
+    <div class="ui-stack ui-stack--wrap ui-stack--vertical">
+      <p class="next-input__help-text">Phone Number (optional)</p>
+        <p class="details-bar__value">No phone number</p>
+</div></td>
+  <td class="ui-data-table__cell details-bar__status-cell details-bar__status-cell--empty">
+      <div></div>
+</td>
+  <td class="ui-data-table__cell ui-data-table__cell--alignment-right details-bar__actions-cell">
+    <div class="ui-stack ui-stack--wrap ui-stack--distribution-trailing">
+        <button class="ui-button ui-button--link" data-bind-event-click="change_phone_number.trust_challenge_show()" type="button" name="button">Add</button>
+
+</div></td></tr>
+
+</tbody></table></div></div>
+</section></div></div></section>
+    
+  
+  
+  <section class="ui-annotated-section-container"><div class="ui-annotated-section"><div class="ui-annotated-section__annotation"><div class="ui-annotated-section__title"><h2 class="ui-heading">Login service</h2></div><div class="ui-annotated-section__description"><p>Connect an external login service to quickly and securely access your Shopify account.</p></div></div><div class="ui-annotated-section__content">
+    <section class="ui-card">
+
+        <div class="ui-card__section"><div class="ui-type-container">
+          <div class="ui-stack ui-stack--wrap ui-stack--alignment-fill">
+            <div class="ui-stack-item ui-stack-item--fill">
+              <div class='connected-provider'>
+                <div class="ui-stack ui-stack--wrap ui-stack--alignment-center">
+                  <svg aria-hidden="true" focusable="false" class="next-icon next-icon--size-16"> <use xlink:href="#external/google-g" /> </svg>
+                  <p>
+                    You can log in using Google
+                  </p>
+</div>              </div>
+</div>
+              <div data-modal-context-ref-for="disconnect_external_login" data-define="{ disconnect_external_login: new Shopify.UIModal(this.childNodes[0], { placeholder: this }) }"><div id="disconnect_external_login" class="ui-modal" role="dialog" aria-hidden="true" aria-labelledby="disconnect_external_login_heading" data-trust-challenge-method="GET" data-anchor-open="true" data-preload="false" data-start-visible="false" data-height="false" data-width="false" data-content-from="/accounts/296867919/external-login/1" data-modal-reload-always="true"><div></div></div></div>
+              <a href="#" data-bind-event-click="disconnect_external_login.trust_challenge_show()">Disconnect</a>
+</div></div></div>
+
+          <div class="ui-card__section"><div class="ui-type-container">
+            <div class="ui-stack ui-stack--wrap ui-stack--distribution-equal-spacing">
+              <p>Connected to <b><a href="https://myaccount.google.com/?authname=talhaasim365@gmail.com" target="_blank" rel="noopener noreferrer">talhaasim365@gmail.com<span class="ui-link--external__icon"><svg aria-hidden="true" focusable="false" class="next-icon next-icon--size-16"> <use xlink:href="#ExternalMinor" /> </svg></span><span class="helper--visually-hidden"> (opens a new window)</span></a></b></p>
+</div></div></div>
+</section></div></div></section>
+    
+  
+  
+  <section class="ui-annotated-section-container"><div class="ui-annotated-section"><div class="ui-annotated-section__annotation"><div class="ui-annotated-section__title"><h2 class="ui-heading">Stores</h2></div><div class="ui-annotated-section__description"><p>View and access stores connected to your Shopify account.</p></div></div><div class="ui-annotated-section__content">
+   <section class="ui-card">     
+      <div class="ui-card__section"><div class="ui-type-container">
+        <a target="_blank" href="/store-login?no_redirect=true" title="View all stores">View all stores</a>
+</div></div></section></div></div></section>
+    
+    
+  
+  
+  <section class="ui-annotated-section-container"><div class="ui-annotated-section"><div class="ui-annotated-section__annotation"><div class="ui-annotated-section__title"><h2 class="ui-heading">Preferred language</h2></div><div class="ui-annotated-section__description"><p>When you&#39;re logged in to Shopify, this is the language you will see. It doesn&#39;t affect the language your customers see on your online store.</p></div></div><div class="ui-annotated-section__content">
+    <section class="ui-card">
+      <div class="ui-card__section"><div class="ui-type-container">
+        <div class="ui-form__section">
+          <div class="next-input-wrapper"><label class="next-label" for="account_language">Language</label><div class="ui-select__wrapper"><select class="ui-select" name="account[language]" id="account_language"><option value="ca">Català (Beta)</option>
+<option value="cs">Čeština</option>
+<option value="da">Dansk</option>
+<option value="de">Deutsch</option>
+<option value="et">Eesti (Beeta)</option>
+<option selected="selected" value="en">English</option>
+<option value="es">Español</option>
+<option value="eu">Euskara (Beta)</option>
+<option value="fr">Français</option>
+<option value="gl">Galego (Beta)</option>
+<option value="hr">Hrvatski (Beta)</option>
+<option value="id">Indonesia (Beta)</option>
+<option value="it">Italiano</option>
+<option value="lv">Latviešu (Beta)</option>
+<option value="lt">Lietuvių (Beta versija)</option>
+<option value="hu">Magyar (Béta)</option>
+<option value="ms">Melayu (Beta)</option>
+<option value="nl">Nederlands</option>
+<option value="nb">Norsk (bokmål)</option>
+<option value="pl">Polski</option>
+<option value="pt-BR">Português (Brasil)</option>
+<option value="pt-PT">Português (Portugal)</option>
+<option value="ro">Română (Beta)</option>
+<option value="sk">Slovenčina (Beta)</option>
+<option value="sl">Slovenščina (Beta)</option>
+<option value="fi">Suomi</option>
+<option value="sv">Svenska</option>
+<option value="vi">Tiếng Việt (Beta)</option>
+<option value="tr">Türkçe</option>
+<option value="el">Ελληνικά (Beta)</option>
+<option value="bg">Български (Бета)</option>
+<option value="ru">Русский (Бета-версия)</option>
+<option value="sr">Српски (Beta)</option>
+<option value="uk">Українська (Бета-версія)</option>
+<option value="he">עברית (בטא)</option>
+<option value="ur">اردو (Beta)</option>
+<option value="ar">العربية (تجريبي)</option>
+<option value="mr">मराठी (बीटा)</option>
+<option value="hi">हिंदी (बीटा)</option>
+<option value="bn">বাংলা (বিটা)</option>
+<option value="gu">ગુજરાતી (બીટા)</option>
+<option value="ta">தமிழ் (பீட்டா)</option>
+<option value="te">తెలుగు (బీటా)</option>
+<option value="th">ภาษาไทย</option>
+<option value="ka">Ქართული (ბეტა)</option>
+<option value="ja">日本語</option>
+<option value="zh-CN">简体中文</option>
+<option value="zh-TW">繁體中文</option>
+<option value="ko">한국어</option></select><svg aria-hidden="true" focusable="false" class="next-icon next-icon--size-16"> <use xlink:href="#select-chevron" /> </svg></div></div>
+</div></div></div>
+      <section class="ui-card__section hidden" id="region_section"><div class="ui-type-container">
+        <div class="ui-card__section-header"><h3 class="ui-subheading">
+          Regional Format
+</h3></div>        <p>
+          Your number, time, date, and currency formats are set for <strong class="locale_region">en</strong>. <button class="ui-button ui-button--link" data-bind-event-click="userLocale.openRegionModal()" type="button" name="button">Change regional format</button>
+        </p>
+
+        <input type="hidden" id="account_locale" name="account[locale]" value="en" />
+        <input type="hidden" id="account_geo_locale" name="account[geo_locale]" value="PK" />
+</div></section></section></div></div></section>
+    
+  
+  <section class="ui-annotated-section-container"><div class="ui-annotated-section"><div class="ui-annotated-section__annotation"><div class="ui-annotated-section__title"><h2 class="ui-heading">Timezone</h2></div></div><div class="ui-annotated-section__content">
+    <section class="ui-card">
+      <div class="ui-card__section"><div class="ui-type-container">
+        <div class="ui-form__section">
+          <div class="next-input-wrapper"><label class="next-label" for="account_timezone">Timezone</label><div class="ui-select__wrapper"><select class="ui-select" aria-describedby="help-d63f840e9a112042a591a51af7f9d5b7" name="account[timezone]" id="account_timezone"><option value="Etc/GMT+12">(GMT-12:00) International Date Line West</option>
+<option value="Pacific/Pago_Pago">(GMT-11:00) American Samoa</option>
+<option value="Pacific/Midway">(GMT-11:00) Midway Island</option>
+<option value="Pacific/Honolulu">(GMT-10:00) Hawaii</option>
+<option value="America/Juneau">(GMT-09:00) Alaska</option>
+<option value="America/Los_Angeles">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+<option value="America/Tijuana">(GMT-08:00) Tijuana</option>
+<option value="America/Phoenix">(GMT-07:00) Arizona</option>
+<option value="America/Mazatlan">(GMT-07:00) Mazatlan</option>
+<option value="America/Denver">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+<option value="America/Guatemala">(GMT-06:00) Central America</option>
+<option value="America/Chicago">(GMT-06:00) Central Time (US &amp; Canada)</option>
+<option value="America/Chihuahua">(GMT-07:00) Chihuahua</option>
+<option value="America/Mexico_City">(GMT-06:00) Guadalajara, Mexico City</option>
+<option value="America/Monterrey">(GMT-06:00) Monterrey</option>
+<option value="America/Regina">(GMT-06:00) Saskatchewan</option>
+<option value="America/Bogota">(GMT-05:00) Bogota</option>
+<option value="America/New_York">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+<option value="America/Indiana/Indianapolis">(GMT-05:00) Indiana (East)</option>
+<option value="America/Lima">(GMT-05:00) Lima, Quito</option>
+<option value="America/Halifax">(GMT-04:00) Atlantic Time (Canada)</option>
+<option value="America/Caracas">(GMT-04:00) Caracas</option>
+<option value="America/Guyana">(GMT-04:00) Georgetown</option>
+<option value="America/La_Paz">(GMT-04:00) La Paz</option>
+<option value="America/Puerto_Rico">(GMT-04:00) Puerto Rico</option>
+<option value="America/Santiago">(GMT-04:00) Santiago</option>
+<option value="America/St_Johns">(GMT-03:30) Newfoundland</option>
+<option value="America/Sao_Paulo">(GMT-03:00) Brasilia</option>
+<option value="America/Argentina/Buenos_Aires">(GMT-03:00) Buenos Aires</option>
+<option value="America/Montevideo">(GMT-03:00) Montevideo</option>
+<option value="Atlantic/South_Georgia">(GMT-02:00) Mid-Atlantic</option>
+<option value="Atlantic/Azores">(GMT-01:00) Azores</option>
+<option value="Atlantic/Cape_Verde">(GMT-01:00) Cape Verde Is.</option>
+<option value="Europe/London">(GMT+00:00) Edinburgh, London</option>
+<option value="Europe/Lisbon">(GMT+00:00) Lisbon</option>
+<option value="Africa/Monrovia">(GMT+00:00) Monrovia</option>
+<option value="Etc/UTC">(GMT+00:00) UTC</option>
+<option value="Europe/Amsterdam">(GMT+01:00) Amsterdam</option>
+<option value="Europe/Belgrade">(GMT+01:00) Belgrade</option>
+<option value="Europe/Berlin">(GMT+01:00) Berlin</option>
+<option value="Europe/Zurich">(GMT+01:00) Bern, Zurich</option>
+<option value="Europe/Bratislava">(GMT+01:00) Bratislava</option>
+<option value="Europe/Brussels">(GMT+01:00) Brussels</option>
+<option value="Europe/Budapest">(GMT+01:00) Budapest</option>
+<option value="Africa/Casablanca">(GMT+01:00) Casablanca</option>
+<option value="Europe/Copenhagen">(GMT+01:00) Copenhagen</option>
+<option value="Europe/Dublin">(GMT+00:00) Dublin</option>
+<option value="Europe/Ljubljana">(GMT+01:00) Ljubljana</option>
+<option value="Europe/Madrid">(GMT+01:00) Madrid</option>
+<option value="Europe/Paris">(GMT+01:00) Paris</option>
+<option value="Europe/Prague">(GMT+01:00) Prague</option>
+<option value="Europe/Rome">(GMT+01:00) Rome</option>
+<option value="Europe/Sarajevo">(GMT+01:00) Sarajevo</option>
+<option value="Europe/Skopje">(GMT+01:00) Skopje</option>
+<option value="Europe/Stockholm">(GMT+01:00) Stockholm</option>
+<option value="Europe/Vienna">(GMT+01:00) Vienna</option>
+<option value="Europe/Warsaw">(GMT+01:00) Warsaw</option>
+<option value="Africa/Algiers">(GMT+01:00) West Central Africa</option>
+<option value="Europe/Zagreb">(GMT+01:00) Zagreb</option>
+<option value="Europe/Athens">(GMT+02:00) Athens</option>
+<option value="Europe/Bucharest">(GMT+02:00) Bucharest</option>
+<option value="Africa/Cairo">(GMT+02:00) Cairo</option>
+<option value="Africa/Harare">(GMT+02:00) Harare</option>
+<option value="Europe/Helsinki">(GMT+02:00) Helsinki</option>
+<option value="Asia/Jerusalem">(GMT+02:00) Jerusalem</option>
+<option value="Europe/Kaliningrad">(GMT+02:00) Kaliningrad</option>
+<option value="Africa/Johannesburg">(GMT+02:00) Pretoria</option>
+<option value="Europe/Riga">(GMT+02:00) Riga</option>
+<option value="Europe/Sofia">(GMT+02:00) Sofia</option>
+<option value="Europe/Tallinn">(GMT+02:00) Tallinn</option>
+<option value="Europe/Vilnius">(GMT+02:00) Vilnius</option>
+<option value="Asia/Baghdad">(GMT+03:00) Baghdad</option>
+<option value="Europe/Istanbul">(GMT+03:00) Istanbul</option>
+<option value="Asia/Kuwait">(GMT+03:00) Kuwait</option>
+<option value="Europe/Minsk">(GMT+03:00) Minsk</option>
+<option value="Europe/Moscow">(GMT+03:00) Moscow, St. Petersburg</option>
+<option value="Africa/Nairobi">(GMT+03:00) Nairobi</option>
+<option value="Asia/Riyadh">(GMT+03:00) Riyadh</option>
+<option value="Europe/Volgograd">(GMT+03:00) Volgograd</option>
+<option value="Asia/Tehran">(GMT+03:30) Tehran</option>
+<option value="Asia/Muscat">(GMT+04:00) Abu Dhabi, Muscat</option>
+<option value="Asia/Baku">(GMT+04:00) Baku</option>
+<option value="Europe/Samara">(GMT+04:00) Samara</option>
+<option value="Asia/Tbilisi">(GMT+04:00) Tbilisi</option>
+<option value="Asia/Yerevan">(GMT+04:00) Yerevan</option>
+<option value="Asia/Kabul">(GMT+04:30) Kabul</option>
+<option value="Asia/Almaty">(GMT+06:00) Almaty</option>
+<option value="Asia/Yekaterinburg">(GMT+05:00) Ekaterinburg</option>
+<option selected="selected" value="Asia/Karachi">(GMT+05:00) Islamabad, Karachi</option>
+<option value="Asia/Tashkent">(GMT+05:00) Tashkent</option>
+<option value="Asia/Kolkata">(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</option>
+<option value="Asia/Colombo">(GMT+05:30) Sri Jayawardenepura</option>
+<option value="Asia/Kathmandu">(GMT+05:45) Kathmandu</option>
+<option value="Asia/Dhaka">(GMT+06:00) Astana, Dhaka</option>
+<option value="Asia/Urumqi">(GMT+06:00) Urumqi</option>
+<option value="Asia/Bangkok">(GMT+07:00) Bangkok, Hanoi</option>
+<option value="Asia/Jakarta">(GMT+07:00) Jakarta</option>
+<option value="Asia/Krasnoyarsk">(GMT+07:00) Krasnoyarsk</option>
+<option value="Asia/Novosibirsk">(GMT+07:00) Novosibirsk</option>
+<option value="Asia/Shanghai">(GMT+08:00) Beijing</option>
+<option value="Asia/Chongqing">(GMT+08:00) Chongqing</option>
+<option value="Asia/Hong_Kong">(GMT+08:00) Hong Kong</option>
+<option value="Asia/Irkutsk">(GMT+08:00) Irkutsk</option>
+<option value="Asia/Kuala_Lumpur">(GMT+08:00) Kuala Lumpur</option>
+<option value="Australia/Perth">(GMT+08:00) Perth</option>
+<option value="Asia/Singapore">(GMT+08:00) Singapore</option>
+<option value="Asia/Taipei">(GMT+08:00) Taipei</option>
+<option value="Asia/Ulaanbaatar">(GMT+08:00) Ulaanbaatar</option>
+<option value="Asia/Tokyo">(GMT+09:00) Osaka, Sapporo, Tokyo</option>
+<option value="Asia/Seoul">(GMT+09:00) Seoul</option>
+<option value="Asia/Yakutsk">(GMT+09:00) Yakutsk</option>
+<option value="Australia/Adelaide">(GMT+09:30) Adelaide</option>
+<option value="Australia/Darwin">(GMT+09:30) Darwin</option>
+<option value="Australia/Brisbane">(GMT+10:00) Brisbane</option>
+<option value="Australia/Canberra">(GMT+10:00) Canberra, Melbourne</option>
+<option value="Pacific/Guam">(GMT+10:00) Guam</option>
+<option value="Australia/Hobart">(GMT+10:00) Hobart</option>
+<option value="Australia/Melbourne">(GMT+10:00) Canberra, Melbourne</option>
+<option value="Pacific/Port_Moresby">(GMT+10:00) Port Moresby</option>
+<option value="Australia/Sydney">(GMT+10:00) Sydney</option>
+<option value="Asia/Vladivostok">(GMT+10:00) Vladivostok</option>
+<option value="Asia/Magadan">(GMT+11:00) Magadan</option>
+<option value="Pacific/Noumea">(GMT+11:00) New Caledonia</option>
+<option value="Pacific/Guadalcanal">(GMT+11:00) Solomon Is.</option>
+<option value="Asia/Srednekolymsk">(GMT+11:00) Srednekolymsk</option>
+<option value="Pacific/Auckland">(GMT+12:00) Auckland, Wellington</option>
+<option value="Pacific/Fiji">(GMT+12:00) Fiji</option>
+<option value="Asia/Kamchatka">(GMT+12:00) Kamchatka</option>
+<option value="Pacific/Majuro">(GMT+12:00) Marshall Is.</option>
+<option value="Pacific/Chatham">(GMT+12:45) Chatham Is.</option>
+<option value="Pacific/Tongatapu">(GMT+13:00) Nuku&#39;alofa</option>
+<option value="Pacific/Apia">(GMT+13:00) Samoa</option>
+<option value="Pacific/Fakaofo">(GMT+13:00) Tokelau Is.</option></select><svg aria-hidden="true" focusable="false" class="next-icon next-icon--size-16"> <use xlink:href="#select-chevron" /> </svg></div><p id="help-d63f840e9a112042a591a51af7f9d5b7" class="next-input__help-text">This is the timezone for your account. To set the timezone for your Shopify admin, go to the General section in Settings.</p></div>
+</div></div></div></section></div></div></section>
+    
+    <div data-modal-context-ref-for="user_locale_modal" data-define="{ user_locale_modal: new Shopify.UIModal(document.getElementById('user_locale_modal'), { placeholder: this }) }"></div>
+</form></div></div></div></div>
+</main></div><div class="ui-app-frame__backdrop"></div>
+</div>
+  
+
+  <div id="global-icon-symbols" class="icon-symbols" data-tg-refresh="global-icon-symbols" data-tg-refresh-always="true"><svg xmlns="http://www.w3.org/2000/svg"><symbol id="next-chevron"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M8 16c-.256 0-.512-.098-.707-.293-.39-.39-.39-1.023 0-1.414L11.586 10 7.293 5.707c-.39-.39-.39-1.023 0-1.414s1.023-.39 1.414 0l5 5c.39.39.39 1.023 0 1.414l-5 5c-.195.195-.45.293-.707.293z"/></svg>
+</symbol>
+<symbol id="CircleTickMajor"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M0 10a10 10 0 1 0 20 0 10 10 0 0 0-20 0zm15.2-1.8a1 1 0 0 0-1.4-1.4L9 11.6 6.7 9.3a1 1 0 0 0-1.4 1.4l3 3c.4.4 1 .4 1.4 0l5.5-5.5z"/></svg></symbol>
+<symbol id="external/google-g"><svg viewBox="0 0 366 372" xmlns="http://www.w3.org/2000/svg"><path d="M125.9 10.2c40.2-13.9 85.3-13.6 125.3 1.1 22.2 8.2 42.5 21 59.9 37.1-5.8 6.3-12.1 12.2-18.1 18.3l-34.2 34.2c-11.3-10.8-25.1-19-40.1-23.6-17.6-5.3-36.6-6.1-54.6-2.2-21 4.5-40.5 15.5-55.6 30.9-12.2 12.3-21.4 27.5-27 43.9-20.3-15.8-40.6-31.5-61-47.3 21.5-43 60.1-76.9 105.4-92.4z" id="Shape" fill="#EA4335"/><path d="M20.6 102.4c20.3 15.8 40.6 31.5 61 47.3-8 23.3-8 49.2 0 72.4-20.3 15.8-40.6 31.6-60.9 47.3C1.9 232.7-3.8 189.6 4.4 149.2c3.3-16.2 8.7-32 16.2-46.8z" id="Shape" fill="#FBBC05"/><path d="M361.7 151.1c5.8 32.7 4.5 66.8-4.7 98.8-8.5 29.3-24.6 56.5-47.1 77.2l-59.1-45.9c19.5-13.1 33.3-34.3 37.2-57.5H186.6c.1-24.2.1-48.4.1-72.6h175z" id="Shape" fill="#4285F4"/><path d="M81.4 222.2c7.8 22.9 22.8 43.2 42.6 57.1 12.4 8.7 26.6 14.9 41.4 17.9 14.6 3 29.7 2.6 44.4.1 14.6-2.6 28.7-7.9 41-16.2l59.1 45.9c-21.3 19.7-48 33.1-76.2 39.6-31.2 7.1-64.2 7.3-95.2-1-24.6-6.5-47.7-18.2-67.6-34.1-20.9-16.6-38.3-38-50.4-62 20.3-15.7 40.6-31.5 60.9-47.3z" fill="#34A853"/></svg>
+</symbol>
+<symbol id="ExternalMinor"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M11 4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0V6.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L13.586 5H12a1 1 0 0 1-1-1zM3 6.5A1.5 1.5 0 0 1 4.5 5H8a1 1 0 0 1 0 2H5v8h8v-3a1 1 0 1 1 2 0v3.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 3 15.5v-9z"/></svg></symbol>
+<symbol id="select-chevron"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 16l-4-4h8l-4 4zm0-12L6 8h8l-4-4z"/></svg></symbol>
+<symbol id="cancel-small-minor"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M11.414 10l4.293-4.293c.391-.391.391-1.023 0-1.414s-1.023-.391-1.414 0l-4.293 4.293-4.293-4.293c-.391-.391-1.023-.391-1.414 0s-.391 1.023 0 1.414l4.293 4.293-4.293 4.293c-.391.391-.391 1.023 0 1.414.195.195.451.293.707.293.256 0 .512-.098.707-.293l4.293-4.293 4.293 4.293c.195.195.451.293.707.293.256 0 .512-.098.707-.293.391-.391.391-1.023 0-1.414l-4.293-4.293z"/></svg>
+</symbol>
+<symbol id="next-remove"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M18.263 16l10.07-10.07c.625-.625.625-1.636 0-2.26s-1.638-.627-2.263 0L16 13.737 5.933 3.667c-.626-.624-1.637-.624-2.262 0s-.624 1.64 0 2.264L13.74 16 3.67 26.07c-.626.625-.626 1.636 0 2.26.312.313.722.47 1.13.47s.82-.157 1.132-.47l10.07-10.068 10.068 10.07c.312.31.722.468 1.13.468s.82-.157 1.132-.47c.626-.625.626-1.636 0-2.26L18.262 16z"/></svg>
+</symbol>
+<symbol id="RefreshMinor"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17 11a1 1 0 0 1 1 1c0 1.654-1.346 3-3 3H5.414l1.293 1.293a.999.999 0 1 1-1.414 1.414l-3-3a.999.999 0 0 1 0-1.414l3-3a.999.999 0 1 1 1.414 1.414L5.414 13H15c.552 0 1-.449 1-1a1 1 0 0 1 1-1zM3 9a1 1 0 0 1-1-1c0-1.654 1.346-3 3-3h9.586l-1.293-1.293a.999.999 0 1 1 1.414-1.414l3 3a.999.999 0 0 1 0 1.414l-3 3a.997.997 0 0 1-1.414 0 .999.999 0 0 1 0-1.414L14.586 7H5c-.552 0-1 .449-1 1a1 1 0 0 1-1 1z"/></svg></symbol>
+<symbol id="minor-log-out"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 16c.553 0 1 .448 1 1s-.447 1-1 1c-4.411 0-8-3.589-8-8s3.589-8 8-8c.553 0 1 .448 1 1s-.447 1-1 1c-3.309 0-6 2.691-6 6s2.691 6 6 6zm7.707-6.707c.391.391.391 1.023 0 1.414l-3 3c-.195.195-.451.293-.707.293-.256 0-.512-.098-.707-.293-.391-.391-.391-1.023 0-1.414l1.293-1.293h-4.586c-.553 0-1-.448-1-1s.447-1 1-1h4.586l-1.293-1.293c-.391-.391-.391-1.023 0-1.414s1.023-.391 1.414 0l3 3z"/></svg>
+</symbol>
+<symbol id="merchant"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path fill="currentColor" d="M16 24c-4.063 0-7.503 1.747-9.6 3.134C9.012 29.172 12.353 30.4 16 30.4s6.985-1.227 9.6-3.266C23.5 25.747 20.06 24 16 24z"/><path d="M16 0C7.178 0 0 7.178 0 16c0 8.82 7.178 16 16 16s16-7.18 16-16c0-8.822-7.178-16-16-16zm8.965 25.12C22.72 23.746 19.61 22.4 16 22.4c-3.61 0-6.718 1.347-8.966 2.72C4.67 22.797 3.2 19.568 3.2 16 3.2 8.942 8.942 3.2 16 3.2S28.8 8.942 28.8 16c0 3.568-1.47 6.797-3.835 9.12zM9.838 27.215c1.71-.883 3.82-1.614 6.162-1.614s4.45.733 6.162 1.615C20.332 28.222 18.232 28.8 16 28.8c-2.234 0-4.333-.578-6.162-1.585zM16 16c-1.765 0-3.2-1.435-3.2-3.2s1.435-3.2 3.2-3.2c1.765 0 3.2 1.435 3.2 3.2S17.765 16 16 16zm0-9.6c-3.53 0-6.4 2.87-6.4 6.4s2.87 6.4 6.4 6.4c3.53 0 6.4-2.87 6.4-6.4S19.53 6.4 16 6.4z"/></svg>
+</symbol>
+<symbol id="lock"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="currentColor" d="M3 9h14v10H3V9z"/><path d="M17 8c.553 0 1 .447 1 1v10c0 .553-.447 1-1 1H3c-.553 0-1-.447-1-1V9c0-.553.447-1 1-1h1V6c0-3.31 2.69-6 6-6s6 2.69 6 6v2h1zM4 18h12v-8H4v8zM6 6v2h8V6c0-2.206-1.794-4-4-4S6 3.794 6 6zm4 10c.553 0 1-.447 1-1v-2c0-.553-.447-1-1-1s-1 .447-1 1v2c0 .553.447 1 1 1z"/></svg>
+</symbol>
+<symbol id="MobileCancelMajor"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M11.414 10l6.293-6.293a1 1 0 1 0-1.414-1.414L10 8.586 3.707 2.293a1 1 0 0 0-1.414 1.414L8.586 10l-6.293 6.293a1 1 0 1 0 1.414 1.414L10 11.414l6.293 6.293A.998.998 0 0 0 18 17a.999.999 0 0 0-.293-.707L11.414 10z"/></svg></symbol></svg></div>
+  <div id="UIModalContainer"><div style="--p-background:rgb(246, 246, 247);--p-background-hovered:rgb(241, 242, 243);--p-background-pressed:rgb(237, 238, 239);--p-background-selected:rgb(237, 238, 239);--p-surface:rgb(255, 255, 255);--p-surface-neutral:rgb(228, 229, 231);--p-surface-neutral-hovered:rgb(219, 221, 223);--p-surface-neutral-pressed:rgb(201, 204, 208);--p-surface-neutral-disabled:rgb(241, 242, 243);--p-surface-neutral-subdued:rgb(246, 246, 247);--p-surface-subdued:rgb(250, 251, 251);--p-surface-disabled:rgb(250, 251, 251);--p-surface-hovered:rgb(246, 246, 247);--p-surface-pressed:rgb(241, 242, 243);--p-surface-depressed:rgb(237, 238, 239);--p-backdrop:rgba(0, 0, 0, 0.5);--p-overlay:rgba(255, 255, 255, 0.5);--p-shadow-from-dim-light:rgba(0, 0, 0, 0.2);--p-shadow-from-ambient-light:rgba(23, 24, 24, 0.05);--p-shadow-from-direct-light:rgba(0, 0, 0, 0.15);--p-hint-from-direct-light:rgba(0, 0, 0, 0.15);--p-on-surface-background:rgb(241, 242, 243);--p-border:rgb(140, 145, 150);--p-border-neutral-subdued:rgb(186, 191, 195);--p-border-hovered:rgb(153, 158, 164);--p-border-disabled:rgb(210, 213, 216);--p-border-subdued:rgb(201, 204, 207);--p-border-depressed:rgb(87, 89, 89);--p-border-shadow:rgb(174, 180, 185);--p-border-shadow-subdued:rgb(186, 191, 196);--p-divider:rgb(225, 227, 229);--p-icon:rgb(92, 95, 98);--p-icon-hovered:rgb(26, 28, 29);--p-icon-pressed:rgb(68, 71, 74);--p-icon-disabled:rgb(186, 190, 195);--p-icon-subdued:rgb(140, 145, 150);--p-text:rgb(32, 34, 35);--p-text-disabled:rgb(140, 145, 150);--p-text-subdued:rgb(109, 113, 117);--p-interactive:rgb(44, 110, 203);--p-interactive-disabled:rgb(189, 193, 204);--p-interactive-hovered:rgb(31, 81, 153);--p-interactive-pressed:rgb(16, 50, 98);--p-focused:rgb(69, 143, 255);--p-surface-selected:rgb(242, 247, 254);--p-surface-selected-hovered:rgb(237, 244, 254);--p-surface-selected-pressed:rgb(229, 239, 253);--p-icon-on-interactive:rgb(255, 255, 255);--p-text-on-interactive:rgb(255, 255, 255);--p-action-secondary:rgb(255, 255, 255);--p-action-secondary-disabled:rgb(255, 255, 255);--p-action-secondary-hovered:rgb(246, 246, 247);--p-action-secondary-pressed:rgb(241, 242, 243);--p-action-secondary-depressed:rgb(109, 113, 117);--p-action-primary:rgb(0, 128, 96);--p-action-primary-disabled:rgb(241, 241, 241);--p-action-primary-hovered:rgb(0, 110, 82);--p-action-primary-pressed:rgb(0, 94, 70);--p-action-primary-depressed:rgb(0, 61, 44);--p-icon-on-primary:rgb(255, 255, 255);--p-text-on-primary:rgb(255, 255, 255);--p-surface-primary-selected:rgb(241, 248, 245);--p-surface-primary-selected-hovered:rgb(179, 208, 195);--p-surface-primary-selected-pressed:rgb(162, 188, 176);--p-border-critical:rgb(253, 87, 73);--p-border-critical-subdued:rgb(224, 179, 178);--p-border-critical-disabled:rgb(255, 167, 163);--p-icon-critical:rgb(215, 44, 13);--p-surface-critical:rgb(254, 211, 209);--p-surface-critical-subdued:rgb(255, 244, 244);--p-surface-critical-subdued-hovered:rgb(255, 240, 240);--p-surface-critical-subdued-pressed:rgb(255, 233, 232);--p-surface-critical-subdued-depressed:rgb(254, 188, 185);--p-text-critical:rgb(215, 44, 13);--p-action-critical:rgb(216, 44, 13);--p-action-critical-disabled:rgb(241, 241, 241);--p-action-critical-hovered:rgb(188, 34, 0);--p-action-critical-pressed:rgb(162, 27, 0);--p-action-critical-depressed:rgb(108, 15, 0);--p-icon-on-critical:rgb(255, 255, 255);--p-text-on-critical:rgb(255, 255, 255);--p-interactive-critical:rgb(216, 44, 13);--p-interactive-critical-disabled:rgb(253, 147, 141);--p-interactive-critical-hovered:rgb(205, 41, 12);--p-interactive-critical-pressed:rgb(103, 15, 3);--p-border-warning:rgb(185, 137, 0);--p-border-warning-subdued:rgb(225, 184, 120);--p-icon-warning:rgb(185, 137, 0);--p-surface-warning:rgb(255, 215, 157);--p-surface-warning-subdued:rgb(255, 245, 234);--p-surface-warning-subdued-hovered:rgb(255, 242, 226);--p-surface-warning-subdued-pressed:rgb(255, 235, 211);--p-text-warning:rgb(145, 106, 0);--p-border-highlight:rgb(68, 157, 167);--p-border-highlight-subdued:rgb(152, 198, 205);--p-icon-highlight:rgb(0, 160, 172);--p-surface-highlight:rgb(164, 232, 242);--p-surface-highlight-subdued:rgb(235, 249, 252);--p-surface-highlight-subdued-hovered:rgb(228, 247, 250);--p-surface-highlight-subdued-pressed:rgb(213, 243, 248);--p-text-highlight:rgb(52, 124, 132);--p-border-success:rgb(0, 164, 124);--p-border-success-subdued:rgb(149, 201, 180);--p-icon-success:rgb(0, 127, 95);--p-surface-success:rgb(174, 233, 209);--p-surface-success-subdued:rgb(241, 248, 245);--p-surface-success-subdued-hovered:rgb(236, 246, 241);--p-surface-success-subdued-pressed:rgb(226, 241, 234);--p-text-success:rgb(0, 128, 96);--p-decorative-one-icon:rgb(126, 87, 0);--p-decorative-one-surface:rgb(255, 201, 107);--p-decorative-one-text:rgb(61, 40, 0);--p-decorative-two-icon:rgb(175, 41, 78);--p-decorative-two-surface:rgb(255, 196, 176);--p-decorative-two-text:rgb(73, 11, 28);--p-decorative-three-icon:rgb(0, 109, 65);--p-decorative-three-surface:rgb(146, 230, 181);--p-decorative-three-text:rgb(0, 47, 25);--p-decorative-four-icon:rgb(0, 106, 104);--p-decorative-four-surface:rgb(145, 224, 214);--p-decorative-four-text:rgb(0, 45, 45);--p-decorative-five-icon:rgb(174, 43, 76);--p-decorative-five-surface:rgb(253, 201, 208);--p-decorative-five-text:rgb(79, 14, 31);--p-border-radius-base:0.25rem;--p-border-radius-wide:0.5rem;--p-card-shadow:0px 0px 5px var(--p-shadow-from-ambient-light), 0px 1px 2px var(--p-shadow-from-direct-light);--p-popover-shadow:-1px 0px 20px var(--p-shadow-from-ambient-light), 0px 1px 5px var(--p-shadow-from-direct-light);--p-modal-shadow:0px 6px 32px var(--p-shadow-from-ambient-light), 0px 1px 6px var(--p-shadow-from-direct-light);--p-top-bar-shadow:0 2px 2px -1px var(--p-shadow-from-direct-light);--p-override-none:none;--p-override-transparent:transparent;--p-override-one:1;--p-override-visible:visible;--p-override-zero:0;--p-override-loading-z-index:514;--p-button-font-weight:500;--p-choice-size:1.25rem;--p-icon-size:0.625rem;--p-choice-margin:0.0625rem;--p-control-border-width:0.125rem;--p-text-field-spinner-offset:0.125rem;--p-text-field-focus-ring-offset:-0.25rem;--p-text-field-focus-ring-border-radius:0.4375rem;--p-button-group-item-spacing:0.125rem;--p-top-bar-height:68px;--p-contextual-save-bar-height:64px;--p-banner-border-default:inset 0 0.125rem 0 0 var(--p-border), inset 0 0 0 0.125rem var(--p-border);--p-banner-border-success:inset 0 0.125rem 0 0 var(--p-border-success), inset 0 0 0 0.125rem var(--p-border-success);--p-banner-border-highlight:inset 0 0.125rem 0 0 var(--p-border-highlight), inset 0 0 0 0.125rem var(--p-border-highlight);--p-banner-border-warning:inset 0 0.125rem 0 0 var(--p-border-warning), inset 0 0 0 0.125rem var(--p-border-warning);--p-banner-border-critical:inset 0 0.125rem 0 0 var(--p-border-critical), inset 0 0 0 0.125rem var(--p-border-critical);--p-badge-mix-blend-mode:luminosity;--p-badge-font-weight:500;--p-non-null-content:'';--p-thin-border-subdued:0.0625rem solid var(--p-border-subdued);--p-duration-1-0-0:100ms;--p-duration-1-5-0:150ms;--p-ease-in:cubic-bezier(0.5, 0.1, 1, 1);--p-ease:cubic-bezier(0.4, 0.22, 0.28, 1); color: var(--p-text);"><div id="UIModalBackdrop" data-tg-refresh="ui-modal-backdrop" class="ui-modal-backdrop"></div><div id="UIModalContents" class="ui-modal-contents" data-tg-refresh="ui-modal-contents"><div id="user_locale_modal" class="ui-modal" role="dialog" aria-hidden="true" aria-labelledby="user_locale_modal_heading" data-preload="false" data-start-visible="false" data-height="false" data-width="false">
+  <div class="ui-modal__header"><div class="ui-modal__header-title"><h2 class="ui-title" id="user_locale_modal_heading">Regional format</h2></div><div class="ui-modal__header-actions"><div class="ui-modal__close-button"><button class="ui-button ui-button--transparent" aria-label="Close modal" type="button" name="button"><svg aria-hidden="true" focusable="false" class="next-icon next-icon--color-ink-lighter next-icon--size-20"> <use xlink:href="#cancel-small-minor" /> </svg></button></div></div></div>
+  <div class="ui-modal__body"><div class="ui-modal__section">
+      <div class="ui-stack ui-stack--wrap ui-stack--vertical">
+      <div class="next-input-wrapper"><label class="next-label" for="account_locale_modal">Region</label><div class="ui-select__wrapper"><select data-bind-event-change="userLocale.handleRegionChange()" data-loading-text="Please wait" data-empty-text="Select country/region" class="ui-select" name="account[locale_modal]" id="account_locale_modal"></select><svg aria-hidden="true" focusable="false" class="next-icon next-icon--size-16"> <use xlink:href="#select-chevron" /> </svg></div></div>
+      <p>When you’re logged into Shopify, you see the standard number, time, date, and currency formats for this region.</p>
+</div></div></div>  <div class="ui-modal__footer"><div class="ui-modal__footer-actions">
+    <div class="ui-modal__secondary-actions"><div class="button-group">
+      <button class="ui-button" data-bind-event-click="userLocale.cancelRegionChange()" type="button" name="button">Cancel</button>
+</div></div>    <div class="ui-modal__primary-actions"><div class="button-group button-group--right-aligned">
+      <button class="ui-button ui-button--primary" data-bind-event-click="userLocale.applyRegionChange()" type="button" name="button">Done</button>
+</div></div></div></div></div></div></div></div>
+</body>
+
+</html>
+
